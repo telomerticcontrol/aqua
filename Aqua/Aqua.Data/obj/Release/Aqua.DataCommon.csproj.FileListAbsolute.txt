@@ -5,3 +5,11 @@ C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.Data\obj\Release\Infragistics.Gui
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.Data\obj\Release\Aqua.DataCommon.csproj.GenerateResource.Cache
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.Data\obj\Release\Infragistics.Guidance.Aqua.DataCommon.dll
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.Data\obj\Release\Infragistics.Guidance.Aqua.DataCommon.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\bin\Release\Infragistics.Guidance.Aqua.DataCommon.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\bin\Release\Infragistics.Guidance.Aqua.DataCommon.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\obj\Release\Aqua.DataCommon.csprojAssemblyReference.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\obj\Release\Infragistics.Guidance.Aqua.DataCommon.Properties.Resources.resources
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\obj\Release\Aqua.DataCommon.csproj.GenerateResource.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\obj\Release\Aqua.DataCommon.csproj.CoreCompileInputs.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\obj\Release\Infragistics.Guidance.Aqua.DataCommon.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.Data\obj\Release\Infragistics.Guidance.Aqua.DataCommon.pdb

@@ -1,10 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqua", "Aqua\Aqua.csproj", "{C2503635-4F84-479B-A659-2BC41BEA2189}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{BF8AA430-CFEB-40DE-8410-EC0FE420F200}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedAssemblies", "ReferencedAssemblies", "{70CFEA9A-A5C5-47C1-B2B2-2274AC3D6EF8}"
 	ProjectSection(SolutionItems) = preProject
 		ReferencedAssemblies\Aqua.Security.dll = ReferencedAssemblies\Aqua.Security.dll
@@ -30,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedAssemblies", "Ref
 		ReferencedAssemblies\WPFToolkit.dll = ReferencedAssemblies\WPFToolkit.dll
 		ReferencedAssemblies\WPFToolkit.VisualStudio.Design.dll = ReferencedAssemblies\WPFToolkit.VisualStudio.Design.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqua", "Aqua\Aqua.csproj", "{C2503635-4F84-479B-A659-2BC41BEA2189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{BF8AA430-CFEB-40DE-8410-EC0FE420F200}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aqua.DataClient", "Aqua.DataClient\Aqua.DataClient.csproj", "{1CB6FEBE-621E-43C2-893B-38D294C19B61}"
 EndProject
@@ -67,31 +69,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tfs.infragistics.local:8080/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = TilePanel\\TilePanel.csproj
-		SccProjectName1 = TilePanel
-		SccLocalPath1 = TilePanel
-		SccProjectUniqueName2 = Aqua\\Aqua.csproj
-		SccProjectName2 = Aqua
-		SccLocalPath2 = Aqua
-		SccProjectUniqueName3 = Model\\Model.csproj
-		SccProjectName3 = Model
-		SccLocalPath3 = Model
-		SccProjectUniqueName4 = Aqua.DataClient\\Aqua.DataClient.csproj
-		SccProjectName4 = Aqua.DataClient
-		SccLocalPath4 = Aqua.DataClient
-		SccProjectUniqueName5 = Aqua.DataServices\\Aqua.DataServices.csproj
-		SccProjectName5 = Aqua.DataServices
-		SccLocalPath5 = Aqua.DataServices
-		SccProjectUniqueName6 = Aqua.Security\\Aqua.Security.csproj
-		SccProjectName6 = Aqua.Security
-		SccLocalPath6 = Aqua.Security
-		SccProjectUniqueName7 = Aqua.Data\\Aqua.DataCommon.csproj
-		SccProjectName7 = Aqua.Data
-		SccLocalPath7 = Aqua.Data
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2BC6E305-7679-4DD9-AB3C-05D9CF61BEC1}
 	EndGlobalSection
 EndGlobal

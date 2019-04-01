@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Infragistics.Guidance.Aqua.Client.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="StoredUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="StoredPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LiveUri" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://user-ctp.windows.net/</Value>
+    </Setting>
+    <Setting Name="AccountName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">devstoreaccount1</Value>
+    </Setting>
+    <Setting Name="SharedKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==</Value>
+    </Setting>
+    <Setting Name="QueStorageEndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1:10001/</Value>
+    </Setting>
+    <Setting Name="TableStorageEndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1:10002/</Value>
+    </Setting>
+    <Setting Name="BlobStorageEndPoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://127.0.0.1:10000/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

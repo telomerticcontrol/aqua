@@ -1,0 +1,615 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:igWindows="http://infragistics.com/Windows" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="Infragistics.Guidance.Aqua.Client.View.DiagnosisSupportView"
+    mc:Ignorable="d" d:DesignWidth="990" d:DesignHeight="845">
+	<UserControl.Resources>
+		<Style TargetType="{x:Type TextBlock}" x:Key="ChatTextBlockStyle">
+			<Setter Property="Foreground" Value="Black" />
+			<Setter Property="TextWrapping" Value="Wrap" />
+		</Style>
+        
+		<DataTemplate x:Key="ContactTemplate">
+			<Border BorderBrush="AliceBlue" Height="50" Width="200" >
+				<Grid>
+					<Image Height="100" Width="100" HorizontalAlignment="Left" Source="{Binding ProfileImage}" />
+					<TextBlock x:Name="txtName" Text="{Binding Name}" Margin="60,0,0,0" HorizontalAlignment="Left" />
+					<TextBlock Text="Online" HorizontalAlignment="Right" Margin="0,0,0,10"/>
+				</Grid>
+                
+			</Border>
+		</DataTemplate>
+		<DataTemplate x:Key="XpsComboBoxItemTemplate">
+			<Border BorderBrush="AliceBlue">
+				<Grid>                   
+					<TextBlock x:Name="txtName" Text="{Binding Name}" Margin="2,0,0,0" HorizontalAlignment="Left" />                  
+				</Grid>
+			</Border>
+		</DataTemplate>
+		<DataTemplate x:Key="XCLBItemTemplate">
+			<Grid Width="Auto" Height="Auto">
+				<Rectangle Fill="#FFFFFF" />
+				<Image Source="{Binding ItemUri}" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,2,2" />
+			</Grid>
+		</DataTemplate>
+		
+		<!-- Contact List Resources -->
+		<DataTemplate x:Key="ContactItemTemplate">
+			<Grid Margin="0" VerticalAlignment="Stretch" Width="Auto" Height="64" Background="#00000000">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="96"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock
+					Margin="19.417,19,0,0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Opacity="1"
+					TextWrapping="Wrap"
+					FontSize="12"
+					FontFamily="GothamBook"
+					TextAlignment="left"
+					Foreground="#333333"
+					FontWeight="Bold"
+					Text="{Binding Name}" Grid.Column="1" d:LayoutOverrides="HorizontalAlignment" />
+				<Path
+					Margin="0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Stretch"
+					Height="Auto"
+					Width="96"
+					Stretch="Fill"
+					Opacity="1"
+					Data="M 124,309 C124,309 132,301 132,301 132,301 124,293 124,293 124,293 124,271 124,271 124,271 36,271 36,271 36,271 36,335 36,335 36,335 124,335 124,335 124,335 124,309 124,309 z"
+					Stroke="#a2a2a2"
+					StrokeThickness="1">
+					<Path.Fill>
+						<LinearGradientBrush
+							StartPoint="0.4791666666666667,0.15625"
+							EndPoint="0.4791666666666667,0.75">
+							<LinearGradientBrush.GradientStops>
+								<GradientStopCollection>
+									<GradientStop
+										Color="#FFffffff"
+										Offset="0" />
+									<GradientStop
+										Color="#FFEBEBEB"
+										Offset="0.9944000244140625" />
+									<GradientStop
+										Color="#FFebebeb"
+										Offset="1" />
+								</GradientStopCollection>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+				<TextBlock
+					Margin="20,42,0,0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Opacity="1"
+					TextWrapping="Wrap"
+					FontSize="12"
+					FontFamily="GothamBook"
+					TextAlignment="left"
+					Foreground="#81b30d"
+					Text="Online" Grid.Column="1" />
+				<Path
+					Margin="64,37,0,0"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Height="15"
+					Width="18"
+					Stretch="Fill"
+					Opacity="1"
+					Data="M 187.75,308 C186.231201171875,308 185,309.231201171875 185,310.75 185,310.75 185,316.25 185,316.25 185,317.768798828125 186.231201171875,319 187.75,319 187.75,319 189,319 189,319 189,319 191,323 191,323 191,323 192.71499633789062,319 192.71499633789062,319 192.71499633789062,319 200.25,319 200.25,319 201.768798828125,319 203,317.768798828125 203,316.25 203,316.25 203,310.75 203,310.75 203,309.231201171875 201.768798828125,308 200.25,308 200.25,308 187.75,308 187.75,308 z" Grid.Column="1">
+					<Path.Fill>
+						<LinearGradientBrush
+							StartPoint="0.6111111111111112,-0.2"
+							EndPoint="0.6111111111111112,0.9577189127604167">
+							<LinearGradientBrush.GradientStops>
+								<GradientStopCollection>
+									<GradientStop
+										Color="#FFbdea22"
+										Offset="0" />
+									<GradientStop
+										Color="#FF9cc130"
+										Offset="0.5" />
+									<GradientStop
+										Color="#FF77ae01"
+										Offset="0.5009999871253967" />
+									<GradientStop
+										Color="#FF9cc130"
+										Offset="1" />
+								</GradientStopCollection>
+							</LinearGradientBrush.GradientStops>
+						</LinearGradientBrush>
+					</Path.Fill>
+				</Path>
+				<Grid Margin="4,4,0,4" HorizontalAlignment="Center">
+					<Rectangle Fill="{x:Null}" Stroke="#FFDFDFDF"/>
+					<Image Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Source="{Binding ProfileImage}" Margin="1" Stretch="Uniform" MaxWidth="80" />
+				</Grid>
+			</Grid>
+
+		</DataTemplate>
+		<DataTemplate x:Key="ContactCondensedViewItemTemplate">
+			<Border Width="50" Height="50" Background="White" BorderBrush="#FFDFDFDF" BorderThickness="1" d:LayoutOverrides="Width, Height" Margin="0,0,5,0">
+				<Image Height="Auto" Width="Auto" HorizontalAlignment="Stretch" Source="{Binding ProfileImage}" Margin="0" Stretch="UniformToFill" />
+			</Border>
+
+		</DataTemplate>
+		<Style x:Key="TabItemFocusVisual">
+			<Setter Property="Control.Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Rectangle Stroke="Black" StrokeDashArray="1 2" StrokeThickness="1" Margin="3,3,3,1" SnapsToDevicePixels="true"/>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<SolidColorBrush x:Key="TabControlNormalBorderBrush" Color="#8C8E94"/>
+		<LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#F3F3F3" Offset="0"/>
+			<GradientStop Color="#EBEBEB" Offset="0.5"/>
+			<GradientStop Color="#DDDDDD" Offset="0.5"/>
+			<GradientStop Color="#CDCDCD" Offset="1"/>
+		</LinearGradientBrush>
+		<LinearGradientBrush x:Key="TabItemHotBackground" EndPoint="0,1" StartPoint="0,0">
+			<GradientStop Color="#EAF6FD" Offset="0.15"/>
+			<GradientStop Color="#D9F0FC" Offset=".5"/>
+			<GradientStop Color="#BEE6FD" Offset=".5"/>
+			<GradientStop Color="#A7D9F5" Offset="1"/>
+		</LinearGradientBrush>
+		<SolidColorBrush x:Key="TabItemSelectedBackground" Color="#F9F9F9"/>
+		<SolidColorBrush x:Key="TabItemHotBorderBrush" Color="#3C7FB1"/>
+		<SolidColorBrush x:Key="TabItemDisabledBackground" Color="#F4F4F4"/>
+		<SolidColorBrush x:Key="TabItemDisabledBorderBrush" Color="#FFC9C7BA"/>
+		<Style x:Key="LiveContactsTabItemStyle" TargetType="{x:Type TabItem}">
+			<Setter Property="FocusVisualStyle" Value="{StaticResource TabItemFocusVisual}"/>
+			<Setter Property="Foreground" Value="Black"/>
+			<Setter Property="Padding" Value="6,1,6,1"/>
+			<Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+			<Setter Property="Background" Value="{StaticResource ButtonNormalBackground}"/>
+			<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+			<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TabItem}">
+						<Grid x:Name="grid" SnapsToDevicePixels="true" Margin="0,0,0,16">
+							<ContentPresenter x:Name="Content" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" ContentSource="Header" RecognizesAccessKey="True" HorizontalAlignment="Stretch" Margin="5,4,0,4"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true"/>
+							<Trigger Property="IsSelected" Value="true">
+								<Setter Property="Panel.ZIndex" Value="1"/>
+								<Setter Property="Background" TargetName="grid" Value="#FFBFBFBF"/>
+							</Trigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="false"/>
+									<Condition Property="IsMouseOver" Value="true"/>
+								</MultiTrigger.Conditions>
+							</MultiTrigger>
+							<Trigger Property="TabStripPlacement" Value="Bottom"/>
+							<Trigger Property="TabStripPlacement" Value="Left"/>
+							<Trigger Property="TabStripPlacement" Value="Right"/>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Top"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-2,-2,-2,-1"/>
+								<Setter Property="Margin" TargetName="Content" Value="0,0,0,1"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Bottom"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-2,-1,-2,-2"/>
+								<Setter Property="Margin" TargetName="Content" Value="0,1,0,0"/>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Left"/>
+								</MultiTrigger.Conditions>
+							</MultiTrigger>
+							<MultiTrigger>
+								<MultiTrigger.Conditions>
+									<Condition Property="IsSelected" Value="true"/>
+									<Condition Property="TabStripPlacement" Value="Right"/>
+								</MultiTrigger.Conditions>
+								<Setter Property="Margin" Value="-1,-2,-2,-2"/>
+								<Setter Property="Margin" TargetName="Content" Value="1,0,0,0"/>
+							</MultiTrigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="LiveContactsTabControlStyle" TargetType="{x:Type TabControl}">
+			<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Padding" Value="4,4,4,4"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="{StaticResource TabControlNormalBorderBrush}"/>
+			<Setter Property="Background" Value="#F9F9F9"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type TabControl}">
+						<Grid ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition x:Name="ColumnDefinition0"/>
+								<ColumnDefinition x:Name="ColumnDefinition1" Width="0"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition x:Name="RowDefinition0" Height="Auto"/>
+								<RowDefinition x:Name="RowDefinition1" Height="*"/>
+							</Grid.RowDefinitions>
+                            <igWindows:XamPager CanContentScroll="True" VerticalScrollBarVisibility="Auto" Grid.Column="0" Grid.Row="0">
+                                <TabPanel x:Name="HeaderPanel" Margin="2,2,2,0" IsItemsHost="true" Panel.ZIndex="1"  
+                                          KeyboardNavigation.TabIndex="1" ScrollViewer.CanContentScroll="True"/>
+                                </igWindows:XamPager>
+							<Border x:Name="ContentPanel" Grid.Column="0" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+								<!--<ContentPresenter x:Name="PART_SelectedContentHost" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" ContentSource="SelectedContent"/>-->
+							</Border>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="TabStripPlacement" Value="Bottom">
+								<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="1"/>
+								<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition1" Value="Auto"/>
+								<Setter Property="Margin" TargetName="HeaderPanel" Value="2,0,2,2"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Left">
+								<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+								<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Grid.Column" TargetName="HeaderPanel" Value="0"/>
+								<Setter Property="Grid.Column" TargetName="ContentPanel" Value="1"/>
+								<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+								<Setter Property="Margin" TargetName="HeaderPanel" Value="2,2,0,2"/>
+								<Setter Property="Width" TargetName="ColumnDefinition0" Value="269"/>
+								<Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
+							</Trigger>
+							<Trigger Property="TabStripPlacement" Value="Right">
+								<Setter Property="Grid.Row" TargetName="HeaderPanel" Value="0"/>
+								<Setter Property="Grid.Row" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Grid.Column" TargetName="HeaderPanel" Value="1"/>
+								<Setter Property="Grid.Column" TargetName="ContentPanel" Value="0"/>
+								<Setter Property="Width" TargetName="ColumnDefinition0" Value="*"/>
+								<Setter Property="Width" TargetName="ColumnDefinition1" Value="Auto"/>
+								<Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
+								<Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
+								<Setter Property="Margin" TargetName="HeaderPanel" Value="0,2,2,2"/>
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="false">
+								<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="SendChatButtonStyle" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid Background="{x:Null}">
+							<Path
+								Margin="0,0,0,0"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Top"
+								Height="28"
+								Width="73"
+								Stretch="Fill"
+								Opacity="1"
+								Data="M 0,0 C0,0 36.498,28 36.498,28 36.498,28 73,28 73,28 73,28 73,0 73,0 73,0 0,0 0,0 z"
+								Stroke="#35000000"
+								StrokeThickness="1">
+								<Path.Fill>
+									<LinearGradientBrush
+										StartPoint="0.5,0"
+										EndPoint="0.5,0.599">
+										<LinearGradientBrush.GradientStops>
+											<GradientStopCollection>
+												<GradientStop
+													Color="#FFffffff"
+													Offset="0" />
+												<GradientStop
+													Color="#FFEBEBEB"
+													Offset="0.994" />
+												<GradientStop
+													Color="#FFebebeb"
+													Offset="1" />
+											</GradientStopCollection>
+										</LinearGradientBrush.GradientStops>
+									</LinearGradientBrush>
+								</Path.Fill>
+							</Path>
+							<ContentPresenter HorizontalAlignment="left" Margin="31.664,6,0,0" VerticalAlignment="top" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True"/>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="FontFamily" Value="GothamBook"/>
+			<Setter Property="FontSize" Value="12"/>
+			<Setter Property="Foreground" Value="#FF333333"/>
+		</Style>
+		<DataTemplate x:Key="ImageCarouselItemTemplate">
+			<Border>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="20" />
+						<RowDefinition />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+						<TextBlock x:Name="txtTestType" HorizontalAlignment="Left" Margin="0,0,5,0" FontSize="12" FontWeight="Bold" Foreground="#FFFF9900" Text="{Binding Type}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+						<TextBlock x:Name="txtTestTimestamp" HorizontalAlignment="Left" Text="{Binding Timestamp}" TextWrapping="Wrap" Foreground="#FF666666" VerticalAlignment="Center"/>
+					</StackPanel>
+					<Image Grid.Row="1" Grid.ColumnSpan="1" Source="{Binding Image}" Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				</Grid>
+			</Border>
+		</DataTemplate>
+		<ItemsPanelTemplate x:Key="ContactsListCondensedItemsPanel">
+			<VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+		</ItemsPanelTemplate>
+	</UserControl.Resources>
+    <Grid Background="White">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.5*" />
+    		<RowDefinition Height="0.5*" />
+    	</Grid.RowDefinitions>
+    	<Grid.ColumnDefinitions>
+    		<ColumnDefinition Width="0.5*" />
+            
+    		<ColumnDefinition Width="0.5*" />
+    	</Grid.ColumnDefinitions>
+        <ListBox x:Name="ContactsListBox" Opacity="0" Visibility="{Binding MaximizedStateVisibility}" 
+			ItemsSource="{Binding LiveContacts}" 
+			ItemTemplate="{StaticResource ContactTemplate}" 
+        	Grid.Row="0" Grid.Column="0" />
+        <ListBox x:Name="ContactsListBoxNormal" Visibility="{Binding NormalStateVisibility}" 
+			ItemTemplate="{DynamicResource ContactCondensedViewItemTemplate}" 
+			ItemsSource="{Binding LiveContacts}"
+			Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" d:IsHidden="True" ItemsPanel="{DynamicResource ContactsListCondensedItemsPanel}" />
+		<igWindows:XamTabControl x:Name="xamTabChat" Visibility="{Binding MaximizedStateVisibility}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0"
+			Opacity="0" IsHitTestVisible="False"
+		/>
+          
+		  <Grid x:Name="ImageLibraryContainer" Grid.Row="1" Visibility="{Binding MaximizedStateVisibility}" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="106"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="22"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				
+				<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,0,0"/>
+				<Path		
+    					Height="22"
+    					Stretch="Fill"
+    					Opacity="1"
+    					Data="M 947,588 C947,588 962.4993896484375,599 962.4993896484375,599 962.4993896484375,599 1068,599 1068,599 1068,599 1068,577 1068,577 1068,577 947,577 947,577 947,577 947,588 947,588 z"
+    					Fill="#666666" Width="121" HorizontalAlignment="Right" Grid.ColumnSpan="2" />
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Right" Margin="0,0,1,1" Width="104" Grid.Column="1"/>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Image Library" TextWrapping="Wrap"/>
+				<Rectangle Fill="#FF666666" HorizontalAlignment="Right" Width="5" Grid.Column="1" Grid.RowSpan="2"/>
+				<Path Stretch="Fill" HorizontalAlignment="Right" Margin="0,0,5,0" Width="1" Grid.Column="1" Data="M486,5.5 L486,109.5" Stroke="#FFCCCCCC" Grid.RowSpan="2"/>
+				<Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="20,0">
+					<igWindows:XamCarouselListBox x:Name="ImageCarousel" 
+						ItemsSource="{Binding ImageLibraryItems}" 
+						ItemTemplate="{StaticResource XCLBItemTemplate}"
+						Margin="15,0,14,0" 
+						VerticalAlignment="Top">
+						<igWindows:XamCarouselListBox.ViewSettings>
+							<igWindows:CarouselViewSettings ItemPath="{Binding ElementName=horizontalPath, Mode=OneWay}" ItemPathAutoPad="False" ItemPathStretch="Fill" ReserveSpaceForReflections="False" ItemSize="250,250" IsNavigatorVisible="False" AutoScaleItemContentsToFit="True" ItemsPerPage="3" ItemPathPadding="0" UseOpacity="True" >
+								<igWindows:CarouselViewSettings.ScalingEffectStops>
+									<igWindows:ScalingEffectStop Value="0.3"/>
+									<igWindows:ScalingEffectStop Offset="0.5" Value="1"/>
+									<igWindows:ScalingEffectStop Offset="1" Value="0.3"/>
+								</igWindows:CarouselViewSettings.ScalingEffectStops>
+								<igWindows:CarouselViewSettings.OpacityEffectStops>
+									<igWindows:OpacityEffectStop Offset="0" Value="0"/>
+									<igWindows:OpacityEffectStop Offset="0.2" Value="0"/>
+									<igWindows:OpacityEffectStop Offset="0.45" Value="1"/>
+									<igWindows:OpacityEffectStop Offset="0.55" Value="1"/>
+									<igWindows:OpacityEffectStop Offset="0.8"/>
+									<igWindows:OpacityEffectStop Offset="1" Value="0"/>
+								</igWindows:CarouselViewSettings.OpacityEffectStops>
+							</igWindows:CarouselViewSettings>
+						</igWindows:XamCarouselListBox.ViewSettings>
+
+					</igWindows:XamCarouselListBox>
+					<Button x:Name="btnNavigatePrev" HorizontalAlignment="Left" Width="14" Click="btnNavigatePrev_Click" Margin="0,80,0,95" Opacity="0.5">
+						<Button.RenderTransform>
+							<TransformGroup>
+								<TranslateTransform X="0" Y="0"/>
+								<ScaleTransform ScaleX="1" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="0"/>
+								<TranslateTransform X="0" Y="0"/>
+								<TranslateTransform X="0" Y="0"/>
+							</TransformGroup>
+						</Button.RenderTransform>
+						<Button.Style>
+							<Style TargetType="{x:Type Button}">
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="{x:Type Button}">
+											<Grid x:Name="arrowButton" Cursor="Hand" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch">
+												<Rectangle x:Name="rectangle" Fill="#FF666666" Stroke="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+												<Path
+													HorizontalAlignment="Center"
+													VerticalAlignment="Center"
+													Height="11.3"
+													Width="5.6"
+													Stretch="Fill"
+													Opacity="1"
+													Data="M 494,385.3431396484375 C494,385.3431396484375 488.3431396484375,391 488.3431396484375,391 488.3431396484375,391 494,396.6568603515625 494,396.6568603515625 494,396.6568603515625 494,385.3431396484375 494,385.3431396484375 z"
+													Fill="#ffffff" />
+											</Grid>
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsMouseOver" Value="True">
+													<Setter Property="Fill" TargetName="rectangle" Value="#FF434343"/>
+												</Trigger>
+												<Trigger Property="IsPressed" Value="True"/>
+											</ControlTemplate.Triggers>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Button.Style>
+					</Button>
+					<Button x:Name="btnNavigateNext" HorizontalAlignment="Right" Width="14" Click="btnNavigateNext_Click" RenderTransformOrigin="0.5,0.5" Margin="0,80,0,95" Opacity="0.5">
+						<Button.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="-1" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="0"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Button.RenderTransform>
+						<Button.Style>
+							<Style TargetType="{x:Type Button}">
+								<Setter Property="Template">
+									<Setter.Value>
+										<ControlTemplate TargetType="{x:Type Button}">
+											<Grid x:Name="arrowButton" Cursor="Hand" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch">
+												<Rectangle x:Name="rectangle" Fill="#FF666666" Stroke="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+												<Path
+													HorizontalAlignment="Center"
+													VerticalAlignment="Center"
+													Height="11.3"
+													Width="5.6"
+													Stretch="Fill"
+													Opacity="1"
+													Data="M 494,385.3431396484375 C494,385.3431396484375 488.3431396484375,391 488.3431396484375,391 488.3431396484375,391 494,396.6568603515625 494,396.6568603515625 494,396.6568603515625 494,385.3431396484375 494,385.3431396484375 z"
+													Fill="#ffffff" />
+											</Grid>
+											<ControlTemplate.Triggers>
+												<Trigger Property="IsMouseOver" Value="True">
+													<Setter Property="Fill" TargetName="rectangle" Value="#FF434343"/>
+												</Trigger>
+												<Trigger Property="IsPressed" Value="True"/>
+											</ControlTemplate.Triggers>
+										</ControlTemplate>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Button.Style>
+					</Button>
+				</Grid>
+				<Path x:Name="horizontalPath" Fill="#ffffff" Stretch="Fill" Margin="32,0,180,0" VerticalAlignment="Top" Height="0" Visibility="Collapsed" Data="M0,0 L10,0" />
+
+			</Grid>
+		  <Grid x:Name="DocumentLibraryContainer" Grid.Row="1" Grid.Column="1" Visibility="{Binding MaximizedStateVisibility}" >
+		  	<Grid.ColumnDefinitions>
+		  		<ColumnDefinition/>
+		  		<ColumnDefinition Width="106"/>
+		  	</Grid.ColumnDefinitions>
+		  	<Grid.RowDefinitions>
+		  		<RowDefinition Height="22"/>
+		  		<RowDefinition/>
+		  	</Grid.RowDefinitions>
+				
+		  	<Grid Grid.Row="1" Margin="0,-8,0,0" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+		  		<Grid.RowDefinitions>
+		  			<RowDefinition Height="Auto" />
+		  			<RowDefinition Height="*" />
+		  		</Grid.RowDefinitions>
+		  		<ComboBox x:Name="DocumentsComboBox" Visibility="{Binding MaximizedStateVisibility}" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding XpsLibraryItems}" 
+		  			SelectionChanged="DocumentsComboBox_SelectionChanged" ItemTemplate="{StaticResource XpsComboBoxItemTemplate}" Margin="116,10,10,10" VerticalAlignment="Center" />
+		  		<DocumentViewer Grid.Row="1" Visibility="{Binding MaximizedStateVisibility}" Grid.Column="0" x:Name="DocReader" />
+		  		<TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" Foreground="#FF666666" Text="Active Document:" TextWrapping="Wrap" Margin="8,0,0,0"/>
+		  	</Grid>
+				
+		  	<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+		  	<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,0,0"/>
+		  	<Path		
+		  		Height="22"
+		  		Stretch="Fill"
+		  		Opacity="1"
+		  		Data="M 947,588 C947,588 962.4993896484375,599 962.4993896484375,599 962.4993896484375,599 1068,599 1068,599 1068,599 1068,577 1068,577 1068,577 947,577 947,577 947,577 947,588 947,588 z"
+		  		Fill="#666666" Width="121" HorizontalAlignment="Right" Grid.ColumnSpan="2" />
+		  	<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Right" Margin="0,0,1,1" Width="104" Grid.Column="1"/>
+		  	<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Document Library" TextWrapping="Wrap"/>
+
+		  </Grid>
+		  <Grid x:Name="ChatContainer" Grid.ColumnSpan="2" Visibility="{Binding MaximizedStateVisibility}" >
+		  	<Grid.ColumnDefinitions>
+		  		<ColumnDefinition/>
+		  		<ColumnDefinition Width="106"/>
+		  	</Grid.ColumnDefinitions>
+		  	<Grid.RowDefinitions>
+		  		<RowDefinition Height="22"/>
+		  		<RowDefinition/>
+		  	</Grid.RowDefinitions>
+
+                <Border BorderBrush="Black" BorderThickness="1" Background="White" Panel.ZIndex="99" Grid.Row="1" Visibility="{Binding ChatDisclaimerVisibility}" 
+                        Height="100" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="8">
+                    <TextBlock TextWrapping="Wrap" Padding="8">
+                        If you want to use the Live Contact Chat, update the ShowLogin attribute in the app.config to True.
+                    </TextBlock>
+                </Border>
+
+            <igWindows:XamTabControl x:Name="ContactsChatTab" Visibility="{Binding MaximizedStateVisibility}" 
+                                     Margin="0,-10,0,0" Style="{DynamicResource LiveContactsTabControlStyle}" 
+                                     ItemContainerStyle="{DynamicResource LiveContactsTabItemStyle}" 
+                                     ItemTemplate="{DynamicResource ContactItemTemplate}" 
+                                     ItemsSource="{Binding LiveContacts}" Grid.ColumnSpan="2" Grid.Row="1" 
+                                     TabStripPlacement="Left" SelectionChanged="ContactsChatTab_SelectionChanged">
+                
+            </igWindows:XamTabControl>
+            <Grid x:Name="ChatModule" Grid.Row="0" Margin="276,24,9,7" Visibility="{Binding MaximizedStateVisibility}" Grid.RowSpan="2" Grid.ColumnSpan="2" >
+		  		<Grid.RowDefinitions>
+		  			<RowDefinition/>
+		  			<RowDefinition Height="Auto"/>
+		  		</Grid.RowDefinitions>
+		  		<TextBox Height="35" Width="Auto" Grid.Row="1" x:Name="txtChat" Visibility="{Binding MaximizedStateVisibility}" Margin="0" VerticalAlignment="Center" Foreground="#FF747474" Text="{Binding ChatText, Mode=TwoWay}" TextWrapping="Wrap" d:LayoutOverrides="GridBox"/>
+		  		<Button Content="Send" x:Name="btnSend" Click="btnSend_Click" Grid.Row="1" Visibility="{Binding MaximizedStateVisibility}" Cursor="Hand" HorizontalAlignment="Right" Margin="0,0,5,0" Style="{DynamicResource SendChatButtonStyle}" VerticalAlignment="Center" Height="28" d:LayoutOverrides="GridBox"/>
+		  		<ScrollViewer HorizontalAlignment="Stretch">
+		  			<StackPanel>
+		  				<TextBlock x:Name="txtChatHistory" Margin="0" Style="{DynamicResource ChatTextBlockStyle}" TextWrapping="Wrap" Text="{Binding ChatLog}" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+		  			</StackPanel>
+		  		</ScrollViewer>
+                
+            </Grid>
+	
+		<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+		  	<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,0,0"/>
+		  	<Path		
+		  		Height="22"
+		  		Stretch="Fill"
+		  		Opacity="1"
+		  		Data="M 947,588 C947,588 962.4993896484375,599 962.4993896484375,599 962.4993896484375,599 1068,599 1068,599 1068,599 1068,577 1068,577 1068,577 947,577 947,577 947,577 947,588 947,588 z"
+		  		Fill="#666666" Width="121" HorizontalAlignment="Right" Grid.ColumnSpan="2" />
+		  	<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Right" Margin="0,0,1,1" Width="104" Grid.Column="1"/>
+		  	<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Support Chat" TextWrapping="Wrap"/>
+
+		  	<Rectangle Fill="#FF666666" HorizontalAlignment="Right" Width="5" Grid.Column="1" Grid.RowSpan="2"/>
+		  	<Path Stretch="Fill" Stroke="#FFCCCCCC" HorizontalAlignment="Right" Margin="0,0,5,0" Width="1" Grid.Column="1" Grid.RowSpan="2" Data="M486,5.5 L486,109.5"/>
+
+		  </Grid>
+    </Grid>
+</UserControl>

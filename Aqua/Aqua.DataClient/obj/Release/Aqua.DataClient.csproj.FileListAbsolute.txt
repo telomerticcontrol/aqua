@@ -17,3 +17,24 @@ C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataClient\obj\Release\ResolveAss
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataClient\obj\Release\Infragistics.Guidance.Aqua.DataClient.dll
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataClient\obj\Release\Infragistics.Guidance.Aqua.DataClient.pdb
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataClient\bin\Release\WPFToolkit.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.DataClient.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.DataClient.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Aqua.Security.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.DataCommon.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.Model.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Microsoft.Practices.ObjectBuilder2.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Microsoft.Practices.Unity.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\StorageClient.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Microsoft.LiveFX.Client.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Microsoft.LiveFX.ResourceModel.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Microsoft.Web.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.DataCommon.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.Model.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\Infragistics.Guidance.Aqua.Model.dll.config
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\bin\Release\WPFToolkit.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\obj\Release\Aqua.DataClient.csprojAssemblyReference.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\obj\Release\Aqua.DataClient.csproj.CoreCompileInputs.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\obj\Release\Aqua.DataClient.csproj.CopyComplete
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\obj\Release\Infragistics.Guidance.Aqua.DataClient.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataClient\obj\Release\Infragistics.Guidance.Aqua.DataClient.pdb

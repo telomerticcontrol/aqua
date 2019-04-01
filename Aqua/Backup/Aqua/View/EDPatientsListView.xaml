@@ -1,0 +1,769 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:igDP="http://infragistics.com/DataPresenter"
+    xmlns:igEditors="http://infragistics.com/Editors"
+    xmlns:fl="clr-namespace:Infragistics.Guidance.Aqua.Client"
+    xmlns:view="clr-namespace:Infragistics.Guidance.Aqua.Client.View"
+    xmlns:conv="clr-namespace:Infragistics.Guidance.Aqua.Client.Converters"
+    xmlns:igChart="http://infragistics.com/Chart"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="Infragistics.Guidance.Aqua.Client.View.EDPatientsListView"
+    xmlns:igWindows="clr-namespace:Infragistics.Windows.Controls;assembly=Infragistics3.Wpf.v9.1"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" mc:Ignorable="d">
+
+	<Grid x:Name="MainGrid">
+		<Grid.Resources>
+			
+
+			<Style
+				x:Key="SeriesColor"
+				TargetType="{x:Type igChart:Series}">
+				<Setter Property="Stroke" Value="Green"/>
+				<Setter Property="StrokeThickness" Value="4" />
+				<Setter Property="Fill" Value="Green" />
+			</Style>
+
+			<Style x:Key="GBRPStyle" TargetType="{x:Type igDP:GroupByRecordPresenter}">
+				<Setter Property="Foreground" Value="#FFFFFFFF"/>
+				<Setter Property="Background" Value="#FF999999"/>
+				<Setter Property="Margin" Value="0,0,0,2"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type igDP:GroupByRecordPresenter}">
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="Auto"/>
+									<RowDefinition Height="*"/>
+								</Grid.RowDefinitions>
+								<igWindows:ExpansionIndicator x:Name="ExpansionIndicator"
+                                                      RenderTransform="{TemplateBinding FixedNearElementTransform}"
+                                                      Panel.ZIndex="1"
+ 							                          Grid.Row="1"
+                                                      Visibility="{TemplateBinding ExpansionIndicatorVisibility}" 
+                                                      IsChecked="{Binding Path=IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+								<ContentPresenter
+								x:Name="PART_HeaderContentSite"
+								Grid.Row="0"
+								Grid.Column="1"
+								Content="{TemplateBinding HeaderContent}"
+								Visibility="{Binding Path=HasHeaderContent, Converter={StaticResource BoolToVisConverter}, RelativeSource={RelativeSource TemplatedParent}}"
+								HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+								VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+								d:IsHidden="True" Height="28"/>
+								<Grid
+							x:Name="PART_RecordContentSite"
+                            RenderTransform="{TemplateBinding FixedNearElementTransform}"
+							Margin="0"
+							Grid.Row="1"
+							Grid.Column="1"
+							Visibility="Collapsed">
+									<Border
+								RenderTransformOrigin="0.5,0.5"
+								SnapsToDevicePixels="True"
+								Background="{TemplateBinding Background}">
+										<Border BorderBrush="#FFADADAD" BorderThickness="1,1,0,0" Margin="1"/>
+									</Border>
+									<StackPanel Orientation="Vertical">
+										<ContentControl
+									Style="{StaticResource LabelContentStyle}"
+									Content="{Binding Path=Description, RelativeSource={RelativeSource TemplatedParent}}"
+									VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+									HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+										<igDP:GroupBySummariesPresenter
+                                    RenderTransform="{TemplateBinding ScrollableElementTransform}"
+									HorizontalAlignment="Left"
+									x:Name="GroupBySummariesPresenter"
+									Visibility="Collapsed"
+									GroupByRecord="{TemplateBinding Record}"/>
+									</StackPanel>
+								</Grid>
+								<Grid
+							x:Name="PART_NestedContentSite"
+							Grid.Row="2"
+							Grid.Column="1"
+							Visibility="Collapsed">
+										<ContentControl 
+                                    RenderTransform="{TemplateBinding ScrollableElementTransform}"
+                                    x:Name="NestedContentPresenter" 
+                                    Content="{Binding Path=NestedContent, RelativeSource={RelativeSource TemplatedParent}}" 
+                                    Margin="0,0,0,5"/>
+								</Grid>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger Property="ShouldDisplayGroupByRecordContent" Value="true">
+									<Setter TargetName="PART_RecordContentSite" Property="Visibility" Value="Visible"/>
+								</Trigger>
+								<Trigger Property="ShouldDisplayGroupByRecordContent" Value="false">
+									<Setter TargetName="ExpansionIndicator" Property="Visibility" Value="Hidden"/>
+								</Trigger>
+								<Trigger Property="ShouldDisplaySummaryCells" Value="true">
+									<Setter TargetName="GroupBySummariesPresenter" Property="Visibility" Value="Visible"/>
+								</Trigger>
+								<MultiTrigger>
+									<MultiTrigger.Conditions>
+										<Condition Property="Orientation" Value="Vertical"/>
+										<Condition Property="ShouldDisplayGroupByRecordContent" Value="false"/>
+									</MultiTrigger.Conditions>
+									<Setter TargetName="ExpansionIndicator" Property="Grid.Row" Value="2"/>
+								</MultiTrigger>
+								<MultiTrigger>
+									<MultiTrigger.Conditions>
+										<Condition Property="Orientation" Value="Horizontal"/>
+										<Condition Property="ShouldDisplayGroupByRecordContent" Value="false"/>
+									</MultiTrigger.Conditions>
+									<Setter TargetName="PART_RecordContentSite" Property="Visibility" Value="Visible"/>
+								</MultiTrigger>
+
+								<Trigger Property="HasNestedContent" Value="true">
+									<Setter TargetName="PART_NestedContentSite" Property="Visibility" Value="Visible"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+
+
+
+
+
+
+
+			<Style TargetType="{x:Type igDP:CellValuePresenter}" x:Key="SeverityStyle">
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type igDP:CellValuePresenter}">
+							<Grid>
+								<Image
+									Margin="2"
+									Source="/Images/Severe03.png" ToolTip="Severity" 
+									x:Name="imgHigh"
+									Visibility="Collapsed" Width="30" Height="15"/>
+								<Image
+									Margin="2"
+									Source="/Images/Severe02.png" ToolTip="Severity"
+									x:Name="imgMedium"
+									Visibility="Collapsed" Width="30" Height="15"/>
+								<Image
+									Margin="2"
+									Source="/Images/Severe01.png" ToolTip="Severity"
+									x:Name="imgLow"
+									Visibility="Collapsed" Width="30" Height="15"/>
+							</Grid>
+							<ControlTemplate.Triggers>
+								<Trigger
+									Property="Value"
+									Value="1">
+									<Setter
+										TargetName="imgHigh"
+										Value="Visible"
+										Property="Visibility" />
+								</Trigger>
+								<Trigger
+									Property="Value"
+									Value="2">
+									<Setter
+										TargetName="imgMedium"
+										Value="Visible"
+										Property="Visibility" />
+								</Trigger>
+								<Trigger
+									Property="Value"
+									Value="3">
+									<Setter
+										TargetName="imgLow"
+										Value="Visible"
+										Property="Visibility" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style
+				TargetType="{x:Type igDP:CellValuePresenter}"
+				x:Key="VitalsOrderStateStyle">
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type igDP:CellValuePresenter}">
+							<Grid>
+								<Image
+									Margin="2"
+									Source="/Images/VitalBlue.png"
+									x:Name="imgOrdered" ToolTip="Vitals: Ordered"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/VitalYellow.png"
+									x:Name="imgResultsOverdue" ToolTip="Vitals: Results Overdue"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/VitalOrange.png"
+									x:Name="imgNewResultsIn" ToolTip="Vitals: New Results In"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/VitalRed.png"
+									x:Name="imgAllResultsInAndCritical" ToolTip="Vitals: Critical Results"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/VitalGray.png"
+									x:Name="imgAllResultsInAndReviewed" ToolTip="Vitals: Results Reviewed"
+									Visibility="Collapsed" Width="22" Height="20" />
+
+							</Grid>
+							<ControlTemplate.Triggers>
+								<DataTrigger
+									Binding="{Binding DataItem.VitalsOrderState}"
+									Value="Ordered">
+									<Setter
+										TargetName="imgOrdered"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.VitalsOrderState}"
+									Value="ResultsOverdue">
+									<Setter
+										TargetName="imgResultsOverdue"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.VitalsOrderState}"
+									Value="NewResultsIn">
+									<Setter
+										TargetName="imgNewResultsIn"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.VitalsOrderState}"
+									Value="AllResultsInAndCritical">
+									<Setter
+										TargetName="imgAllResultsInAndCritical"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger 
+									Binding="{Binding DataItem.VitalsOrderState}"
+									Value="AllResultsInAndReviewed">
+									<Setter
+										TargetName="imgAllResultsInAndReviewed"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style
+				TargetType="{x:Type igDP:CellValuePresenter}"
+				x:Key="EKGOrderStateStyle">
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type igDP:CellValuePresenter}">
+							<Grid>
+								<Image
+									Margin="2"
+									Source="/Images/EKGBlue.png"
+									x:Name="imgOrdered"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/EKGYellow.png"
+									x:Name="imgResultsOverdue"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/EKGOrange.png"
+									x:Name="imgNewResultsIn"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/EKGRed.png"
+									x:Name="imgAllResultsInAndCritical"
+									Visibility="Collapsed" Width="22" Height="20" />
+								<Image
+									Margin="2"
+									Source="/Images/EKGGray.png"
+									x:Name="imgAllResultsInAndReviewed"
+									Visibility="Collapsed" Width="22" Height="20" />
+
+							</Grid>
+							<ControlTemplate.Triggers>
+								<DataTrigger
+									Binding="{Binding DataItem.EKGOrderState}"
+									Value="Ordered">
+									<Setter
+										TargetName="imgOrdered"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.EKGOrderState}"
+									Value="ResultsOverdue">
+									<Setter
+										TargetName="imgResultsOverdue"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.EKGOrderState}"
+									Value="NewResultsIn">
+									<Setter
+										TargetName="imgNewResultsIn"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.EKGOrderState}"
+									Value="AllResultsInAndCritical">
+									<Setter
+										TargetName="imgAllResultsInAndCritical"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.EKGOrderState}"
+									Value="AllResultsInAndReviewed">
+									<Setter
+										TargetName="imgAllResultsInAndReviewed"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style
+				TargetType="{x:Type igDP:CellValuePresenter}"
+				x:Key="LabOrderStateStyle">
+				<Setter
+					Property="Template">
+					<Setter.Value>
+						<ControlTemplate
+							TargetType="{x:Type igDP:CellValuePresenter}">
+							<Grid>
+								<Image
+									Margin="2"
+									Source="/Images/LabBlue.png"
+									x:Name="imgOrdered"
+									Width="22" Height="20"
+									Visibility="Collapsed" />
+								<Image
+									Margin="2"
+									Source="/Images/LabYellow.png"
+									x:Name="imgResultsOverdue"
+									Width="22" Height="20"
+									Visibility="Collapsed" />
+								<Image
+									Margin="2"
+									Source="/Images/LabOrange.png"
+									x:Name="imgNewResultsIn"
+									Width="22" Height="20"
+									Visibility="Collapsed" />
+								<Image
+									Margin="2"
+									Source="/Images/LabRed.png"
+									x:Name="imgAllResultsInAndCritical"
+									Width="22" Height="20"
+									Visibility="Collapsed" />
+								<Image
+									Margin="2"
+									Source="/Images/LabGray.png"
+									x:Name="imgAllResultsInAndReviewed"
+									Width="22" Height="20"
+									Visibility="Collapsed" />
+
+							</Grid>
+							<ControlTemplate.Triggers>
+								<DataTrigger
+									Binding="{Binding DataItem.LabOrderState}"
+									Value="Ordered">
+									<Setter
+										TargetName="imgOrdered"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.LabOrderState}"
+									Value="ResultsOverdue">
+									<Setter
+										TargetName="imgResultsOverdue"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.LabOrderState}"
+									Value="NewResultsIn">
+									<Setter
+										TargetName="imgNewResultsIn"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.LabOrderState}"
+									Value="AllResultsInAndCritical">
+									<Setter
+										TargetName="imgAllResultsInAndCritical"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+								<DataTrigger
+									Binding="{Binding DataItem.LabOrderState}"
+									Value="AllResultsInAndReviewed">
+									<Setter
+										TargetName="imgAllResultsInAndReviewed"
+										Value="Visible"
+										Property="Visibility" />
+								</DataTrigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+
+		</Grid.Resources>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="2*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="1*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<igDP:XamDataGrid Visibility="{Binding xdgEDPatientsListNormal}"
+			x:Name="xdgEDPatientsListNormal"
+			Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2"
+			DataSource="{Binding PatientList}" ScrollingMode="Immediate"
+			ActiveRecord="{Binding SelectedRecord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			GroupByAreaLocation="None" Sorted="xdgEDPatientsListNormal_Sorted" AutoFit="True">
+			<igDP:XamDataGrid.Resources>
+				<Style
+					TargetType="{x:Type igEditors:XamTextEditor}"
+					x:Key="WrapText">
+					<Setter
+						Property="TextWrapping"
+						Value="Wrap" />
+				</Style>
+			</igDP:XamDataGrid.Resources>
+			<igDP:XamDataGrid.FieldSettings>
+				<igDP:FieldSettings/>
+			</igDP:XamDataGrid.FieldSettings>
+			<igDP:XamDataGrid.FieldLayoutSettings>
+				<igDP:FieldLayoutSettings
+					AutoGenerateFields="False"
+					RecordSelectorLocation="None"
+					AllowAddNew="False"
+					AllowDelete="False" HighlightAlternateRecords="True" />
+			</igDP:XamDataGrid.FieldLayoutSettings>
+			<igDP:XamDataGrid.FieldLayouts>
+				<igDP:FieldLayout>
+					<igDP:FieldLayout.SortedFields>
+						<igDP:FieldSortDescription Direction="Ascending" FieldName="Severity" />
+					</igDP:FieldLayout.SortedFields>
+					<igDP:FieldLayout.Fields>
+						<igDP:Field
+							Label="Location"
+							Name="Location" Visibility="Collapsed"/>
+						<igDP:Field
+							Label="Complaints"
+							Name="Complaints">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									LabelWidth="100"
+									EditorStyle="{StaticResource WrapText}"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field
+							Label="Sev"
+							Name="Severity">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="50"
+									LabelWidth="50" CellValuePresenterStyle="{StaticResource SeverityStyle}"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field
+							Label="Patient"
+							Name="PatientFullName">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									LabelWidth="100"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field
+							Label="Attending"
+							Name="AttendingName" Visibility="Collapsed"/>
+						<igDP:Field
+							Label="Nurse"
+							Name="RNName" Visibility="Collapsed"/>
+						<igDP:Field
+							Label="Disposition"
+							Name="Disposition" Visibility="Collapsed"/>
+						<igDP:Field
+							Label="Comments"
+							Name="Comments" Visibility="Collapsed"/>
+					</igDP:FieldLayout.Fields>
+				</igDP:FieldLayout>
+			</igDP:XamDataGrid.FieldLayouts>
+
+		</igDP:XamDataGrid>
+
+
+		<igDP:XamDataGrid Visibility="{Binding xdgEDPatientsListMaximized}"
+			x:Name="xdgEDPatientsListMaximized" ScrollingMode="Immediate"
+			DataSource="{Binding PatientList}" Sorted="xdgEDPatientsListMaximized_Sorted"
+			ActiveRecord="{Binding FullScreenSelectedRecord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+			GroupByAreaLocation="None"
+			Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2"
+			RecordLoadMode="PreloadRecords" CellContainerGenerationMode="PreLoad" RecordContainerGenerationMode="PreLoad" d:IsHidden="True" AutoFit="True">
+			<igDP:XamDataGrid.Resources>
+				<Style
+					TargetType="{x:Type igEditors:XamTextEditor}"
+					x:Key="WrapText">
+					<Setter
+						Property="TextWrapping"
+						Value="Wrap" />
+				</Style>
+			</igDP:XamDataGrid.Resources>
+			<igDP:XamDataGrid.FieldLayoutSettings>
+				<igDP:FieldLayoutSettings
+					AutoGenerateFields="False"
+					RecordSelectorLocation="None"
+					AllowAddNew="False"
+					AllowDelete="False" 
+					HighlightAlternateRecords="True"
+                        />
+			</igDP:XamDataGrid.FieldLayoutSettings>
+			<igDP:XamDataGrid.FieldLayouts>
+				<igDP:FieldLayout>
+					<igDP:FieldLayout.SortedFields>
+						<igDP:FieldSortDescription Direction="Ascending" FieldName="Severity" />
+					</igDP:FieldLayout.SortedFields>
+					<igDP:FieldLayout.Fields>
+						<igDP:Field
+							Label="Location"
+							Name="Location"/>
+						<igDP:Field
+							Label="Complaints"
+							Name="Complaints">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									LabelWidth="100"
+									EditorStyle="{StaticResource WrapText}"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field
+							Label=""
+							Name="Severity">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="50"
+									LabelWidth="50"
+									CellValuePresenterStyle="{StaticResource SeverityStyle}"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field
+							Label="Patient"
+							Name="PatientFullName">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									LabelWidth="100"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field
+							Label="Attending"
+							Name="AttendingName"/>
+						<igDP:Field
+							Label="Nurse"
+							Name="RNName"/>
+						<igDP:UnboundField
+							Name="VitalsOrderState"
+							Label="">
+							<igDP:UnboundField.Settings>
+								<igDP:FieldSettings
+									CellWidth="30"
+									LabelWidth="30"
+									AllowResize="False"
+									CellValuePresenterStyle="{StaticResource VitalsOrderStateStyle}" />
+							</igDP:UnboundField.Settings>
+						</igDP:UnboundField>
+						<igDP:UnboundField
+							Name="EKGOrderState"
+							Label="">
+							<igDP:UnboundField.Settings>
+								<igDP:FieldSettings
+									CellWidth="30"
+									LabelWidth="30"
+									AllowResize="False"
+									CellValuePresenterStyle="{StaticResource EKGOrderStateStyle}" />
+							</igDP:UnboundField.Settings>
+						</igDP:UnboundField>
+						<igDP:UnboundField
+							Name="LabOrderState"
+							Label="">
+							<igDP:UnboundField.Settings>
+								<igDP:FieldSettings
+									CellWidth="30"
+									LabelWidth="30"
+									AllowResize="False"
+									CellValuePresenterStyle="{StaticResource LabOrderStateStyle}" />
+							</igDP:UnboundField.Settings>
+						</igDP:UnboundField>
+						<igDP:Field
+							Label="Disposition"
+							Name="Disposition"/>
+						<igDP:Field
+							Label="Comments"
+							Name="Comments"/>
+					</igDP:FieldLayout.Fields>
+				</igDP:FieldLayout>
+			</igDP:XamDataGrid.FieldLayouts>
+
+		</igDP:XamDataGrid>
+
+		<Rectangle Height="32" Fill="#FF666666" Grid.Row="1" Grid.ColumnSpan="2" Visibility="{Binding xdgEDPatientsListMaximized}"/>
+		<StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10,0" VerticalAlignment="Center" Visibility="{Binding xdgEDPatientsListMaximized}">
+			<Ellipse Fill="#FFFFFFFF" Width="6" Height="6"/>
+			<TextBlock Foreground="#FFFFFFFF" Text="EKG" Margin="5,0,0,0" FontFamily="Calibri" FontSize="16"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="10,0" VerticalAlignment="Center" Visibility="{Binding xdgEDPatientsListMaximized}">
+			<Ellipse Fill="#FFFFFFFF" Width="6" Height="6"/>
+			<TextBlock Foreground="#FFFFFFFF" Text="VITALS" Margin="5,0,0,0" FontFamily="Calibri" FontSize="16"/>
+		</StackPanel>
+		<igChart:XamChart Grid.Row="2" Grid.Column="0" x:Name="XCVitalsMaximized" Background="Black" Foreground="Green" Visibility="{Binding XCVitalsMaximized}" d:IsHidden="True">
+			<igChart:XamChart.Legend>
+				<igChart:Legend Visible="False" />
+			</igChart:XamChart.Legend>
+			<igChart:XamChart.Axes>
+				<igChart:Axis AxisType="PrimaryY" AutoRange="False" Minimum="-30" Maximum="60" Unit="10">
+					<igChart:Axis.Label>
+						<igChart:Label Foreground="Green" />
+					</igChart:Axis.Label>
+					<igChart:Axis.MajorGridline>
+						<igChart:Mark StrokeThickness="1" />
+					</igChart:Axis.MajorGridline>
+
+				</igChart:Axis>
+				<igChart:Axis AxisType="PrimaryX" AutoRange="False" Minimum="0" Maximum="100" Unit="20" StrokeThickness="1" Stroke="LightGray">
+					<igChart:Axis.MajorGridline>
+						<igChart:Mark Visible="False" />
+					</igChart:Axis.MajorGridline>
+					<igChart:Axis.Label>
+						<igChart:Label Visible="False" />
+					</igChart:Axis.Label>
+				</igChart:Axis>
+			</igChart:XamChart.Axes>
+			<igChart:XamChart.Series>
+				<igChart:Series x:Name="Series1" ChartType="Line" Style="{StaticResource SeriesColor}" DataSource="{Binding EKGData}" DataMapping="EKGValues"/>
+			</igChart:XamChart.Series>
+			<igChart:XamChart.Scene>
+				<igChart:Scene MarginType="Percent" />
+			</igChart:XamChart.Scene>
+		</igChart:XamChart>
+
+
+		<igDP:XamDataGrid Visibility="{Binding xdgVitalsMaximized}"
+			Grid.Row="2" Grid.Column="1"
+			GroupByAreaLocation="None"
+			x:Name="xdgVitalsMaximized"
+			DataSource="{Binding Vitals}" ScrollingMode="Immediate" d:IsHidden="True">
+			<igDP:XamDataGrid.FieldSettings>
+				<igDP:FieldSettings
+					AllowEdit="False"
+					CellClickAction="SelectRecord" 
+					GroupByMode="Text" GroupByRecordPresenterStyle="{StaticResource GBRPStyle}"
+                    />
+			</igDP:XamDataGrid.FieldSettings>
+			<igDP:XamDataGrid.FieldLayoutSettings>
+				<igDP:FieldLayoutSettings
+					AutoGenerateFields="False"
+					RecordSelectorLocation="None"
+                    />
+			</igDP:XamDataGrid.FieldLayoutSettings>
+			<igDP:XamDataGrid.FieldLayouts>
+				<igDP:FieldLayout>
+					<igDP:FieldLayout.SortedFields>
+						<igDP:FieldSortDescription
+							FieldName="Timestamp"
+							Direction="Descending"
+							IsGroupBy="True"   
+                                />
+					</igDP:FieldLayout.SortedFields>
+					<igDP:FieldLayout.Fields>
+						<igDP:UnboundField
+							Label="Type"
+							Name="Type"
+							BindingPath="VitalSignType.Name">
+							<igDP:UnboundField.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									CellMinWidth="30"
+									LabelWidth="100"
+									LabelMinWidth="30"/>
+							</igDP:UnboundField.Settings>
+						</igDP:UnboundField>
+						<igDP:UnboundField Name="AverageValue" Label="AverageValue">
+							<igDP:UnboundField.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									CellMinWidth="30"
+									LabelWidth="100"
+									LabelMinWidth="30" />
+							</igDP:UnboundField.Settings>
+						</igDP:UnboundField>
+						<igDP:Field
+							Label="Value"
+							Name="Value">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									CellMinWidth="30"
+									LabelWidth="100"
+									LabelMinWidth="30" />
+							</igDP:Field.Settings>
+						</igDP:Field>
+						<igDP:Field 
+							Label="Time"
+							Name="Timestamp" Visibility="Collapsed">
+							<igDP:Field.Settings>
+								<igDP:FieldSettings
+									CellWidth="100"
+									CellMinWidth="30"
+									LabelWidth="100"
+									LabelMinWidth="30"/>
+							</igDP:Field.Settings>
+						</igDP:Field>
+					</igDP:FieldLayout.Fields>
+				</igDP:FieldLayout>
+			</igDP:XamDataGrid.FieldLayouts>
+		</igDP:XamDataGrid>
+
+	</Grid>
+
+</UserControl>

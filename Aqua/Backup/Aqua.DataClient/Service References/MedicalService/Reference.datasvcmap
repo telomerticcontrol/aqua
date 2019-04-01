@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0e4f256c-1b06-4b5d-83cb-ada75dada51c" xmlns="urn:schemas-microsoft-com:xml-dataservicemap">
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54329/Services/MedicalDataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.edmx" MetadataType="Edmx" ID="9090bfdb-54f7-469f-aae2-4d3fe2e43852" SourceId="1" SourceUrl="http://localhost:54329/Services/MedicalDataService.svc" />
+  </Metadata>
+  <Extensions />
+</ReferenceGroup>

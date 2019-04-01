@@ -5,3 +5,13 @@ C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\bin\Infragistics.Gui
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\obj\Release\ResolveAssemblyReference.cache
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\obj\Release\Infragistics.Guidance.Aqua.DataServices.dll
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\obj\Release\Infragistics.Guidance.Aqua.DataServices.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataServices.dll.config
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataServices.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataServices.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataCommon.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataCommon.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\obj\Release\Aqua.DataServices.csprojAssemblyReference.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\obj\Release\Aqua.DataServices.csproj.CoreCompileInputs.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\obj\Release\Aqua.DataServices.csproj.CopyComplete
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\obj\Release\Infragistics.Guidance.Aqua.DataServices.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua.DataServices\obj\Release\Infragistics.Guidance.Aqua.DataServices.pdb

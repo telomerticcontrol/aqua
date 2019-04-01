@@ -1,0 +1,488 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:igChart="http://infragistics.com/Chart"
+    xmlns:conv="clr-namespace:Infragistics.Guidance.Aqua.Client.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	x:Class="Infragistics.Guidance.Aqua.Client.View.VitalSignsView"
+    HorizontalAlignment="Stretch" 
+	VerticalAlignment="Stretch" mc:Ignorable="d">
+	<UserControl.Resources>
+		
+	</UserControl.Resources>
+	<Grid Background="White">
+
+	
+		<Grid  Visibility="{Binding MaximizedStateVisiblity}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50*" />
+				<RowDefinition Height="50*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="50*"/>
+				<ColumnDefinition Width="50*"/>
+			</Grid.ColumnDefinitions>
+			
+			<Grid x:Name="BPChart">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="146"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="22"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+
+				<igChart:XamChart
+    					x:Name="BPChartMaximized" Grid.Row="1" Grid.ColumnSpan="2" Margin="8,8,-8,-8">
+					
+					<igChart:XamChart.StartPaletteBrush>
+						<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+							<GradientStop Color="#FFFEC044" Offset="0"/>
+							<GradientStop Color="#FFFF9C05" Offset="0.889"/>
+						</LinearGradientBrush>
+					</igChart:XamChart.StartPaletteBrush>
+
+					<igChart:XamChart.Axes>
+						<igChart:Axis
+    							AxisType="PrimaryX" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+
+						<igChart:Axis
+    							AxisType="PrimaryY"
+                    AutoRange="False"
+                    Unit="10"
+                    Maximum="200"
+                    Minimum="50" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+					</igChart:XamChart.Axes>
+					<igChart:XamChart.Series>
+						<igChart:Series
+    							ChartType="Candlestick"
+    							DataSource="{Binding BPVitals}"
+    							DataMapping="High = BPHigh; Low = BPLow; Open = BPLow; Close = BPHigh; Label = Timestamp"
+    							Loaded="BPMaximizedSeriesLoaded" Stroke="#FFE00000">
+							<igChart:Series.Animation>
+								<igChart:Animation/>
+							</igChart:Series.Animation>
+							<igChart:Series.Fill>
+								<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+									<GradientStop Color="#FFFEC044" Offset="0"/>
+							<GradientStop Color="#FFFF9C05" Offset="0.889"/>
+								</LinearGradientBrush>
+							</igChart:Series.Fill>
+						</igChart:Series>
+					</igChart:XamChart.Series>
+					<igChart:XamChart.Legend>
+						<igChart:Legend Visible="False"/>
+					</igChart:XamChart.Legend>
+				</igChart:XamChart>
+				<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,-8,0"/>
+				<Path		
+    					Height="22"
+    					Stretch="Fill"
+    					Opacity="1"
+    					Data="M 495,473.1300048828125 C495,473.1300048828125 507.4993896484375,482 507.4993896484375,482 507.4993896484375,482 613.5006103515625,482 613.5006103515625,482 613.5006103515625,482 626,473.1300048828125 626,473.1300048828125 626,473.1300048828125 626,460 626,460 626,460 495,460 495,460 495,460 495,473.1300048828125 495,473.1300048828125 z"
+    					Fill="#666666" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Top" Width="131" Grid.Column="1" />
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Center" Margin="0,0,0,1" Width="105" Grid.Column="1"/>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Blood Presure" TextWrapping="Wrap" d:LayoutOverrides="Height"/>
+
+			</Grid>
+			<igChart:XamChart
+    				Grid.Row="1"
+    				x:Name="RespiratoryRateChart" Visibility="Collapsed" Grid.Column="1">
+				<igChart:XamChart.Caption>
+					<igChart:Caption
+    						Text="Respiratory Rate"
+    						FontSize="12"
+    						Foreground="White" />
+				</igChart:XamChart.Caption>
+				<igChart:XamChart.Series>
+					<igChart:Series
+    						DataSource="{Binding RespiratoryRateVitals}"
+    						DataMapping="Value=Value;Label=Timestamp"
+    						ChartType="Line">
+						<igChart:Series.Marker>
+							<igChart:Marker
+    								Type="Circle"
+    								Fill="White"
+    								FontSize="12"
+    								Foreground="White"/>
+						</igChart:Series.Marker>
+					</igChart:Series>
+				</igChart:XamChart.Series>
+				<igChart:XamChart.Axes>
+					<igChart:Axis
+    						AxisType="PrimaryX">
+						<igChart:Axis.Label>
+							<igChart:Label
+    								Foreground="White"
+    								FontSize="12" />
+						</igChart:Axis.Label>
+					</igChart:Axis>
+
+					<igChart:Axis
+    						AxisType="PrimaryY"
+    						AutoRange="False"
+    						Unit="2"
+    						Minimum="10"
+    						Maximum="22">
+						<igChart:Axis.Label>
+							<igChart:Label
+    								Foreground="White"
+    								FontSize="12" />
+						</igChart:Axis.Label>
+					</igChart:Axis>
+				</igChart:XamChart.Axes>
+			</igChart:XamChart>
+			<Grid x:Name="TempChart" Grid.Column="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="106"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="22"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<igChart:XamChart
+    					x:Name="TemperatureChart" Grid.Row="1" Grid.ColumnSpan="2" StartPaletteBrush="#FFE00000" >
+
+					<igChart:XamChart.Axes>
+						<igChart:Axis
+    							AxisType="PrimaryX" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+
+						<igChart:Axis
+    							AxisType="PrimaryY"
+    							AutoRange="False"
+    							Unit="3"
+    							Minimum="90"
+    							Maximum="110" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+					</igChart:XamChart.Axes>
+					<igChart:XamChart.Series>
+						<igChart:Series
+    							ChartType="Line"
+    							DataSource="{Binding TemperatureVitals}"
+    							DataMapping="Value=Value;Label=Timestamp" StrokeThickness="2">
+							<igChart:Series.Animation>
+								<igChart:Animation/>
+							</igChart:Series.Animation>
+							<igChart:Series.Marker>
+								<igChart:Marker Foreground="#FF333333"/>
+							</igChart:Series.Marker>
+						</igChart:Series>
+					</igChart:XamChart.Series>
+					<igChart:XamChart.Legend>
+						<igChart:Legend Visible="False"/>
+					</igChart:XamChart.Legend>
+				</igChart:XamChart>
+
+				<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,0,0"/>
+				<Path		
+    					Height="22"
+    					Stretch="Fill"
+    					Opacity="1"
+    					Data="M 947,588 C947,588 962.4993896484375,599 962.4993896484375,599 962.4993896484375,599 1068,599 1068,599 1068,599 1068,577 1068,577 1068,577 947,577 947,577 947,577 947,588 947,588 z"
+    					Fill="#666666" Width="121" HorizontalAlignment="Right" Grid.ColumnSpan="2" d:LayoutOverrides="GridBox" />
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Temperature" TextWrapping="Wrap"/>
+
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Right" Margin="0,0,1,1" Width="105" Grid.Column="1"/>
+			</Grid>
+			<Grid x:Name="PulseChart1" Grid.Row="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="146"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="22"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<igChart:XamChart Grid.Row="1"
+    					x:Name="PulseChart" VerticalAlignment="Bottom" Grid.ColumnSpan="2" StartPaletteBrush="#FFE00000">
+					<igChart:XamChart.Series>
+						<igChart:Series
+    							DataSource="{Binding PulseVitals}"
+    							DataMapping="Value=Value;Label=Timestamp"
+    							ChartType="Line" StrokeThickness="2">
+							<igChart:Series.Animation>
+								<igChart:Animation/>
+							</igChart:Series.Animation>
+							<igChart:Series.Marker>
+								<igChart:Marker Foreground="#FF333333"/>
+							</igChart:Series.Marker>
+						</igChart:Series>
+					</igChart:XamChart.Series>
+
+					<igChart:XamChart.Axes>
+						<igChart:Axis
+    							AxisType="PrimaryX" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+
+						<igChart:Axis
+    							AxisType="PrimaryY"
+                    AutoRange="False"
+                    Unit="6"
+                    Minimum="60"
+                    Maximum="120"
+								Stroke="#FFCCCCCC" 
+							StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+					</igChart:XamChart.Axes>
+					<igChart:XamChart.Legend>
+						<igChart:Legend Visible="False"/>
+					</igChart:XamChart.Legend>
+				</igChart:XamChart>
+				<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,-8,0"/>
+				<Path		
+    					Height="22"
+    					Stretch="Fill"
+    					Opacity="1"
+    					Data="M 495,473.1300048828125 C495,473.1300048828125 507.4993896484375,482 507.4993896484375,482 507.4993896484375,482 613.5006103515625,482 613.5006103515625,482 613.5006103515625,482 626,473.1300048828125 626,473.1300048828125 626,473.1300048828125 626,460 626,460 626,460 495,460 495,460 495,460 495,473.1300048828125 495,473.1300048828125 z"
+    					Fill="#666666" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Top" Width="131" Grid.Column="1" />
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Center" Margin="0,0,0,1" Width="105" Grid.Column="1"/>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Pulse" TextWrapping="Wrap"/>
+
+			</Grid>
+			<Grid x:Name="PainChart1" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="106"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="22"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<igChart:XamChart
+    					x:Name="PainChart" Grid.ColumnSpan="2" Grid.Row="1">
+					<igChart:XamChart.StartPaletteBrush>
+						<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+							<GradientStop Color="#FFFEC044" Offset="0"/>
+							<GradientStop Color="#FFFF9C05" Offset="0.889"/>
+						</LinearGradientBrush>
+					</igChart:XamChart.StartPaletteBrush>
+					<igChart:XamChart.Series>
+						<igChart:Series
+    							DataSource="{Binding PainVitals}"
+    							DataMapping="Value=Value;Label=Timestamp"
+    							ChartType="Area" StrokeThickness="0">
+							<igChart:Series.Animation>
+								<igChart:Animation/>
+							</igChart:Series.Animation>
+							<igChart:Series.Fill>
+								<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+									<GradientStop Color="#FFFEC044" Offset="0"/>
+							<GradientStop Color="#FFFF9C05" Offset="0.889"/>
+								</LinearGradientBrush>
+							</igChart:Series.Fill>
+							<igChart:Series.Marker>
+								<igChart:Marker
+    									Type="Circle"
+    									FontSize="12"
+    									Foreground="#FF333333" StrokeThickness="0"  Fill="#FFE00000"/>
+							</igChart:Series.Marker>
+						</igChart:Series>
+					</igChart:XamChart.Series>
+
+					<igChart:XamChart.Axes>
+						<igChart:Axis
+    							AxisType="PrimaryX" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+
+						<igChart:Axis
+    							AxisType="PrimaryY"
+                        AutoRange="False"
+						Minimum="0"
+						Maximum="25"
+                        Unit="5"
+                        Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+					</igChart:XamChart.Axes>
+					<igChart:XamChart.Legend>
+						<igChart:Legend Visible="False"/>
+					</igChart:XamChart.Legend>
+				</igChart:XamChart>
+				<Rectangle Fill="#FF666666" VerticalAlignment="Top" Height="13" Grid.ColumnSpan="2"/>
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Top" Height="1" Margin="0,11,0,0"/>
+				<Path		
+    					Height="22"
+    					Stretch="Fill"
+    					Opacity="1"
+    					Data="M 947,588 C947,588 962.4993896484375,599 962.4993896484375,599 962.4993896484375,599 1068,599 1068,599 1068,599 1068,577 1068,577 1068,577 947,577 947,577 947,577 947,588 947,588 z"
+    					Fill="#666666" Width="121" HorizontalAlignment="Right" Grid.ColumnSpan="2" />
+				<Rectangle Fill="#FFA5A5A5" VerticalAlignment="Bottom" Height="1" HorizontalAlignment="Right" Margin="0,0,1,1" Width="104" Grid.Column="1"/>
+				<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Foreground="White" Text="Pain" TextWrapping="Wrap"/>
+
+			</Grid>
+			<Rectangle Fill="#FF666666" HorizontalAlignment="Left" Width="5" Grid.Column="1" Grid.RowSpan="2"/>
+		</Grid>
+
+		<igChart:XamChart
+    		x:Name="BPChartNormal"
+    		Visibility="{Binding NormalStateVisibility}" HorizontalAlignment="Stretch" >
+			<igChart:XamChart.Legend>
+				<igChart:Legend Visible="False"/>
+			</igChart:XamChart.Legend>
+			<igChart:XamChart.StartPaletteBrush>
+						<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+							<GradientStop Color="#FFFEC044" Offset="0"/>
+							<GradientStop Color="#FFFF9C05" Offset="0.889"/>
+						</LinearGradientBrush>
+					</igChart:XamChart.StartPaletteBrush>
+
+					<igChart:XamChart.Axes>
+						<igChart:Axis
+    							AxisType="PrimaryX" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+
+						<igChart:Axis
+    							AxisType="PrimaryY"
+                    AutoRange="False"
+                    Unit="20"
+                    Maximum="200"
+                    Minimum="50" Stroke="#FFCCCCCC" StrokeThickness="1">
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0"/>
+							</igChart:Axis.MajorTickMark>
+							<igChart:Axis.MajorGridline>
+								<igChart:Mark Stroke="WhiteSmoke"/>
+							</igChart:Axis.MajorGridline>
+							<igChart:Axis.Label>
+								<igChart:Label
+    									Foreground="#FF333333"
+    									FontSize="12" />
+							</igChart:Axis.Label>
+						</igChart:Axis>
+					</igChart:XamChart.Axes>
+			<igChart:XamChart.Series>
+				<igChart:Series
+    				ChartType="Candlestick"
+    				DataSource="{Binding BPVitals}" Stroke="#FFE00000"
+    				DataMapping="High = BPHigh; Low = BPLow; Open = BPLow; Close = BPHigh; Label = Timestamp"
+    				Loaded="BPNormalSeriesLoaded">
+					<igChart:Series.Animation>
+						<igChart:Animation/>
+					</igChart:Series.Animation>
+					<igChart:Series.Fill>
+						
+							<LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+							<GradientStop Color="#FFFEC044" Offset="0"/>
+							<GradientStop Color="#FFFF9C05" Offset="0.889"/>
+						</LinearGradientBrush>
+						
+					</igChart:Series.Fill>
+				</igChart:Series>
+			</igChart:XamChart.Series>
+			<igChart:XamChart.Caption>
+				<igChart:Caption
+    				Text="Blood Pressure"
+    				FontSize="12"
+    				Foreground="White" />
+			</igChart:XamChart.Caption>
+		</igChart:XamChart>
+	</Grid>
+</UserControl>

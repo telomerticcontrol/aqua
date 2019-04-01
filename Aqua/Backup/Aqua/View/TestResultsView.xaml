@@ -1,0 +1,334 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:igDP="http://infragistics.com/DataPresenter"
+    xmlns:igWin="http://infragistics.com/Windows"
+    xmlns:fl="clr-namespace:Infragistics.Guidance.Aqua.Client"
+    xmlns:igChart="http://infragistics.com/Chart"         
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:Infragistics_Guidance_Aqua_Client_Converters="clr-namespace:Infragistics.Guidance.Aqua.Client.Converters" x:Class="Infragistics.Guidance.Aqua.Client.View.TestResultsView"         
+	HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:DesignWidth="464" d:DesignHeight="334">
+	<UserControl.Resources>
+		<Infragistics_Guidance_Aqua_Client_Converters:AvailableSizeToItemsPerPageConverter x:Key="AvailableSizeToItemsPerPageConverter"/>
+		<Style x:Key="SeriesColor" TargetType="{x:Type igChart:Series}">
+			<Setter Property="Stroke" Value="Green"/>
+			<Setter Property="StrokeThickness" Value="4" />
+			<Setter Property="Fill" Value="Green" />
+		</Style>
+		<DataTemplate x:Key="XCLBItemTemplate">            
+			<Grid d:DesignWidth="183" d:DesignHeight="167">         
+				<Rectangle Fill="#FFFFFF" />
+				<Image Source="{Binding Image}" Height="54" Width="50" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,2,2" />
+			</Grid>            
+		</DataTemplate>
+		<Style x:Key="RadiologyCarouselStyle" TargetType="{x:Type igWin:XamCarouselListBox}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type igWin:XamCarouselListBox}">
+						<Grid Margin="{TemplateBinding Padding}">
+							<AdornerDecorator>
+								<Border x:Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+									<ItemsPresenter x:Name="ItemsPresenter" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+								</Border>
+							</AdornerDecorator>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="RadiologyNavigatorStyle" TargetType="{x:Type igWin:CarouselPanelNavigator}">
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+			<Setter Property="VerticalAlignment" Value="Bottom"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type igWin:CarouselPanelNavigator}">
+						<Grid x:Name="gridButtons" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="14"/>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="14"/>
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Button x:Name="navigateLineRight" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Command="igWin:XamCarouselPanelCommands.NavigateToNextItem" CommandTarget="{Binding CarouselPanel, RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="2">
+								<Button.RenderTransform>
+									<TransformGroup>
+										<TranslateTransform X="0" Y="0"/>
+										<ScaleTransform ScaleX="1" ScaleY="1"/>
+										<SkewTransform AngleX="0" AngleY="0"/>
+										<RotateTransform Angle="0"/>
+										<TranslateTransform X="0" Y="0"/>
+										<TranslateTransform X="0" Y="0"/>
+									</TransformGroup>
+								</Button.RenderTransform>
+								<Button.Style>
+									<Style TargetType="{x:Type Button}">
+										<Setter Property="Template">
+											<Setter.Value>
+												<ControlTemplate TargetType="{x:Type Button}">
+													<Grid x:Name="arrowButton" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Cursor="Hand">
+														<Rectangle x:Name="rectangle" Fill="#FF666666" Stroke="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+														<Path
+															HorizontalAlignment="Center"
+															VerticalAlignment="Center"
+															Height="11.3"
+															Width="5.6"
+															Stretch="Fill"
+															Opacity="1"
+															Data="M 494,385.3431396484375 C494,385.3431396484375 488.3431396484375,391 488.3431396484375,391 488.3431396484375,391 494,396.6568603515625 494,396.6568603515625 494,396.6568603515625 494,385.3431396484375 494,385.3431396484375 z"
+															Fill="#ffffff" RenderTransformOrigin="0.5,0.5" >
+															<Path.RenderTransform>
+																<TransformGroup>
+																	<ScaleTransform ScaleX="-1" ScaleY="1"/>
+																	<SkewTransform AngleX="0" AngleY="0"/>
+																	<RotateTransform Angle="0"/>
+																	<TranslateTransform/>
+																</TransformGroup>
+															</Path.RenderTransform>
+														</Path>
+													</Grid>
+													<ControlTemplate.Triggers>
+														<Trigger Property="IsMouseOver" Value="True">
+															<Setter Property="Fill" TargetName="rectangle" Value="#FF434343"/>
+														</Trigger>
+														<Trigger Property="IsPressed" Value="True"/>
+													</ControlTemplate.Triggers>
+												</ControlTemplate>
+											</Setter.Value>
+										</Setter>
+									</Style>
+								</Button.Style>
+							</Button>
+							<Button x:Name="navigateLineLeft" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Command="igWin:XamCarouselPanelCommands.NavigateToPreviousItem" CommandTarget="{Binding CarouselPanel, RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0">
+								<Button.RenderTransform>
+									<TransformGroup>
+										<TranslateTransform X="0" Y="0"/>
+										<ScaleTransform ScaleX="1" ScaleY="1"/>
+										<SkewTransform AngleX="0" AngleY="0"/>
+										<RotateTransform Angle="0"/>
+										<TranslateTransform X="0" Y="0"/>
+										<TranslateTransform X="0" Y="0"/>
+									</TransformGroup>
+								</Button.RenderTransform>
+								<Button.Style>
+									<Style TargetType="{x:Type Button}">
+										<Setter Property="Template">
+											<Setter.Value>
+												<ControlTemplate TargetType="{x:Type Button}">
+													<Grid x:Name="arrowButton" Cursor="Hand" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch">
+														<Rectangle x:Name="rectangle" Fill="#FF666666" Stroke="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+														<Path
+															HorizontalAlignment="Center"
+															VerticalAlignment="Center"
+															Height="11.3"
+															Width="5.6"
+															Stretch="Fill"
+															Opacity="1"
+															Data="M 494,385.3431396484375 C494,385.3431396484375 488.3431396484375,391 488.3431396484375,391 488.3431396484375,391 494,396.6568603515625 494,396.6568603515625 494,396.6568603515625 494,385.3431396484375 494,385.3431396484375 z"
+															Fill="#ffffff" />
+													</Grid>
+													<ControlTemplate.Triggers>
+														<Trigger Property="IsMouseOver" Value="True">
+															<Setter Property="Fill" TargetName="rectangle" Value="#FF434343"/>
+														</Trigger>
+														<Trigger Property="IsPressed" Value="True"/>
+													</ControlTemplate.Triggers>
+												</ControlTemplate>
+											</Setter.Value>
+										</Setter>
+									</Style>
+								</Button.Style>
+							</Button>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</UserControl.Resources>
+    <Grid>        
+        <igWin:XamTabControl SelectionChanged="XamTabControl_SelectionChanged" x:Name="XamTabTestResults">
+            <igWin:TabItemEx Header="Lab">
+                <igDP:XamDataGrid x:Name="xdgTests" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" GroupByAreaLocation="None"
+                	DataSource="{Binding DistinctLabTests}" ScrollingMode="Immediate" AutoFit="True">
+                	<igDP:XamDataGrid.FieldLayoutSettings>
+                		<igDP:FieldLayoutSettings
+                			AutoGenerateFields="False" FixedFieldUIType="None"/>
+                	</igDP:XamDataGrid.FieldLayoutSettings>
+                    <igDP:XamDataGrid.FieldSettings>
+                        <igDP:FieldSettings AllowEdit="False" />
+                    </igDP:XamDataGrid.FieldSettings>
+                	<igDP:XamDataGrid.FieldLayouts>
+                		<igDP:FieldLayout>
+                			<igDP:FieldLayout.Fields>
+                				<igDP:Field
+                					Name="Type"
+                					Label="Name" FixedLocation="FixedToNearEdge"/>
+                               
+                                
+                			</igDP:FieldLayout.Fields>
+                		</igDP:FieldLayout>
+                	</igDP:XamDataGrid.FieldLayouts>
+                </igDP:XamDataGrid>
+            </igWin:TabItemEx>
+        	<igWin:TabItemEx Header="Radiology">
+        		<Grid>
+        			<Grid.RowDefinitions>
+        				<RowDefinition/>
+        				<RowDefinition Height="75"/>
+        			</Grid.RowDefinitions>
+        			<Rectangle Fill="#FFD6D6D6" Stroke="#FF666666" Grid.Row="1"/>
+        			<igWin:XamCarouselListBox x:Name="XCLBRadiology" ItemsSource="{Binding RadiologyTests}"
+        				ItemTemplate="{StaticResource XCLBItemTemplate}" Margin="11,0,13,0" 
+						Style="{DynamicResource RadiologyCarouselStyle}" Grid.Row="1" 
+						SelectedItem="{Binding SelectedRadiologyTest, Mode=TwoWay}">
+        				<igWin:XamCarouselListBox.ViewSettings>
+        					<igWin:CarouselViewSettings ItemSize="58,58" 
+								ReserveSpaceForReflections="False" 
+								AutoScaleItemContentsToFit="True" 
+								IsNavigatorVisible="False" 
+								ItemPath="{Binding ElementName=horizontalPath, Mode=OneWay}" 
+								ItemPathHorizontalAlignment="Stretch" UseScaling="False"
+								ItemsPerPage="{Binding ActualWidth, Converter={StaticResource AvailableSizeToItemsPerPageConverter}, ConverterParameter=65, ElementName=XCLBRadiology, Mode=OneWay, FallbackValue=5}" 
+								ItemPathPrefixPercent="0.05" ItemPathSuffixPercent="0.05"  IsListContinuous="True" />
+        				</igWin:XamCarouselListBox.ViewSettings>
+        			</igWin:XamCarouselListBox>
+        			<Path x:Name="horizontalPath" Fill="#ffffff" Stretch="Fill" Margin="32,0,65,104" VerticalAlignment="Bottom" Height="0" Visibility="Collapsed" Data="M32,121.04 L389,121.04"/>
+        			<Button x:Name="btnNavigatePrev" HorizontalAlignment="Left" Width="14" Grid.Column="0" Grid.Row="1" Click="btnNavigatePrev_Click">
+        				<Button.RenderTransform>
+        					<TransformGroup>
+        						<TranslateTransform X="0" Y="0"/>
+        						<ScaleTransform ScaleX="1" ScaleY="1"/>
+        						<SkewTransform AngleX="0" AngleY="0"/>
+        						<RotateTransform Angle="0"/>
+        						<TranslateTransform X="0" Y="0"/>
+        						<TranslateTransform X="0" Y="0"/>
+        					</TransformGroup>
+        				</Button.RenderTransform>
+        				<Button.Style>
+        					<Style TargetType="{x:Type Button}">
+        						<Setter Property="Template">
+        							<Setter.Value>
+        								<ControlTemplate TargetType="{x:Type Button}">
+        									<Grid x:Name="arrowButton" Cursor="Hand" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch">
+        										<Rectangle x:Name="rectangle" Fill="#FF666666" Stroke="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        										<Path
+        											HorizontalAlignment="Center"
+        											VerticalAlignment="Center"
+        											Height="11.3"
+        											Width="5.6"
+        											Stretch="Fill"
+        											Opacity="1"
+        											Data="M 494,385.3431396484375 C494,385.3431396484375 488.3431396484375,391 488.3431396484375,391 488.3431396484375,391 494,396.6568603515625 494,396.6568603515625 494,396.6568603515625 494,385.3431396484375 494,385.3431396484375 z"
+        											Fill="#ffffff" />
+        									</Grid>
+        									<ControlTemplate.Triggers>
+        										<Trigger Property="IsMouseOver" Value="True">
+        											<Setter Property="Fill" TargetName="rectangle" Value="#FF434343"/>
+        										</Trigger>
+        										<Trigger Property="IsPressed" Value="True"/>
+        									</ControlTemplate.Triggers>
+        								</ControlTemplate>
+        							</Setter.Value>
+        						</Setter>
+        					</Style>
+        				</Button.Style>
+        			</Button>
+        			<Button x:Name="btnNavigateNext" HorizontalAlignment="Right" Width="14" Grid.Column="0" Grid.Row="1" Click="btnNavigateNext_Click" RenderTransformOrigin="0.5,0.5">
+        				<Button.RenderTransform>
+        					<TransformGroup>
+        						<ScaleTransform ScaleX="-1" ScaleY="1"/>
+        						<SkewTransform AngleX="0" AngleY="0"/>
+        						<RotateTransform Angle="0"/>
+        						<TranslateTransform/>
+        					</TransformGroup>
+        				</Button.RenderTransform>
+        				<Button.Style>
+        					<Style TargetType="{x:Type Button}">
+        						<Setter Property="Template">
+        							<Setter.Value>
+        								<ControlTemplate TargetType="{x:Type Button}">
+        									<Grid x:Name="arrowButton" Cursor="Hand" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch">
+        										<Rectangle x:Name="rectangle" Fill="#FF666666" Stroke="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        										<Path
+        											HorizontalAlignment="Center"
+        											VerticalAlignment="Center"
+        											Height="11.3"
+        											Width="5.6"
+        											Stretch="Fill"
+        											Opacity="1"
+        											Data="M 494,385.3431396484375 C494,385.3431396484375 488.3431396484375,391 488.3431396484375,391 488.3431396484375,391 494,396.6568603515625 494,396.6568603515625 494,396.6568603515625 494,385.3431396484375 494,385.3431396484375 z"
+        											Fill="#ffffff" />
+        									</Grid>
+        									<ControlTemplate.Triggers>
+        										<Trigger Property="IsMouseOver" Value="True">
+        											<Setter Property="Fill" TargetName="rectangle" Value="#FF434343"/>
+        										</Trigger>
+        										<Trigger Property="IsPressed" Value="True"/>
+        									</ControlTemplate.Triggers>
+        								</ControlTemplate>
+        							</Setter.Value>
+        						</Setter>
+        					</Style>
+        				</Button.Style>
+        			</Button>
+        			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,10,0,0">
+        				<TextBlock x:Name="txtTestType" HorizontalAlignment="Left" Margin="0,0,5,0" FontSize="12" FontWeight="Bold" Foreground="#FFFF9900" Text="{Binding SelectedRadiologyTest.Type}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        				<TextBlock x:Name="txtTestTimestamp" HorizontalAlignment="Left" Text="{Binding SelectedRadiologyTest.Timestamp}" TextWrapping="Wrap" Foreground="#FF666666" VerticalAlignment="Center"/>
+        			</StackPanel>
+        			<Border Margin="20,40,20,20" BorderBrush="#FFEA2727" Background="#FF5D5959">
+        			
+        				<Grid  Margin="0,0,0,0" Background="#FF000000">
+        			
+        					<Image Source="{Binding Path=SelectedRadiologyTest.Image}" MaxWidth="500" MaxHeight="500" />
+        					<Rectangle Fill="{x:Null}" Stroke="#FF797777" HorizontalAlignment="Stretch" Margin="1,1,1,1"/>
+        			
+        				</Grid>
+        			
+					</Border>
+        			
+        		</Grid>
+        	</igWin:TabItemEx>
+            <igWin:TabItemEx Header="Cardiology">
+                <igChart:XamChart Grid.Row="1" Grid.Column="0" x:Name="XCVitalsMaximized" Background="Black" Foreground="Green" Margin="0">
+                	<igChart:XamChart.Legend>
+                		<igChart:Legend Visible="False" />
+                	</igChart:XamChart.Legend>
+                	<igChart:XamChart.Axes>
+                		<igChart:Axis AxisType="PrimaryY" AutoRange="False" Minimum="-30" Maximum="60" Unit="10">
+							
+                			<igChart:Axis.Label>
+                				<igChart:Label Foreground="Green" />
+                			</igChart:Axis.Label>
+                			<igChart:Axis.MajorGridline>
+                				<igChart:Mark StrokeThickness="1" />
+                			</igChart:Axis.MajorGridline>
+							<igChart:Axis.MajorTickMark>
+								<igChart:Mark StrokeThickness="0" />
+							</igChart:Axis.MajorTickMark>
+
+						</igChart:Axis>
+                		<igChart:Axis AxisType="PrimaryX" AutoRange="False" Minimum="0" Maximum="100" Unit="20" StrokeThickness="1" Stroke="LightGray">
+                			<igChart:Axis.MajorGridline>
+                				<igChart:Mark Visible="False" />
+                			</igChart:Axis.MajorGridline>
+                			<igChart:Axis.Label>
+                				<igChart:Label Visible="False" />
+                			</igChart:Axis.Label>
+                		</igChart:Axis>
+                	</igChart:XamChart.Axes>
+                	<igChart:XamChart.Series>
+                		<igChart:Series x:Name="Series1" ChartType="Line" Style="{StaticResource SeriesColor}" DataSource="{Binding EKGData}" DataMapping="EKGValues"/>
+                	</igChart:XamChart.Series>
+                	<igChart:XamChart.Scene>
+                		<igChart:Scene Margin="0" MarginType="Percent" >
+                			<igChart:Scene.GridArea>
+                				<igChart:GridArea MarginType="Percent" Margin="6,6,3,6"/>
+                			</igChart:Scene.GridArea>
+                		</igChart:Scene>
+                	</igChart:XamChart.Scene>
+                </igChart:XamChart>
+            </igWin:TabItemEx>
+        
+        </igWin:XamTabControl>
+    </Grid>
+</UserControl>

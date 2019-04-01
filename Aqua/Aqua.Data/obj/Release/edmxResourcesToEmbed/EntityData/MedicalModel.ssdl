@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MedicalDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="MedicalDataModelStoreContainer">
+    <EntitySet Name="Admittance" EntityType="MedicalDataModel.Store.Admittance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Allergy" EntityType="MedicalDataModel.Store.Allergy" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BodyRegion" EntityType="MedicalDataModel.Store.BodyRegion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChatResponses" EntityType="MedicalDataModel.Store.ChatResponses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ChatRole" EntityType="MedicalDataModel.Store.ChatRole" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClinicalNote" EntityType="MedicalDataModel.Store.ClinicalNote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ClinicalNoteType" EntityType="MedicalDataModel.Store.ClinicalNoteType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Complaint" EntityType="MedicalDataModel.Store.Complaint" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ComplaintTestResult" EntityType="MedicalDataModel.Store.ComplaintTestResult" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Med" EntityType="MedicalDataModel.Store.Med" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="MedicalDataModel.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Patient" EntityType="MedicalDataModel.Store.Patient" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatientAllergy" EntityType="MedicalDataModel.Store.PatientAllergy" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Staff" EntityType="MedicalDataModel.Store.Staff" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StaffType" EntityType="MedicalDataModel.Store.StaffType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="MedicalDataModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Test" EntityType="MedicalDataModel.Store.Test" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestCategory" EntityType="MedicalDataModel.Store.TestCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TestType" EntityType="MedicalDataModel.Store.TestType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vital" EntityType="MedicalDataModel.Store.Vital" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VitalSignType" EntityType="MedicalDataModel.Store.VitalSignType" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Admittance_Patient" Association="MedicalDataModel.Store.FK_Admittance_Patient">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="Admittance" EntitySet="Admittance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Admittance_Staff" Association="MedicalDataModel.Store.FK_Admittance_Staff">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Admittance" EntitySet="Admittance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatResponses_ChatRole" Association="MedicalDataModel.Store.FK_ChatResponses_ChatRole">
+      <End Role="ChatRole" EntitySet="ChatRole" />
+      <End Role="ChatResponses" EntitySet="ChatResponses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClinicalNote_ClinicalNoteType" Association="MedicalDataModel.Store.FK_ClinicalNote_ClinicalNoteType">
+      <End Role="Admittance" EntitySet="Admittance" />
+      <End Role="ClinicalNote" EntitySet="ClinicalNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Complaint_Admittance" Association="MedicalDataModel.Store.FK_Complaint_Admittance">
+      <End Role="Admittance" EntitySet="Admittance" />
+      <End Role="Complaint" EntitySet="Complaint" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintTestResult_Complaint" Association="MedicalDataModel.Store.FK_ComplaintTestResult_Complaint">
+      <End Role="Complaint" EntitySet="Complaint" />
+      <End Role="ComplaintTestResult" EntitySet="ComplaintTestResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComplaintTestResult_Test" Association="MedicalDataModel.Store.FK_ComplaintTestResult_Test">
+      <End Role="Test" EntitySet="Test" />
+      <End Role="ComplaintTestResult" EntitySet="ComplaintTestResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Admittance" Association="MedicalDataModel.Store.FK_Order_Admittance">
+      <End Role="Admittance" EntitySet="Admittance" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Med" Association="MedicalDataModel.Store.FK_Order_Med">
+      <End Role="Med" EntitySet="Med" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientAllergy_Allergy" Association="MedicalDataModel.Store.FK_PatientAllergy_Allergy">
+      <End Role="Allergy" EntitySet="Allergy" />
+      <End Role="PatientAllergy" EntitySet="PatientAllergy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientAllergy_Patient" Association="MedicalDataModel.Store.FK_PatientAllergy_Patient">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="PatientAllergy" EntitySet="PatientAllergy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_StaffType" Association="MedicalDataModel.Store.FK_Staff_StaffType">
+      <End Role="StaffType" EntitySet="StaffType" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_Admittance" Association="MedicalDataModel.Store.FK_Test_Admittance">
+      <End Role="Admittance" EntitySet="Admittance" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_BodyRegion" Association="MedicalDataModel.Store.FK_Test_BodyRegion">
+      <End Role="BodyRegion" EntitySet="BodyRegion" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Test_TestType" Association="MedicalDataModel.Store.FK_Test_TestType">
+      <End Role="TestType" EntitySet="TestType" />
+      <End Role="Test" EntitySet="Test" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestType_TestCategory" Association="MedicalDataModel.Store.FK_TestType_TestCategory">
+      <End Role="TestCategory" EntitySet="TestCategory" />
+      <End Role="TestType" EntitySet="TestType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vital_Admittance" Association="MedicalDataModel.Store.FK_Vital_Admittance">
+      <End Role="Admittance" EntitySet="Admittance" />
+      <End Role="Vital" EntitySet="Vital" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vital_VitalSignType" Association="MedicalDataModel.Store.FK_Vital_VitalSignType">
+      <End Role="VitalSignType" EntitySet="VitalSignType" />
+      <End Role="Vital" EntitySet="Vital" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admittance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="StaffAttendingID" Type="int" />
+    <Property Name="StaffRNID" Type="int" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="255" />
+    <Property Name="TimestampIn" Type="datetime" />
+    <Property Name="TimestampOut" Type="datetime" />
+    <Property Name="Location" Type="nvarchar" MaxLength="255" />
+    <Property Name="Severity" Type="nvarchar" MaxLength="255" />
+    <Property Name="Disposition" Type="nvarchar" MaxLength="255" />
+    <Property Name="Diagnosis" Type="nvarchar" MaxLength="255" />
+    <Property Name="Clinical Notes" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Allergy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="BodyRegion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ChatResponses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Response" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ChatRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ClinicalNote">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdmittanceID" Type="int" />
+    <Property Name="ClinicalNoteTypeID" Type="int" />
+    <Property Name="Note" Type="nvarchar" MaxLength="255" />
+    <Property Name="Timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ClinicalNoteType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Complaint">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdmittanceID" Type="int" />
+    <Property Name="ComplaintTypeID" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ComplaintTestResult">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ComplaintID" Type="int" />
+    <Property Name="TestResultID" Type="int" />
+  </EntityType>
+  <EntityType Name="Med">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="AdmittanceID" Type="int" />
+    <Property Name="MedID" Type="int" />
+    <Property Name="Dosage" Type="int" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="255" />
+    <Property Name="Frequency" Type="nvarchar" MaxLength="255" />
+    <Property Name="Indication" Type="nvarchar" MaxLength="255" />
+    <Property Name="Timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Suffix" Type="nvarchar" MaxLength="255" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="255" />
+    <Property Name="VIP" Type="bit" />
+    <Property Name="Infectious" Type="bit" />
+    <Property Name="DNR" Type="bit" />
+  </EntityType>
+  <EntityType Name="PatientAllergy">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="int" />
+    <Property Name="AllergyID" Type="int" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Suffix" Type="nvarchar" MaxLength="255" />
+    <Property Name="Title" Type="nvarchar" MaxLength="255" />
+    <Property Name="Speciality" Type="nvarchar" MaxLength="255" />
+    <Property Name="StaffTypeID" Type="int" />
+  </EntityType>
+  <EntityType Name="StaffType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TestTypeID" Type="int" />
+    <Property Name="AdmittanceID" Type="int" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="Result" Type="varchar" MaxLength="50" />
+    <Property Name="BodyRegionID" Type="int" />
+  </EntityType>
+  <EntityType Name="TestCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TestType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="ResultType" Type="nvarchar" MaxLength="255" />
+    <Property Name="TestCategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="Vital">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VitalSignTypeID" Type="int" />
+    <Property Name="AdmittanceID" Type="int" />
+    <Property Name="VitalSignValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="Timestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VitalSignType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_Admittance_Patient">
+    <End Role="Patient" Type="MedicalDataModel.Store.Patient" Multiplicity="0..1" />
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Admittance">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Admittance_Staff">
+    <End Role="Staff" Type="MedicalDataModel.Store.Staff" Multiplicity="0..1" />
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Admittance">
+        <PropertyRef Name="StaffAttendingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatResponses_ChatRole">
+    <End Role="ChatRole" Type="MedicalDataModel.Store.ChatRole" Multiplicity="1" />
+    <End Role="ChatResponses" Type="MedicalDataModel.Store.ChatResponses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatRole">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChatResponses">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClinicalNote_ClinicalNoteType">
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="0..1" />
+    <End Role="ClinicalNote" Type="MedicalDataModel.Store.ClinicalNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admittance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ClinicalNote">
+        <PropertyRef Name="AdmittanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Complaint_Admittance">
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="0..1" />
+    <End Role="Complaint" Type="MedicalDataModel.Store.Complaint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admittance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Complaint">
+        <PropertyRef Name="AdmittanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintTestResult_Complaint">
+    <End Role="Complaint" Type="MedicalDataModel.Store.Complaint" Multiplicity="0..1" />
+    <End Role="ComplaintTestResult" Type="MedicalDataModel.Store.ComplaintTestResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Complaint">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ComplaintTestResult">
+        <PropertyRef Name="ComplaintID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComplaintTestResult_Test">
+    <End Role="Test" Type="MedicalDataModel.Store.Test" Multiplicity="0..1" />
+    <End Role="ComplaintTestResult" Type="MedicalDataModel.Store.ComplaintTestResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ComplaintTestResult">
+        <PropertyRef Name="TestResultID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Admittance">
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="0..1" />
+    <End Role="Order" Type="MedicalDataModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admittance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AdmittanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Med">
+    <End Role="Med" Type="MedicalDataModel.Store.Med" Multiplicity="0..1" />
+    <End Role="Order" Type="MedicalDataModel.Store.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Med">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientAllergy_Allergy">
+    <End Role="Allergy" Type="MedicalDataModel.Store.Allergy" Multiplicity="0..1" />
+    <End Role="PatientAllergy" Type="MedicalDataModel.Store.PatientAllergy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Allergy">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientAllergy">
+        <PropertyRef Name="AllergyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientAllergy_Patient">
+    <End Role="Patient" Type="MedicalDataModel.Store.Patient" Multiplicity="0..1" />
+    <End Role="PatientAllergy" Type="MedicalDataModel.Store.PatientAllergy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientAllergy">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_StaffType">
+    <End Role="StaffType" Type="MedicalDataModel.Store.StaffType" Multiplicity="0..1" />
+    <End Role="Staff" Type="MedicalDataModel.Store.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StaffType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="StaffTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_Admittance">
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="0..1" />
+    <End Role="Test" Type="MedicalDataModel.Store.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admittance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="AdmittanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_BodyRegion">
+    <End Role="BodyRegion" Type="MedicalDataModel.Store.BodyRegion" Multiplicity="0..1" />
+    <End Role="Test" Type="MedicalDataModel.Store.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BodyRegion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="BodyRegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Test_TestType">
+    <End Role="TestType" Type="MedicalDataModel.Store.TestType" Multiplicity="0..1" />
+    <End Role="Test" Type="MedicalDataModel.Store.Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="TestTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestType_TestCategory">
+    <End Role="TestCategory" Type="MedicalDataModel.Store.TestCategory" Multiplicity="0..1" />
+    <End Role="TestType" Type="MedicalDataModel.Store.TestType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TestType">
+        <PropertyRef Name="TestCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vital_Admittance">
+    <End Role="Admittance" Type="MedicalDataModel.Store.Admittance" Multiplicity="0..1" />
+    <End Role="Vital" Type="MedicalDataModel.Store.Vital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admittance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vital">
+        <PropertyRef Name="AdmittanceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vital_VitalSignType">
+    <End Role="VitalSignType" Type="MedicalDataModel.Store.VitalSignType" Multiplicity="0..1" />
+    <End Role="Vital" Type="MedicalDataModel.Store.Vital" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VitalSignType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vital">
+        <PropertyRef Name="VitalSignTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

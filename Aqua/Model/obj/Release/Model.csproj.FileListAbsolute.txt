@@ -9,3 +9,16 @@ C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Release\Infragistics.Guidanc
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Release\Model.csproj.GenerateResource.Cache
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Release\Infragistics.Guidance.Aqua.Model.dll
 C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Release\Infragistics.Guidance.Aqua.Model.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Model\bin\Release\Infragistics.Guidance.Aqua.Model.dll.config
+D:\Github\Telomeric Control\Aqua\Aqua\Model\bin\Release\Infragistics.Guidance.Aqua.Model.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Model\bin\Release\Infragistics.Guidance.Aqua.Model.pdb
+D:\Github\Telomeric Control\Aqua\Aqua\Model\bin\Release\Microsoft.LiveFX.Client.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Model\bin\Release\Microsoft.LiveFX.ResourceModel.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Model\bin\Release\Microsoft.Web.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Model.csprojAssemblyReference.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Infragistics.Guidance.Aqua.Model.Properties.Resources.resources
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Model.csproj.GenerateResource.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Model.csproj.CoreCompileInputs.cache
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Model.csproj.CopyComplete
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Infragistics.Guidance.Aqua.Model.dll
+D:\Github\Telomeric Control\Aqua\Aqua\Model\obj\Release\Infragistics.Guidance.Aqua.Model.pdb

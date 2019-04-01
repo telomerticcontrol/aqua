@@ -1,0 +1,20 @@
+﻿Infragistics.Guidance.Aqua
+
+
+winexe
+C#
+.cs
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua\obj\Release\
+Infragistics.Guidance.Aqua.Client
+none
+false
+TRACE
+D:\Github\Telomeric Control\Aqua\Aqua\Aqua\App.xaml
+12-1524429766
+
+35-1081956095
+29-1695260050
+MainWindow.xaml;ResourceSets\ControlBrushes.xaml;ResourceSets\ControlStyles.xaml;View\ClinicalNotesView.xaml;View\DiagnosisSupportView.xaml;View\EDPatientsListView.xaml;View\LiveLoginView.xaml;View\OrdersView.xaml;View\PatientRecordView.xaml;View\PhysicianBannerView.xaml;View\TestResultsView.xaml;View\VitalSignsView.xaml;
+
+False
+
