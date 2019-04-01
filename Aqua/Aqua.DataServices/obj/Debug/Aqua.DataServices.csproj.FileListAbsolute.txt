@@ -1,0 +1,7 @@
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataServices.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataServices.pdb
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataCommon.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\bin\Infragistics.Guidance.Aqua.DataCommon.pdb
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\obj\Debug\Infragistics.Guidance.Aqua.DataServices.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Aqua.DataServices\obj\Debug\Infragistics.Guidance.Aqua.DataServices.pdb

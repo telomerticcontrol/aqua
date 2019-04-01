@@ -1,0 +1,11 @@
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\bin\Debug\Infragistics.Guidance.Aqua.Model.dll.config
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\bin\Debug\Infragistics.Guidance.Aqua.Model.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\bin\Debug\Infragistics.Guidance.Aqua.Model.pdb
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\bin\Debug\Microsoft.LiveFX.Client.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\bin\Debug\Microsoft.LiveFX.ResourceModel.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\bin\Debug\Microsoft.Web.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Debug\Infragistics.Guidance.Aqua.Model.Properties.Resources.resources
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Debug\Model.csproj.GenerateResource.Cache
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Debug\Infragistics.Guidance.Aqua.Model.dll
+C:\Users\jasonb\Desktop\Aqua08032009\Aqua\Model\obj\Debug\Infragistics.Guidance.Aqua.Model.pdb

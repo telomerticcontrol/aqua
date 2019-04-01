@@ -1,0 +1,78 @@
+Infragistics.Guidance.Aqua.Client
+
+
+
+------------------------------View------------------------------
+The View Folder contains all the Views that the TilePanel uses inside of each individual Tile.
+
+  -ClinicalNotesView:  Contains a ListBox control with a DataTemplate to display any clinical notes the patient may have had in the past.
+
+  -DiagnosisSupportView- The DiagnosisSupportView contains a ListBox with Live Contacts in normal state.  When it is maximized, the contacts are then displayed with the XamTab where each TabItem is a contact.  Next to the tab, in the content area, there is a way to chat with each particular contact.  Below the chat area, there is a XamCarouselListBox displaying Images from Azure related to the persons admittance.  Next to that is a list of documents in a ComboBox related to the patients illness.  Clicking one of those documents will cause the DocumentViewer to load of the specific xps document that you clicked on.  
+ 
+  -EDPatinesListView-In normal View, the EDPatinetsListView contains a XamDataGrid which displays the admittances that are in the ER for today.  In Maximized View, the the Grid which contains the admittances is expanded to show more information about the patient.  A XamChart displaying the patients EKG results and a XamDataGrid with the patients vitals are also visible in maximized view.  
+
+  -LiveLoginView-  This is the login screen which is used to log into Aqua.  
+
+  -OrdersView- In both Normal and maximized state, the OrdersView contains a XamDataGrid which displays the Medication orders that the patient currently has.  
+
+  -PatientRecordView- The PatientRecordView contains a XamTab conrol with two tabs.  One of the tabs containst atimeline control which lists the patients previous visits to the ER along with some notes and the diagnosis of the visit.  The other tab contains a listBox with previous visitation dates.  Clicking on a date will cause the Body control to light up in areas that have had exray's or mri's and it will cause the XamCarouselListBox to populate with the specific images to go along with the admittance date.  If you click on a highlighted body region, you will filter the collection of images disaplyed in the XamCarouselListBox by the body region you have selected.  
+
+  -PhysicianBannerView-  The physicianBannerView contains basic information about the patient like the Date of Birth, Gender, and any allergies he or she may have.  It also contains s ComboBox control that is linked up the the selected patient.  The ComboBox serves as a visual cue and can also be used to change the selected patient.
+
+  -TestResultsView-  The TestResultsView contains a tab that displays the three different types of tests you may encounter in the ER.  The first tab contains Lab Tests.  A XamDataGrid is used to display all the information on rescent lab tests according to the time they were taken.  The second tab contains the Radiology Tests which can be viewed as images revolving on the XamCarouselListBox.  Finally, the third tab contains a XamChart that mimics an EKG.
+
+  -VitalSignsView-  The VitalSignsView contains one visible XamChart in normal view for blood pressure and 4 XamCharts in Maximized view to display BloodPressure, Pain, Pulse, and Temperature.  
+
+
+
+
+------------------------------ViewModel------------------------------
+  -All viewModels below will have a property called WorkSpaceItemState.  This property will allow us to toggle properties on the view based on the state(Normal or Maximized) of the Tile Panel.
+  -All viewModels except the EDPatientListViewModel and the DiagnosisSupportViewModel have  an EventHandler that listens for ProperyChange notifications from the MainWindowViewModel.  The most important property is SelectedPatient.  Whenever the SelectedPatient property changes, each viewModel that is listening will know to update certain properties on itself which will trigger a rebind for the controls in the view.  This is how selecting a different patient in the EDPatientsList Grid causes all the information in the other pods to update.
+
+  -ClinicalNotesviewModel:  The ClinicalNotesViewModel contains the properties needed from the ClinicalNote Model Class that will be used by the ClinicalNotesView to display the information.  The clinicalNotesViewModel is very simple in the fact that there are only two main properties, ClinicalNotes and workSpaceItemState.  ClinicalNotes property contains the ClinicalNotes of the SelectedPatient which is a property on the MainWindowViewModel.  
+  
+  -DiagnosisSupportViewModel:The DiagnosisSupportViewModel is the link between the Diagnosis SupportView and a few other things like Live and Azure.  This viewModel has Collections to store the Live Contacts that were obtained from the login.  It also has an other Collection called LibraryItems which is obtained from the Azure Blob storage in the cloud.  This collection is further broken down by ImageLibraryItems and XpsLibraryItems. An interesting thing about these methods is the use of LINQ to break down the LibraryItems collection based on the ContentType.  This is how we get separate collections for each.  This is one of the view models that does not listen to the SelectedPatient change, but it does listen to the WorkSpaceItemState property to toggle the visibility of Items in the view. Finally, you will notice the GetChatResponses method which creates a Executes a command which retrieves a response from the database using the same Commanding architecture which is used to get all of the data.
+
+  -EDPatientsListViewModel:  This is a very important ViewModel.  It is responsible for keeping track of the SelectedRecord in the Normal State Grid and the Maximized State Grid.  Then it tells the MainWindowViewModel that the SelectedPatient has changed which forces each other view to update its bindings.  There are normal properties such as PatientList and HospitalAdmittants which correspond to the patients in the ER today.  There are Visibility properties triggered off of the WorkSpaceItemState to toggle visiblity of controls in the view depending on the state of the panel.  The only other important code is the use of the Timer to make the EKG chart work start and stop when we need it to, and so it will update itself to mimic a real EKG.
+
+  -LiveContactViewModel:  The LiveContactViewModel abstracts out the Contact object for the LiveFramework and allows me to give it other properties to make the chat work like the profile image and the Chat History.  The DownloadProfileImage method is important because that downloads the profile image from the live account using the live authentication token retrieved earlier with the Live Login.  
+  -MainWindowViewModel:  The MainWindowViewModel is the parent view model that keeps all the other ViewModels in sync.  It contains all the commands that call for data including the LiveLogin which when complete, gets the patients. It also contains other event notifications for storyboards so we can have things fade in and out when the login is complete and when the SelectedPatientChanges.  This ViewModel also contains properties which the views use to obtain an instance of all the ViewModels used in the solution. Another important thing is the use of the app.config file to turn on and off the LoginScreen.  If the LoginScreen is off, the LiveContacts will not be retrieved, but the patients will still be retrieved to run the application correctly.  The NeedsAuthentication Property is used to toggle the visibility of the LoginScreen.
+   
+  -OrdersViewModel:  The OrdersViewModel is pretty simple because it only handles the Orders for the Patient.  It has collections to handle all the Orders for the SelectedPatent(MedicationOrders) and all the Medications that the hospital has to choose from (AllMedications).  Again, Like most of the view models, this ViewModel Listens to for the SelectedPatient propertychange in order to update the collection and force a rebind of the grid in the view.
+
+  -PatientRecordItemsViewModel:  The PatientRecordItemsViewModel is basically each previous admittance that the patient has.  However, we need to add a few things like ThisPatientRecordItem which is an instance of itself.  This is used to populate the timeline control.  Since it is not an items control, the binding in the templates could not be done like a standard items control.  I had to pass in the whole item and then disect the item in the EventTitleToPatientRecordItem to complete the binding in the Event Title.  We also needed to add a method called SetUpBodyRegions which looks into each test that the patient had on a particlar admittance and sets up properties on its parent (PatientRecordViewModel) that will toggle the enabled state on the Body control.  So if the patient has "Head" images, the Head section of the Body Control will be enabled.
+
+  -PatientRecordViewModel:This ViewModel has the properties that toggle the Body Control regions enabled state and a collection of all the admittances for the particular patient. The admittances are used to populate the timeline values and listbox of dates used along with the BodyControl.   
+
+  -PatientViewModel:  The PatientViewModel is another very important ViewModel.  It is the Abstraction of a patient.  The Selected Patient object is a PatientViewModel.  It is passed around to all the other ViewModels and has all the information about a particular patient, including his Vitals, Allergies, Name etc.  This viewmodel is used to fill the grid that in the EDPatientsListViewModel when it is in Maximized View.  It contains randomly generated OrderProcessingState properties for each patient which tells us the state of an Order for that patient.  It also contains visibility properties for VIP, DNR, and Infectious which toggles the visibility of the images in the physicia banner view.    
+
+  -TestResultsViewModel:  The TestResultsViewModel is a busy viewModel.  It has to do a lot of processing so we can easily bind LabTests, CardiologyTests, and RadiologyTests to the particular controls in the view.  There are properties of each Test Type.  LINQ	is used to separate the different test types into separate collections.  Another interesting point to make is the LabTimeStamps.  When building the grid, I needed to know how many tests were taken, and when they were taken so I could create distinct columns based on the timestamps.  Notice the Linq query with the Distinct() method to return me only distinct tests.  All these tests could be taken at different times throughout the day, so I need to dynamically build the grid based on the LabTimeStamps property.  Another method that uses LINQ and the distinct method is the GetDistinctLabTests.  I needed to get the distinctLabTests based on the name of the test.  So, I needed another class that implements IComparer to compare the TestType Names.  This is so if the patient took the same test two times, the grid would not have twice the amount of rows.  
+AllLabTests is used to store all the lab tests.  This is what I use to fill in all the grid cells.
+DistinctLabTests is used to store the distinct tests that the patient has taken which will be used to make my number of records in the grid.
+LabTimeStamps is used to store all the times that tests have been taken which is used to create the correct amount of fields in the grid.
+
+  -TestResultViewModel:  The TestResultViewModel is a viewmodel based on an individual test.  It makes the binding easier on the controls because the Test object does not have a string for the category and type which is easily done in the view model.  It is also used for the Images of the Radiology tests.  The name of the image is stored in the DataBase, but the view model tacks on the location of the file within the project along with the name of the image to make the binding of the image very simple.  All the images are revolving around in a XamCarouselListBox.
+
+  -ViewModelBase: Base class for all ViewModel classes in the application.  It provides support for property change notifications so all view models do not have to implement it and has a DisplayName property.  This class is abstract.
+
+  -VitalSignsViewModel:  The VitalSignsViewModel is a viewmodel that listens for the change of the selectedPatient so it will update its collections that store all the different vitals of the patient.  These Vitals are all obtained from a Main Vitals collection and then broken down to BloodPressure, Pain, Pulse, and RespiratoryRate using LINQ and the VitalSignType.Name property.   It also makes use of Visibility properties to toggle the XamCharts that are shown in the different states (Normal and Maximized) of the panel.  
+
+
+
+------------------------------ResourceSets------------------------------
+Resource Sets contains a lot of generic styles used throughout the aqua project.
+
+
+
+------------------------------Converters------------------------------
+  -EventTitleToPatientRecordItem:  This converter works along with the TimeLine control.  The value passed into the Converter is the PatientRecordItemsViewModel.  There is also a parameter passed in that will return a specific value from the PatientRecordItemsViewModel.  This makes the binding of the Event Title become a lot simpler and easier to work with.
+
+
+
+------------------------------Collections------------------------------
+Collections:The Collections within the Aqua.Client project are used to clean up the code.  You will notice each collection inherits from ObservablCollection<ViewModel> and makes use of the base class constructors.  So now instead of writing ObservableCollection<PatientViewModel> everywhere, all we have to do is write PatientViewModelCollection which yield the same result.  
+
+
+------------------------------Enums------------------------------
+Enums:  In the enums folder is the PatientEnums class which contains the OrderProcessingState enumeration that supports the toggling of the images in the EDPatientsList Grid. 

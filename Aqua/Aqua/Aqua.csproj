@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C2503635-4F84-479B-A659-2BC41BEA2189}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infragistics.Guidance.Aqua.Client</RootNamespace>
+    <AssemblyName>Infragistics.Guidance.Aqua</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/Aqua/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ExpressionBlendVersion>3.0.1711.0</ExpressionBlendVersion>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Infragistics.Silverlight.DataVisualization.Controls.v9.2, Version=9.2.20092.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics.Silverlight.DataVisualization.Controls.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics.Silverlight.DataVisualization.Timeline.v9.2, Version=9.2.20092.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics.Silverlight.DataVisualization.Timeline.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics.Silverlight.DataVisualization.v9.2, Version=9.2.20092.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics.Silverlight.DataVisualization.v9.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics.Windows.TilePanel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics.Windows.TilePanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics3.Wpf.Chart.v9.1, Version=9.1.20091.2023, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics3.Wpf.Chart.v9.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics3.Wpf.DataPresenter.v9.1, Version=9.1.20091.2023, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics3.Wpf.DataPresenter.v9.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics3.Wpf.Editors.v9.1, Version=9.1.20091.2023, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics3.Wpf.Editors.v9.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics3.Wpf.v9.1, Version=9.1.20091.2023, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Infragistics3.Wpf.v9.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.LiveFX.Client, Version=0.9.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Microsoft.LiveFX.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.LiveFX.ResourceModel, Version=0.9.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Microsoft.LiveFX.ResourceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web, Version=0.9.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\Microsoft.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero">
+      <HintPath>C:\Users\GrantH\AppData\Local\Temp\zuydpkrb.wrz\PresentationFramework.Aero</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedAssemblies\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResourceSets\ControlBrushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResourceSets\ControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClinicalNotesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DiagnosisSupportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EDPatientsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LiveLoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrdersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PatientRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PhysicianBannerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TestResultsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VitalSignsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\LiveContactsViewModelCollection.cs" />
+    <Compile Include="Collections\PatientRecordItemsViewModelCollection.cs" />
+    <Compile Include="Collections\PatientViewModelCollection.cs" />
+    <Compile Include="Collections\TestResultViewModelCollection.cs" />
+    <Compile Include="Common\XamDataGridExtensions.cs" />
+    <Compile Include="Converters\EventTitleToPatientRecordItem.cs" />
+    <Compile Include="Converters\HeightToItemsPerPageConverter.cs" />
+    <Compile Include="Enums\PatientEnums.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModel\ClinicalNotesViewModel.cs" />
+    <Compile Include="ViewModel\DiagnosisSupportViewModel.cs" />
+    <Compile Include="ViewModel\EDPatientsListViewModel.cs" />
+    <Compile Include="ViewModel\LiveContactViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\OrdersViewModel.cs" />
+    <Compile Include="ViewModel\PatientRecordItemsViewModel.cs" />
+    <Compile Include="ViewModel\PatientRecordViewModel.cs" />
+    <Compile Include="ViewModel\PatientViewModel.cs" />
+    <Compile Include="ViewModel\TestResultsViewModel.cs" />
+    <Compile Include="ViewModel\TestResultViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\VitalSignsViewModel.cs" />
+    <Compile Include="View\ClinicalNotesView.xaml.cs">
+      <DependentUpon>ClinicalNotesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DiagnosisSupportView.xaml.cs">
+      <DependentUpon>DiagnosisSupportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EDPatientsListView.xaml.cs">
+      <DependentUpon>EDPatientsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LiveLoginView.xaml.cs">
+      <DependentUpon>LiveLoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrdersView.xaml.cs">
+      <DependentUpon>OrdersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientRecordView.xaml.cs">
+      <DependentUpon>PatientRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PhysicianBannerView.xaml.cs">
+      <DependentUpon>PhysicianBannerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestResultsView.xaml.cs">
+      <DependentUpon>TestResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VitalSignsView.xaml.cs">
+      <DependentUpon>VitalSignsView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppIcon.ico" />
+    <Resource Include="Images\Chest1.png" />
+    <Resource Include="Images\Chest10.png" />
+    <Resource Include="Images\Chest11.png" />
+    <Resource Include="Images\Chest12.png" />
+    <Resource Include="Images\Chest13.png" />
+    <Resource Include="Images\Chest2.png" />
+    <Resource Include="Images\Chest3.png" />
+    <Resource Include="Images\Chest4.png" />
+    <Resource Include="Images\Chest5.png" />
+    <Resource Include="Images\Chest6.png" />
+    <Resource Include="Images\Chest7.png" />
+    <Resource Include="Images\Chest8.png" />
+    <Resource Include="Images\Chest9.png" />
+    <Resource Include="Images\MRI1.png" />
+    <Resource Include="Images\MRI10.png" />
+    <Resource Include="Images\MRI11.png" />
+    <Resource Include="Images\MRI12.png" />
+    <Resource Include="Images\MRI13.png" />
+    <Resource Include="Images\MRI2.png" />
+    <Resource Include="Images\MRI3.png" />
+    <Resource Include="Images\MRI4.png" />
+    <Resource Include="Images\MRI5.png" />
+    <Resource Include="Images\MRI6.png" />
+    <Resource Include="Images\MRI7.png" />
+    <Resource Include="Images\MRI8.png" />
+    <Resource Include="Images\MRI9.png" />
+    <Resource Include="Images\Larm1.png" />
+    <Resource Include="Images\Larm2.png" />
+    <Resource Include="Images\Larm3.png" />
+    <Resource Include="Images\Larm4.png" />
+    <Resource Include="Images\Larm5.png" />
+    <Resource Include="Images\Larm6.png" />
+    <Resource Include="Images\Larm7.png" />
+    <Resource Include="Images\Lleg1.png" />
+    <Resource Include="Images\Lleg2.png" />
+    <Resource Include="Images\Lleg3.png" />
+    <Resource Include="Images\Lleg4.png" />
+    <Resource Include="Images\Lleg5.png" />
+    <Resource Include="Images\Lleg6.png" />
+    <Resource Include="Images\Lleg7.png" />
+    <Resource Include="Images\Rarm1.png" />
+    <Resource Include="Images\Rarm2.png" />
+    <Resource Include="Images\Rarm3.png" />
+    <Resource Include="Images\Rarm4.png" />
+    <Resource Include="Images\Rarm5.png" />
+    <Resource Include="Images\Rarm6.png" />
+    <Resource Include="Images\Rarm7.png" />
+    <Resource Include="Images\Rleg1.png" />
+    <Resource Include="Images\Rleg2.png" />
+    <Resource Include="Images\Rleg3.png" />
+    <Resource Include="Images\Rleg4.png" />
+    <Resource Include="Images\Rleg5.png" />
+    <Resource Include="Images\Rleg6.png" />
+    <Resource Include="Images\Rleg7.png" />
+    <Resource Include="Images\EKGBlue.png" />
+    <Resource Include="Images\EKGOrange.png" />
+    <Resource Include="Images\EKGRed.png" />
+    <Resource Include="Images\LabGray.png" />
+    <Resource Include="Images\Severe01.png" />
+    <Resource Include="Images\Severe02.png" />
+    <Resource Include="Images\Severe03.png" />
+    <Resource Include="Images\VitalBlue.png" />
+    <Resource Include="Images\VitalGray.png" />
+    <Resource Include="Images\VitalOrange.png" />
+    <Resource Include="Images\VitalRed.png" />
+    <Resource Include="Images\VitalYellow.png" />
+    <Resource Include="Images\EKGGray.png" />
+    <Resource Include="Images\EKGYellow.png" />
+    <Resource Include="Images\LabBlue.png" />
+    <Resource Include="Images\LabOrange.png" />
+    <Resource Include="Images\LabRed.png" />
+    <Resource Include="Images\LabYellow.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="AQUA16.ico" />
+    <Resource Include="Images\mri-scan-brain_~IS400-140.jpg" />
+    <Resource Include="Images\mri-scan-brain_~IS406-055.jpg" />
+    <Resource Include="Images\header.png" />
+    <Resource Include="Images\testicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.9.2">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2005 Express Edition SP2 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aqua.DataClient\Aqua.DataClient.csproj">
+      <Project>{1CB6FEBE-621E-43C2-893B-38D294C19B61}</Project>
+      <Name>Aqua.DataClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{BF8AA430-CFEB-40DE-8410-EC0FE420F200}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

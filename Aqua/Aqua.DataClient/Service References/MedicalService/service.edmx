@@ -1,0 +1,389 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices>
+    <Schema Namespace="MedicalDataModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <EntityType Name="Admittance">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="StaffRNID" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Comments" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="TimestampIn" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="TimestampOut" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Location" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Severity" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Disposition" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Diagnosis" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Clinical_Notes" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Patient" Relationship="MedicalDataModel.FK_Admittance_Patient" FromRole="Admittance" ToRole="Patient" />
+        <NavigationProperty Name="Staff" Relationship="MedicalDataModel.FK_Admittance_Staff" FromRole="Admittance" ToRole="Staff" />
+        <NavigationProperty Name="ClinicalNotes" Relationship="MedicalDataModel.FK_ClinicalNote_ClinicalNoteType" FromRole="Admittance" ToRole="ClinicalNote" />
+        <NavigationProperty Name="Complaints" Relationship="MedicalDataModel.FK_Complaint_Admittance" FromRole="Admittance" ToRole="Complaint" />
+        <NavigationProperty Name="Orders" Relationship="MedicalDataModel.FK_Order_Admittance" FromRole="Admittance" ToRole="Order" />
+        <NavigationProperty Name="Tests" Relationship="MedicalDataModel.FK_Test_Admittance" FromRole="Admittance" ToRole="Test" />
+        <NavigationProperty Name="Vitals" Relationship="MedicalDataModel.FK_Vital_Admittance" FromRole="Admittance" ToRole="Vital" />
+      </EntityType>
+      <EntityType Name="Allergy">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="PatientAllergy" Relationship="MedicalDataModel.FK_PatientAllergy_Allergy" FromRole="Allergy" ToRole="PatientAllergy" />
+      </EntityType>
+      <EntityType Name="BodyRegion">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="50" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Test" Relationship="MedicalDataModel.FK_Test_BodyRegion" FromRole="BodyRegion" ToRole="Test" />
+      </EntityType>
+      <EntityType Name="ClinicalNote">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ClinicalNoteTypeID" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Note" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Timestamp" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="Admittance" Relationship="MedicalDataModel.FK_ClinicalNote_ClinicalNoteType" FromRole="ClinicalNote" ToRole="Admittance" />
+      </EntityType>
+      <EntityType Name="ClinicalNoteType">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+      </EntityType>
+      <EntityType Name="Complaint">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ComplaintTypeID" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Admittance" Relationship="MedicalDataModel.FK_Complaint_Admittance" FromRole="Complaint" ToRole="Admittance" />
+        <NavigationProperty Name="ComplaintTestResult" Relationship="MedicalDataModel.FK_ComplaintTestResult_Complaint" FromRole="Complaint" ToRole="ComplaintTestResult" />
+      </EntityType>
+      <EntityType Name="ComplaintTestResult">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Complaint" Relationship="MedicalDataModel.FK_ComplaintTestResult_Complaint" FromRole="ComplaintTestResult" ToRole="Complaint" />
+        <NavigationProperty Name="Test" Relationship="MedicalDataModel.FK_ComplaintTestResult_Test" FromRole="ComplaintTestResult" ToRole="Test" />
+      </EntityType>
+      <EntityType Name="Med">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Orders" Relationship="MedicalDataModel.FK_Order_Med" FromRole="Med" ToRole="Order" />
+      </EntityType>
+      <EntityType Name="Order">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Dosage" Type="Edm.Int32" Nullable="true" />
+        <Property Name="Unit" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Frequency" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Indication" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Timestamp" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="Admittance" Relationship="MedicalDataModel.FK_Order_Admittance" FromRole="Order" ToRole="Admittance" />
+        <NavigationProperty Name="Med" Relationship="MedicalDataModel.FK_Order_Med" FromRole="Order" ToRole="Med" />
+      </EntityType>
+      <EntityType Name="Patient">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="FirstName" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="MiddleName" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="LastName" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Suffix" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="DOB" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Gender" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="VIP" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="Infectious" Type="Edm.Boolean" Nullable="true" />
+        <Property Name="DNR" Type="Edm.Boolean" Nullable="true" />
+        <NavigationProperty Name="Admittances" Relationship="MedicalDataModel.FK_Admittance_Patient" FromRole="Patient" ToRole="Admittance" />
+        <NavigationProperty Name="PatientAllergies" Relationship="MedicalDataModel.FK_PatientAllergy_Patient" FromRole="Patient" ToRole="PatientAllergy" />
+      </EntityType>
+      <EntityType Name="PatientAllergy">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Allergy" Relationship="MedicalDataModel.FK_PatientAllergy_Allergy" FromRole="PatientAllergy" ToRole="Allergy" />
+        <NavigationProperty Name="Patient" Relationship="MedicalDataModel.FK_PatientAllergy_Patient" FromRole="PatientAllergy" ToRole="Patient" />
+      </EntityType>
+      <EntityType Name="Staff">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="FirstName" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="MiddleName" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="LastName" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Suffix" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Speciality" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Admittance" Relationship="MedicalDataModel.FK_Admittance_Staff" FromRole="Staff" ToRole="Admittance" />
+        <NavigationProperty Name="StaffType" Relationship="MedicalDataModel.FK_Staff_StaffType" FromRole="Staff" ToRole="StaffType" />
+      </EntityType>
+      <EntityType Name="StaffType">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Staff" Relationship="MedicalDataModel.FK_Staff_StaffType" FromRole="StaffType" ToRole="Staff" />
+      </EntityType>
+      <EntityType Name="sysdiagrams">
+        <Key>
+          <PropertyRef Name="diagram_id" />
+        </Key>
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+        <Property Name="principal_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="diagram_id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="version" Type="Edm.Int32" Nullable="true" />
+        <Property Name="definition" Type="Edm.Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+      </EntityType>
+      <EntityType Name="Test">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Timestamp" Type="Edm.DateTime" Nullable="true" />
+        <Property Name="Result" Type="Edm.String" Nullable="true" MaxLength="50" Unicode="false" FixedLength="false" />
+        <NavigationProperty Name="Admittance" Relationship="MedicalDataModel.FK_Test_Admittance" FromRole="Test" ToRole="Admittance" />
+        <NavigationProperty Name="BodyRegion" Relationship="MedicalDataModel.FK_Test_BodyRegion" FromRole="Test" ToRole="BodyRegion" />
+        <NavigationProperty Name="ComplaintTestResult" Relationship="MedicalDataModel.FK_ComplaintTestResult_Test" FromRole="Test" ToRole="ComplaintTestResult" />
+        <NavigationProperty Name="TestType" Relationship="MedicalDataModel.FK_Test_TestType" FromRole="Test" ToRole="TestType" />
+      </EntityType>
+      <EntityType Name="TestCategory">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="TestType" Relationship="MedicalDataModel.FK_TestType_TestCategory" FromRole="TestCategory" ToRole="TestType" />
+      </EntityType>
+      <EntityType Name="TestType">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="ResultType" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Test" Relationship="MedicalDataModel.FK_Test_TestType" FromRole="TestType" ToRole="Test" />
+        <NavigationProperty Name="TestCategory" Relationship="MedicalDataModel.FK_TestType_TestCategory" FromRole="TestType" ToRole="TestCategory" />
+      </EntityType>
+      <EntityType Name="Vital">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="VitalSignValue" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <Property Name="Timestamp" Type="Edm.DateTime" Nullable="true" />
+        <NavigationProperty Name="Admittance" Relationship="MedicalDataModel.FK_Vital_Admittance" FromRole="Vital" ToRole="Admittance" />
+        <NavigationProperty Name="VitalSignType" Relationship="MedicalDataModel.FK_Vital_VitalSignType" FromRole="Vital" ToRole="VitalSignType" />
+      </EntityType>
+      <EntityType Name="VitalSignType">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="255" Unicode="true" FixedLength="false" />
+        <NavigationProperty Name="Vital" Relationship="MedicalDataModel.FK_Vital_VitalSignType" FromRole="VitalSignType" ToRole="Vital" />
+      </EntityType>
+      <EntityType Name="ChatResponses">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Response" Type="Edm.String" Nullable="true" />
+        <NavigationProperty Name="ChatRole" Relationship="MedicalDataModel.FK_ChatResponses_ChatRole" FromRole="ChatResponses" ToRole="ChatRole" />
+      </EntityType>
+      <EntityType Name="ChatRole">
+        <Key>
+          <PropertyRef Name="ID" />
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <NavigationProperty Name="ChatResponses" Relationship="MedicalDataModel.FK_ChatResponses_ChatRole" FromRole="ChatRole" ToRole="ChatResponses" />
+      </EntityType>
+      <Association Name="FK_Admittance_Patient">
+        <End Role="Patient" Type="MedicalDataModel.Patient" Multiplicity="0..1" />
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Admittance_Staff">
+        <End Role="Staff" Type="MedicalDataModel.Staff" Multiplicity="0..1" />
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_ClinicalNote_ClinicalNoteType">
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="0..1" />
+        <End Role="ClinicalNote" Type="MedicalDataModel.ClinicalNote" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Complaint_Admittance">
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="0..1" />
+        <End Role="Complaint" Type="MedicalDataModel.Complaint" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Order_Admittance">
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="0..1" />
+        <End Role="Order" Type="MedicalDataModel.Order" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Test_Admittance">
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="0..1" />
+        <End Role="Test" Type="MedicalDataModel.Test" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Vital_Admittance">
+        <End Role="Admittance" Type="MedicalDataModel.Admittance" Multiplicity="0..1" />
+        <End Role="Vital" Type="MedicalDataModel.Vital" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_PatientAllergy_Allergy">
+        <End Role="Allergy" Type="MedicalDataModel.Allergy" Multiplicity="0..1" />
+        <End Role="PatientAllergy" Type="MedicalDataModel.PatientAllergy" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Test_BodyRegion">
+        <End Role="BodyRegion" Type="MedicalDataModel.BodyRegion" Multiplicity="0..1" />
+        <End Role="Test" Type="MedicalDataModel.Test" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_ComplaintTestResult_Complaint">
+        <End Role="Complaint" Type="MedicalDataModel.Complaint" Multiplicity="0..1" />
+        <End Role="ComplaintTestResult" Type="MedicalDataModel.ComplaintTestResult" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_ComplaintTestResult_Test">
+        <End Role="Test" Type="MedicalDataModel.Test" Multiplicity="0..1" />
+        <End Role="ComplaintTestResult" Type="MedicalDataModel.ComplaintTestResult" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Order_Med">
+        <End Role="Med" Type="MedicalDataModel.Med" Multiplicity="0..1" />
+        <End Role="Order" Type="MedicalDataModel.Order" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_PatientAllergy_Patient">
+        <End Role="Patient" Type="MedicalDataModel.Patient" Multiplicity="0..1" />
+        <End Role="PatientAllergy" Type="MedicalDataModel.PatientAllergy" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Staff_StaffType">
+        <End Role="StaffType" Type="MedicalDataModel.StaffType" Multiplicity="0..1" />
+        <End Role="Staff" Type="MedicalDataModel.Staff" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Test_TestType">
+        <End Role="TestType" Type="MedicalDataModel.TestType" Multiplicity="0..1" />
+        <End Role="Test" Type="MedicalDataModel.Test" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_TestType_TestCategory">
+        <End Role="TestCategory" Type="MedicalDataModel.TestCategory" Multiplicity="0..1" />
+        <End Role="TestType" Type="MedicalDataModel.TestType" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_Vital_VitalSignType">
+        <End Role="VitalSignType" Type="MedicalDataModel.VitalSignType" Multiplicity="0..1" />
+        <End Role="Vital" Type="MedicalDataModel.Vital" Multiplicity="*" />
+      </Association>
+      <Association Name="FK_ChatResponses_ChatRole">
+        <End Role="ChatRole" Type="MedicalDataModel.ChatRole" Multiplicity="1" />
+        <End Role="ChatResponses" Type="MedicalDataModel.ChatResponses" Multiplicity="*" />
+      </Association>
+    </Schema>
+    <Schema Namespace="Infragistics.Guidance.Aqua.DataServices.Data" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <EntityContainer Name="MedicalDataEntities" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Admittance" EntityType="MedicalDataModel.Admittance" />
+        <EntitySet Name="Allergy" EntityType="MedicalDataModel.Allergy" />
+        <EntitySet Name="BodyRegion" EntityType="MedicalDataModel.BodyRegion" />
+        <EntitySet Name="ClinicalNote" EntityType="MedicalDataModel.ClinicalNote" />
+        <EntitySet Name="ClinicalNoteType" EntityType="MedicalDataModel.ClinicalNoteType" />
+        <EntitySet Name="Complaint" EntityType="MedicalDataModel.Complaint" />
+        <EntitySet Name="ComplaintTestResult" EntityType="MedicalDataModel.ComplaintTestResult" />
+        <EntitySet Name="Med" EntityType="MedicalDataModel.Med" />
+        <EntitySet Name="Order" EntityType="MedicalDataModel.Order" />
+        <EntitySet Name="Patient" EntityType="MedicalDataModel.Patient" />
+        <EntitySet Name="PatientAllergy" EntityType="MedicalDataModel.PatientAllergy" />
+        <EntitySet Name="Staff" EntityType="MedicalDataModel.Staff" />
+        <EntitySet Name="StaffType" EntityType="MedicalDataModel.StaffType" />
+        <EntitySet Name="sysdiagrams" EntityType="MedicalDataModel.sysdiagrams" />
+        <EntitySet Name="Test" EntityType="MedicalDataModel.Test" />
+        <EntitySet Name="TestCategory" EntityType="MedicalDataModel.TestCategory" />
+        <EntitySet Name="TestType" EntityType="MedicalDataModel.TestType" />
+        <EntitySet Name="Vital" EntityType="MedicalDataModel.Vital" />
+        <EntitySet Name="VitalSignType" EntityType="MedicalDataModel.VitalSignType" />
+        <EntitySet Name="ChatResponses" EntityType="MedicalDataModel.ChatResponses" />
+        <EntitySet Name="ChatRole" EntityType="MedicalDataModel.ChatRole" />
+        <AssociationSet Name="FK_Admittance_Patient" Association="MedicalDataModel.FK_Admittance_Patient">
+          <End Role="Patient" EntitySet="Patient" />
+          <End Role="Admittance" EntitySet="Admittance" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Admittance_Staff" Association="MedicalDataModel.FK_Admittance_Staff">
+          <End Role="Staff" EntitySet="Staff" />
+          <End Role="Admittance" EntitySet="Admittance" />
+        </AssociationSet>
+        <AssociationSet Name="FK_ClinicalNote_ClinicalNoteType" Association="MedicalDataModel.FK_ClinicalNote_ClinicalNoteType">
+          <End Role="Admittance" EntitySet="Admittance" />
+          <End Role="ClinicalNote" EntitySet="ClinicalNote" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Complaint_Admittance" Association="MedicalDataModel.FK_Complaint_Admittance">
+          <End Role="Admittance" EntitySet="Admittance" />
+          <End Role="Complaint" EntitySet="Complaint" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Order_Admittance" Association="MedicalDataModel.FK_Order_Admittance">
+          <End Role="Admittance" EntitySet="Admittance" />
+          <End Role="Order" EntitySet="Order" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Test_Admittance" Association="MedicalDataModel.FK_Test_Admittance">
+          <End Role="Admittance" EntitySet="Admittance" />
+          <End Role="Test" EntitySet="Test" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Vital_Admittance" Association="MedicalDataModel.FK_Vital_Admittance">
+          <End Role="Admittance" EntitySet="Admittance" />
+          <End Role="Vital" EntitySet="Vital" />
+        </AssociationSet>
+        <AssociationSet Name="FK_PatientAllergy_Allergy" Association="MedicalDataModel.FK_PatientAllergy_Allergy">
+          <End Role="Allergy" EntitySet="Allergy" />
+          <End Role="PatientAllergy" EntitySet="PatientAllergy" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Test_BodyRegion" Association="MedicalDataModel.FK_Test_BodyRegion">
+          <End Role="BodyRegion" EntitySet="BodyRegion" />
+          <End Role="Test" EntitySet="Test" />
+        </AssociationSet>
+        <AssociationSet Name="FK_ComplaintTestResult_Complaint" Association="MedicalDataModel.FK_ComplaintTestResult_Complaint">
+          <End Role="Complaint" EntitySet="Complaint" />
+          <End Role="ComplaintTestResult" EntitySet="ComplaintTestResult" />
+        </AssociationSet>
+        <AssociationSet Name="FK_ComplaintTestResult_Test" Association="MedicalDataModel.FK_ComplaintTestResult_Test">
+          <End Role="Test" EntitySet="Test" />
+          <End Role="ComplaintTestResult" EntitySet="ComplaintTestResult" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Order_Med" Association="MedicalDataModel.FK_Order_Med">
+          <End Role="Med" EntitySet="Med" />
+          <End Role="Order" EntitySet="Order" />
+        </AssociationSet>
+        <AssociationSet Name="FK_PatientAllergy_Patient" Association="MedicalDataModel.FK_PatientAllergy_Patient">
+          <End Role="Patient" EntitySet="Patient" />
+          <End Role="PatientAllergy" EntitySet="PatientAllergy" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Staff_StaffType" Association="MedicalDataModel.FK_Staff_StaffType">
+          <End Role="StaffType" EntitySet="StaffType" />
+          <End Role="Staff" EntitySet="Staff" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Test_TestType" Association="MedicalDataModel.FK_Test_TestType">
+          <End Role="TestType" EntitySet="TestType" />
+          <End Role="Test" EntitySet="Test" />
+        </AssociationSet>
+        <AssociationSet Name="FK_TestType_TestCategory" Association="MedicalDataModel.FK_TestType_TestCategory">
+          <End Role="TestCategory" EntitySet="TestCategory" />
+          <End Role="TestType" EntitySet="TestType" />
+        </AssociationSet>
+        <AssociationSet Name="FK_Vital_VitalSignType" Association="MedicalDataModel.FK_Vital_VitalSignType">
+          <End Role="VitalSignType" EntitySet="VitalSignType" />
+          <End Role="Vital" EntitySet="Vital" />
+        </AssociationSet>
+        <AssociationSet Name="FK_ChatResponses_ChatRole" Association="MedicalDataModel.FK_ChatResponses_ChatRole">
+          <End Role="ChatRole" EntitySet="ChatRole" />
+          <End Role="ChatResponses" EntitySet="ChatResponses" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

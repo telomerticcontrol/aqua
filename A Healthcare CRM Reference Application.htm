@@ -1,0 +1,908 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0031)http://healthcare.codeplex.com/ -->
+<HTML class="IE IE7 IE8 " xmlns="http://www.w3.org/1999/xhtml"><HEAD 
+id=ctl00_ctl00_HeadTag><TITLE>A Healthcare CRM Reference Application</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META content=IE=7 http-equiv=X-UA-Compatible><LINK id=ctl00_ctl00_MasterCss 
+rel=stylesheet type=text/css 
+href="http://i1.codeplex.com/css/v16135/i5127/StyleSheet.ashx"><LINK 
+rel="SHORTCUT ICON" href="favicon.ico">
+<STYLE type=text/css>.SideBar {
+	DISPLAY: none
+}
+.SideBarPadding {
+	DISPLAY: none
+}
+.MainContent {
+	WIDTH: auto
+}
+.SiteContentTable {
+	WIDTH: 100%
+}
+</STYLE>
+
+<STYLE id=ctl00_ctl00_Header_ProjectStyles type=text/css>.SiteHeader {
+	HEIGHT: 45px !important; OVERFLOW: hidden
+}
+.SiteHeaderLeft {
+	HEIGHT: 45px !important; OVERFLOW: hidden
+}
+.SiteContent {
+	PADDING-BOTTOM: 1em; MARGIN-TOP: 0px; MIN-HEIGHT: 225px; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; PADDING-TOP: 0px
+}
+.FF .SiteContentTable {
+	CLEAR: both
+}
+.ProjectContent {
+	MIN-HEIGHT: 225px
+}
+.Safari .ProjectContent {
+	PADDING-TOP: 0em
+}
+.IE6 .ProjectTitleControl {
+	POSITION: relative
+}
+.CanvasMargin {
+	WIDTH: 0px
+}
+H1.ProjectHeader {
+	MARGIN-BOTTOM: 0px; FONT-SIZE: 2em; FONT-WEIGHT: bold
+}
+.ProjectHeader A {
+	COLOR: #3e62a6
+}
+.IE TABLE.MinWidthContent {
+	TABLE-LAYOUT: auto !important
+}
+.ProjectMessage {
+	BORDER-BOTTOM: #ccc 0.1em solid; BORDER-LEFT: #ccc 0.1em solid; PADDING-BOTTOM: 1em; BACKGROUND-COLOR: #f1fcee; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; BORDER-TOP: #ccc 0.1em solid; BORDER-RIGHT: #ccc 0.1em solid; PADDING-TOP: 1em
+}
+</STYLE>
+
+<STYLE type=text/css>.ProjectContent {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+</STYLE>
+
+<STYLE type=text/css>.WikiHolder {
+	MARGIN: 0px 1em
+}
+#WikiBreadCrumbs {
+	MARGIN: 0.25em 0px 1em
+}
+.SecondarySearchButton {
+	MARGIN: 0px 0px 0px -0.6em
+}
+.FF .SecondarySearchButton {
+	MARGIN: -0.1em 0px 0px -0.5em; HEIGHT: 22px
+}
+.IE .SecondarySearchButton {
+	WIDTH: 22px; HEIGHT: 22px
+}
+</STYLE>
+
+<SCRIPT type=text/javascript>
+        function setWikiCommentTextBoxFocus()
+        {
+            $('#Comment').focus();
+            return false;
+        }
+
+        function wikiSearch() {
+            var $textbox = $('#searchTextBox');
+            if($textbox.attr('dirty') != 'true')
+                return;
+            var searchText = encodeURIComponent(jQuery.trim($textbox.val()));
+            if(searchText != null & searchText.length > 0)
+                window.location.href = 'http://healthcare.codeplex.com/Wiki/Search.aspx' + '?tab=Home&SearchText=' + searchText;
+        }
+    </SCRIPT>
+
+<META id=ctl00_ctl00_Header_WTProjectName name=WT.pi content=healthcare></META>
+<META id=ctl00_ctl00_PageDescription name=Description 
+content="This project contains code, videos and hands on labs which demonstrate best practices in building WPF experiences using technologies such as WIndows Azure, SQL Data Services, LiveID and Infragistics UI Controls."><LINK 
+title="A Healthcare CRM Reference Application" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx"><LINK 
+title="A Healthcare CRM Reference Application-Discussions" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fhealthcare"><LINK 
+title="A Healthcare CRM Reference Application-Issue Tracker" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fhealthcare"><LINK 
+title="A Healthcare CRM Reference Application-Releases" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fhealthcare"><LINK 
+title="A Healthcare CRM Reference Application-Source Code" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fhealthcare"><LINK 
+title="A Healthcare CRM Reference Application-Wiki" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fhealthcare"><LINK 
+title="A Healthcare CRM Reference Application-Reviews" rel=alternate 
+type=application/rss+xml 
+href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2freview%2fhealthcare">
+<META name=GENERATOR content="MSHTML 8.00.7600.16466"></HEAD>
+<BODY onload=masterLoad();>
+<FORM id=aspnetForm encType=multipart/form-data 
+onsubmit="javascript:return WebForm_OnSubmit();" method=post name=aspnetForm 
+action=/ autocomplete="off">
+<DIV><INPUT id=__EVENTTARGET type=hidden name=__EVENTTARGET> <INPUT 
+id=__EVENTARGUMENT type=hidden name=__EVENTARGUMENT> <INPUT id=__VIEWSTATE 
+value=/wEPDwUKMTE4MTAxMDM4Nw9kFgJmD2QWAmYPZBYEZg9kFgYCAQ8WAh4EaHJlZgU3aHR0cDovL2kxLmNvZGVwbGV4LmNvbS9jc3MvdjE2MTM1L2k1MTI3L1N0eWxlU2hlZXQuYXNoeGQCAw9kFgRmDxYCHglpbm5lcmh0bWwFngQuU2l0ZUhlYWRlciwuU2l0ZUhlYWRlckxlZnR7aGVpZ2h0OjQ1cHggIWltcG9ydGFudDtvdmVyZmxvdzpoaWRkZW47fS5TaXRlQ29udGVudHtwYWRkaW5nOjAgMWVtIDFlbSAxZW07bWFyZ2luLXRvcDowO21pbi1oZWlnaHQ6MjI1cHg7fS5GRiAuU2l0ZUNvbnRlbnRUYWJsZXtjbGVhcjpib3RoO30uUHJvamVjdENvbnRlbnR7bWluLWhlaWdodDoyMjVweDt9LlNhZmFyaSAuUHJvamVjdENvbnRlbnR7cGFkZGluZy10b3A6MGVtO30uSUU2IC5Qcm9qZWN0VGl0bGVDb250cm9se3Bvc2l0aW9uOnJlbGF0aXZlO30uQ2FudmFzTWFyZ2lue3dpZHRoOjA7fWgxLlByb2plY3RIZWFkZXJ7Zm9udC1zaXplOjJlbTtmb250LXdlaWdodDpib2xkO21hcmdpbi1ib3R0b206MDt9LlByb2plY3RIZWFkZXIgYXtjb2xvcjojM0U2MkE2O30uSUUgdGFibGUuTWluV2lkdGhDb250ZW50e3RhYmxlLWxheW91dDphdXRvICFpbXBvcnRhbnQ7fS5Qcm9qZWN0TWVzc2FnZXtib3JkZXI6c29saWQgMC4xZW0gI2NjYztiYWNrZ3JvdW5kLWNvbG9yOiNGMUZDRUU7cGFkZGluZzoxZW07fWQCAg8WBB4HY29udGVudAUKaGVhbHRoY2FyZR4HVmlzaWJsZWdkAgQPFgQfAgXTAVRoaXMgcHJvamVjdCBjb250YWlucyBjb2RlLCB2aWRlb3MgYW5kIGhhbmRzIG9uIGxhYnMgd2hpY2ggZGVtb25zdHJhdGUgYmVzdCBwcmFjdGljZXMgaW4gYnVpbGRpbmcgV1BGIGV4cGVyaWVuY2VzIHVzaW5nIHRlY2hub2xvZ2llcyBzdWNoIGFzIFdJbmRvd3MgQXp1cmUsIFNRTCBEYXRhIFNlcnZpY2VzLCBMaXZlSUQgYW5kIEluZnJhZ2lzdGljcyBVSSBDb250cm9scy4fA2dkAgEPZBYIAgEPZBYIAgEPZBYEAgEPZBYEAgEPDxYCHgtOYXZpZ2F0ZVVybAUfaHR0cDovL2hlYWx0aGNhcmUuY29kZXBsZXguY29tL2QWAmYPDxYGHgpJbWFnZUFsaWduCyokU3lzdGVtLldlYi5VSS5XZWJDb250cm9scy5JbWFnZUFsaWduAB4ISW1hZ2VVcmwFc2h0dHA6Ly9kb3dubG9hZC5jb2RlcGxleC5jb20vUHJvamVjdC9Eb3dubG9hZC9GaWxlRG93bmxvYWQuYXNweD9Qcm9qZWN0TmFtZT1oZWFsdGhjYXJlJkRvd25sb2FkSWQ9NjkwMTAmQnVpbGQ9MTYxMzUfA2dkZAIDDw8WAh8EBR9odHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vZBYCZg9kFgICAQ8PFgIeBFRleHQFJkEgSGVhbHRoY2FyZSBDUk0gUmVmZXJlbmNlIEFwcGxpY2F0aW9uZGQCAw9kFgJmD2QWAgIBDw8WAh8GBTpodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTYxMzUvc2VhcmNoLWJ1dHRvbi1vZmYuZ2lmFgQeC29ubW91c2VvdmVyBVBqYXZhc2NyaXB0OnRoaXMuc3JjPSdodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTYxMzUvc2VhcmNoLWJ1dHRvbi1vbi5naWYnOx4Kb25tb3VzZW91dAVRamF2YXNjcmlwdDp0aGlzLnNyYz0naHR0cDovL2kzLmNvZGVwbGV4LmNvbS9JbWFnZXMvdjE2MTM1L3NlYXJjaC1idXR0b24tb2ZmLmdpZic7ZAIDD2QWBAIBD2QWBGYPDxYCHwNoZBYCAgMPZBYCZg9kFgICAQ9kFgQCBQ8PFgIfA2hkZAIHDw8WAh8DaGRkAgEPZBYCAgMPZBYCAgEPZBYCAgEPZBYCAgEPZBYCAgEPFgIfAAVXaHR0cDovL2hlYWx0aGNhcmUuY29kZXBsZXguY29tL1Byb2plY3QvRWRpdFByb2plY3REZXRhaWxzLmFzcHg/Rm9jdXNFbGVtZW50PURlc2NyaXB0aW9uZAIDD2QWAmYPFgIfA2gWAmYPDxYCHwQFPmh0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9Qcm9qZWN0L0VkaXRQcm9qZWN0RGV0YWlscy5hc3B4ZGQCBQ8PFgIfA2hkZAIHD2QWBAIBD2QWEgIBDxYCHgVjbGFzcwUQVGFiIEFjdGl2ZVRhYk5ldxYCAgEPDxYCHwQFH2h0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9kZAIDDxYCHwoFElRhYiBJbmFjdGl2ZVRhYk5ldxYCAgEPDxYCHwQFS2h0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9SZWxlYXNlL1Byb2plY3RSZWxlYXNlcy5hc3B4P1JlbGVhc2VJZD0yOTU1NmRkAgUPFgQfCgUSVGFiIEluYWN0aXZlVGFiTmV3HwNoFgICAQ8PFgIfBAUsaHR0cDovL2hlYWx0aGNhcmUuY29kZXBsZXguY29tL2RvY3VtZW50YXRpb25kZAIHDxYCHwoFElRhYiBJbmFjdGl2ZVRhYk5ldxYCAgEPDxYCHwQFL2h0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9UaHJlYWQvTGlzdC5hc3B4ZGQCCQ8WAh8KBRJUYWIgSW5hY3RpdmVUYWJOZXcWAgIBDw8WAh8EBTFodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vV29ya0l0ZW0vTGlzdC5hc3B4ZGQCCw8WAh8KBRJUYWIgSW5hY3RpdmVUYWJOZXcWAgIBDw8WAh8EBTxodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vU291cmNlQ29udHJvbC9saXN0L2NoYW5nZXNldHNkZAINDxYCHwoFElRhYiBJbmFjdGl2ZVRhYk5ldxYCAgEPDxYCHwQFKGh0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS90ZWFtL3ZpZXdkZAIPDxYCHwoFElRhYiBJbmFjdGl2ZVRhYk5ldxYCAgEPDxYCHwQFJmh0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9saWNlbnNlZGQCEQ9kFgQCAg9kFgICAw9kFgRmD2QWAgIBD2QWBAIBDw8WAh8GBThodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTYxMzUvYXJyb3dfZHNjX2dyZWVuLmdpZmRkAgMPDxYCHwYFMWh0dHA6Ly9pMy5jb2RlcGxleC5jb20vSW1hZ2VzL3YxNjEzNS9pY29uX3Jzcy5naWZkZAIBD2QWAgIBD2QWAgIBD2QWDgIBD2QWAgIBDw8WAh8EBTZodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vUHJvamVjdC9Qcm9qZWN0UnNzLmFzcHhkZAIDD2QWAgIBDw8WAh8EBWlodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vUHJvamVjdC9Qcm9qZWN0UnNzLmFzcHg/UHJvamVjdFJTU0ZlZWQ9Y29kZXBsZXglM2ElMmYlMmZmb3J1bSUyZmhlYWx0aGNhcmVkZAIFD2QWAgIBDw8WAh8EBWxodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vUHJvamVjdC9Qcm9qZWN0UnNzLmFzcHg/UHJvamVjdFJTU0ZlZWQ9Y29kZXBsZXglM2ElMmYlMmZ3b3JraXRlbSUyZmhlYWx0aGNhcmVkZAIHD2QWAgIBDw8WAh8EBWtodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vUHJvamVjdC9Qcm9qZWN0UnNzLmFzcHg/UHJvamVjdFJTU0ZlZWQ9Y29kZXBsZXglM2ElMmYlMmZyZWxlYXNlJTJmaGVhbHRoY2FyZWRkAgkPZBYCAgEPDxYCHwQFamh0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweD9Qcm9qZWN0UlNTRmVlZD1jb2RlcGxleCUzYSUyZiUyZnJldmlldyUyZmhlYWx0aGNhcmVkZAILD2QWAgIBDw8WAh8EBXFodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vUHJvamVjdC9Qcm9qZWN0UnNzLmFzcHg/UHJvamVjdFJTU0ZlZWQ9Y29kZXBsZXglM2ElMmYlMmZzb3VyY2Vjb250cm9sJTJmaGVhbHRoY2FyZWRkAg0PZBYCAgEPDxYCHwQFaGh0dHA6Ly9oZWFsdGhjYXJlLmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweD9Qcm9qZWN0UlNTRmVlZD1jb2RlcGxleCUzYSUyZiUyZndpa2klMmZoZWFsdGhjYXJlZGQCBA9kFgRmDw8WAh8GBTpodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTYxMzUvYXJyb3dfcmlnaHRfZ3JlZW4uZ2lmZGQCAg8PFgIfBgUxaHR0cDovL2kzLmNvZGVwbGV4LmNvbS9JbWFnZXMvdjE2MTM1L2ljb25fcnNzLmdpZmRkAgcPFgIeBXdpZHRoBQMxNSUWAgIBDw8WBB4IQ3NzQ2xhc3MFNFN0YW5kYXJkUGFkZGluZyBTaWRlQmFyIFJpZ2h0U2lkZUJhciBHcmFkaWVudFNpZGVCYXIeBF8hU0ICAmQWAgIBD2QWCgIBD2QWAmYPDxYCHwNoZGQCAg9kFgJmD2QWAgICD2QWBmYPZBYCAgEPZBYCZg8PFgIfBAVIaHR0cDovL2hlYWx0aGNhcmUuY29kZXBsZXguY29tL1JlbGVhc2UvUHJvamVjdFJlbGVhc2VzLmFzcHgjUmVsZWFzZUZpbGVzZGQCAQ9kFgICAQ9kFgYCAQ9kFgxmDw8WAh8HBR9BcXVhIEhlYWx0aGNhcmUgQ1JNIFNvdXJjZSBDb2RlZGQCAQ8PFgIeDURhdGVUaW1lVmFsdWUGAEB52CzHywhkZAICDxYCHwNoFgICAQ9kFgJmDxYCHgVWYWx1ZQUBMGQCAw8PFgIfBwUOMTk5NSBkb3dubG9hZHNkZAIEDw8WAh8EBUtodHRwOi8vaGVhbHRoY2FyZS5jb2RlcGxleC5jb20vUmVsZWFzZS9Qcm9qZWN0UmVsZWFzZXMuYXNweD9SZWxlYXNlSWQ9Mjk1NTZkZAIFDxYCHwNnZAIDDw8WAh8DaGRkAgUPDxYCHwcF4xRNaWNyb3NvZnQgUHVibGljIExpY2Vuc2UgKE1zLVBMKQ0KDQpUaGlzIGxpY2Vuc2UgZ292ZXJucyB1c2Ugb2YgdGhlIGFjY29tcGFueWluZyBzb2Z0d2FyZS4gSWYgeW91IHVzZSB0aGUgc29mdHdhcmUsIHlvdSBhY2NlcHQgdGhpcyBsaWNlbnNlLiBJZiB5b3UgZG8gbm90IGFjY2VwdCB0aGUgbGljZW5zZSwgZG8gbm90IHVzZSB0aGUgc29mdHdhcmUuDQoNCjEuIERlZmluaXRpb25zDQoNClRoZSB0ZXJtcyAicmVwcm9kdWNlLCIgInJlcHJvZHVjdGlvbiwiICJkZXJpdmF0aXZlIHdvcmtzLCIgYW5kICJkaXN0cmlidXRpb24iIGhhdmUgdGhlIHNhbWUgbWVhbmluZyBoZXJlIGFzIHVuZGVyIFUuUy4gY29weXJpZ2h0IGxhdy4NCg0KQSAiY29udHJpYnV0aW9uIiBpcyB0aGUgb3JpZ2luYWwgc29mdHdhcmUsIG9yIGFueSBhZGRpdGlvbnMgb3IgY2hhbmdlcyB0byB0aGUgc29mdHdhcmUuDQoNCkEgImNvbnRyaWJ1dG9yIiBpcyBhbnkgcGVyc29uIHRoYXQgZGlzdHJpYnV0ZXMgaXRzIGNvbnRyaWJ1dGlvbiB1bmRlciB0aGlzIGxpY2Vuc2UuDQoNCiJMaWNlbnNlZCBwYXRlbnRzIiBhcmUgYSBjb250cmlidXRvcidzIHBhdGVudCBjbGFpbXMgdGhhdCByZWFkIGRpcmVjdGx5IG9uIGl0cyBjb250cmlidXRpb24uDQoNCjIuIEdyYW50IG9mIFJpZ2h0cw0KDQooQSkgQ29weXJpZ2h0IEdyYW50LSBTdWJqZWN0IHRvIHRoZSB0ZXJtcyBvZiB0aGlzIGxpY2Vuc2UsIGluY2x1ZGluZyB0aGUgbGljZW5zZSBjb25kaXRpb25zIGFuZCBsaW1pdGF0aW9ucyBpbiBzZWN0aW9uIDMsIGVhY2ggY29udHJpYnV0b3IgZ3JhbnRzIHlvdSBhIG5vbi1leGNsdXNpdmUsIHdvcmxkd2lkZSwgcm95YWx0eS1mcmVlIGNvcHlyaWdodCBsaWNlbnNlIHRvIHJlcHJvZHVjZSBpdHMgY29udHJpYnV0aW9uLCBwcmVwYXJlIGRlcml2YXRpdmUgd29ya3Mgb2YgaXRzIGNvbnRyaWJ1dGlvbiwgYW5kIGRpc3RyaWJ1dGUgaXRzIGNvbnRyaWJ1dGlvbiBvciBhbnkgZGVyaXZhdGl2ZSB3b3JrcyB0aGF0IHlvdSBjcmVhdGUuDQoNCihCKSBQYXRlbnQgR3JhbnQtIFN1YmplY3QgdG8gdGhlIHRlcm1zIG9mIHRoaXMgbGljZW5zZSwgaW5jbHVkaW5nIHRoZSBsaWNlbnNlIGNvbmRpdGlvbnMgYW5kIGxpbWl0YXRpb25zIGluIHNlY3Rpb24gMywgZWFjaCBjb250cmlidXRvciBncmFudHMgeW91IGEgbm9uLWV4Y2x1c2l2ZSwgd29ybGR3aWRlLCByb3lhbHR5LWZyZWUgbGljZW5zZSB1bmRlciBpdHMgbGljZW5zZWQgcGF0ZW50cyB0byBtYWtlLCBoYXZlIG1hZGUsIHVzZSwgc2VsbCwgb2ZmZXIgZm9yIHNhbGUsIGltcG9ydCwgYW5kL29yIG90aGVyd2lzZSBkaXNwb3NlIG9mIGl0cyBjb250cmlidXRpb24gaW4gdGhlIHNvZnR3YXJlIG9yIGRlcml2YXRpdmUgd29ya3Mgb2YgdGhlIGNvbnRyaWJ1dGlvbiBpbiB0aGUgc29mdHdhcmUuDQoNCjMuIENvbmRpdGlvbnMgYW5kIExpbWl0YXRpb25zDQoNCihBKSBObyBUcmFkZW1hcmsgTGljZW5zZS0gVGhpcyBsaWNlbnNlIGRvZXMgbm90IGdyYW50IHlvdSByaWdodHMgdG8gdXNlIGFueSBjb250cmlidXRvcnMnIG5hbWUsIGxvZ28sIG9yIHRyYWRlbWFya3MuDQoNCihCKSBJZiB5b3UgYnJpbmcgYSBwYXRlbnQgY2xhaW0gYWdhaW5zdCBhbnkgY29udHJpYnV0b3Igb3ZlciBwYXRlbnRzIHRoYXQgeW91IGNsYWltIGFyZSBpbmZyaW5nZWQgYnkgdGhlIHNvZnR3YXJlLCB5b3VyIHBhdGVudCBsaWNlbnNlIGZyb20gc3VjaCBjb250cmlidXRvciB0byB0aGUgc29mdHdhcmUgZW5kcyBhdXRvbWF0aWNhbGx5Lg0KDQooQykgSWYgeW91IGRpc3RyaWJ1dGUgYW55IHBvcnRpb24gb2YgdGhlIHNvZnR3YXJlLCB5b3UgbXVzdCByZXRhaW4gYWxsIGNvcHlyaWdodCwgcGF0ZW50LCB0cmFkZW1hcmssIGFuZCBhdHRyaWJ1dGlvbiBub3RpY2VzIHRoYXQgYXJlIHByZXNlbnQgaW4gdGhlIHNvZnR3YXJlLg0KDQooRCkgSWYgeW91IGRpc3RyaWJ1dGUgYW55IHBvcnRpb24gb2YgdGhlIHNvZnR3YXJlIGluIHNvdXJjZSBjb2RlIGZvcm0sIHlvdSBtYXkgZG8gc28gb25seSB1bmRlciB0aGlzIGxpY2Vuc2UgYnkgaW5jbHVkaW5nIGEgY29tcGxldGUgY29weSBvZiB0aGlzIGxpY2Vuc2Ugd2l0aCB5b3VyIGRpc3RyaWJ1dGlvbi4gSWYgeW91IGRpc3RyaWJ1dGUgYW55IHBvcnRpb24gb2YgdGhlIHNvZnR3YXJlIGluIGNvbXBpbGVkIG9yIG9iamVjdCBjb2RlIGZvcm0sIHlvdSBtYXkgb25seSBkbyBzbyB1bmRlciBhIGxpY2Vuc2UgdGhhdCBjb21wbGllcyB3aXRoIHRoaXMgbGljZW5zZS4NCg0KKEUpIFRoZSBzb2Z0d2FyZSBpcyBsaWNlbnNlZCAiYXMtaXMuIiBZb3UgYmVhciB0aGUgcmlzayBvZiB1c2luZyBpdC4gVGhlIGNvbnRyaWJ1dG9ycyBnaXZlIG5vIGV4cHJlc3Mgd2FycmFudGllcywgZ3VhcmFudGVlcyBvciBjb25kaXRpb25zLiBZb3UgbWF5IGhhdmUgYWRkaXRpb25hbCBjb25zdW1lciByaWdodHMgdW5kZXIgeW91ciBsb2NhbCBsYXdzIHdoaWNoIHRoaXMgbGljZW5zZSBjYW5ub3QgY2hhbmdlLiBUbyB0aGUgZXh0ZW50IHBlcm1pdHRlZCB1bmRlciB5b3VyIGxvY2FsIGxhd3MsIHRoZSBjb250cmlidXRvcnMgZXhjbHVkZSB0aGUgaW1wbGllZCB3YXJyYW50aWVzIG9mIG1lcmNoYW50YWJpbGl0eSwgZml0bmVzcyBmb3IgYSBwYXJ0aWN1bGFyIHB1cnBvc2UgYW5kIG5vbi1pbmZyaW5nZW1lbnQuZGQCAg9kFgICAQ9kFgICAQ8PFgIfBAU7aHR0cDovL2hlYWx0aGNhcmUuY29kZXBsZXguY29tL1JlbGVhc2UvUHJvamVjdFJlbGVhc2VzLmFzcHhkZAIDD2QWAmYPDxYCHwNoZGQCBA9kFgJmD2QWAgICD2QWBGYPZBYCAgEPZBYGAgIPDxYCHwNoZGQCBA8PFgIfA2hkZAIHDw8WAh8DaGRkAgEPZBYCAgEPZBYGAgEPZBYCAgEPZBYCAgEPDxYCHwcFAzMxNmRkAgMPZBYCAgEPZBYCAgEPDxYCHwcFAzE1NWRkAgUPZBYCAgEPZBYCAgEPDxYCHwcFAjQwZGQCBg9kFgJmD2QWAgIDD2QWAgIBD2QWAgIBD2QWAgIBDzwrAAkAZAICDxYCHwcFvwM8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCI+DQogICAgdmFyIENvZGVQbGV4X1N1cnZleVByb2ZpbGUgPSBuZXcgT2JqZWN0KCk7DQogICAgQ29kZVBsZXhfU3VydmV5UHJvZmlsZS5Db29raWVEb21haW4gPSAnLmNvZGVwbGV4LmNvbSc7DQogICAgQ29kZVBsZXhfU3VydmV5UHJvZmlsZS5GcmVxdWVuY3kgPSAwLjAwODsNCglDb2RlUGxleF9TdXJ2ZXlQcm9maWxlLlVzZUNvb2tpZSA9IHRydWU7DQoJQ29kZVBsZXhfU3VydmV5UHJvZmlsZS5XZWlnaHQgPSAxMDA7DQogICAgQ29kZVBsZXhfU3VydmV5UHJvZmlsZS5QYWdlVXJsID0gJy9zaXRlL2xpYnJhcnkvc3Z5L1NpdGVSZWNydWl0X1RyYWNrZXJfcDI2Mzg2MzY1Lmh0bScNCjwvc2NyaXB0Pg0KPHNjcmlwdCBzcmM9Ii9zaXRlL2xpYnJhcnkvc3Z5L2Jyb2tlci5qcyIgdHlwZT0idGV4dC9qYXZhc2NyaXB0Ij48L3NjcmlwdD5kAgMPDxYCHwYFLmh0dHA6Ly9pMy5jb2RlcGxleC5jb20vSW1hZ2VzL3YxNjEzNS9ibGFuay5wbmcWAh4Gb25sb2FkBRlzZWxmLmxvZ29JbWFnZUxvYWRlZD10cnVlZAIEDxYCHwNnZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQU7Y3RsMDAkY3RsMDAkTWFzdGVyQ29udGVudCRQcm9qZWN0U2VhcmNoQ29udHJvbCRTZWFyY2hCdXR0b24= 
+type=hidden name=__VIEWSTATE> </DIV>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="A%20Healthcare%20CRM%20Reference%20Application_files/WebResource.axd"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="A%20Healthcare%20CRM%20Reference%20Application_files/ScriptResource.axd"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="A%20Healthcare%20CRM%20Reference%20Application_files/ScriptResource(1).axd"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="A%20Healthcare%20CRM%20Reference%20Application_files/ScriptResource(2).axd"></SCRIPT>
+
+<SCRIPT type=text/javascript 
+src="A%20Healthcare%20CRM%20Reference%20Application_files/ScriptLoader.ashx"></SCRIPT>
+
+<SCRIPT type=text/javascript>
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</SCRIPT>
+
+<DIV><INPUT id=__EVENTVALIDATION 
+value=/wEWCQLM+M38CgLYp/iUDgKD35z6DQK0jp2TBAKd07TTAwK35rvtDwKny47JDwLZ+qnkBwLgxqCFDQ== 
+type=hidden name=__EVENTVALIDATION> </DIV>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$ScriptManager', 'aspnetForm', [], [], [], 90);
+//]]>
+</SCRIPT>
+
+<TABLE id=CanvasTable cellSpacing=0 cellPadding=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>
+      <DIV id=Canvas>
+      <DIV id=CanvasContent>
+      <DIV id=ctl00_ctl00_MasterContent_ProjectHeader>
+      <TABLE class=FullWidth cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD class=FullWidth vAlign=bottom>
+            <DIV class=ProjectLogoLeft>
+            <TABLE cellSpacing=0 cellPadding=0>
+              <TBODY>
+              <TR>
+                <TD style="HEIGHT: 90px" vAlign=center>
+                  <DIV 
+                  style="PADDING-BOTTOM: 0.8em; PADDING-LEFT: 1.1em; PADDING-TOP: 1.1em">
+                  <DIV class="ProjectTitleControl HalfMarginBottom"><A 
+                  id=ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectTitleLink 
+                  href="http://healthcare.codeplex.com/"><IMG 
+                  style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" 
+                  id=ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectLogo 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/aquoLogo01.jpg"></A> 
+                  <A 
+                  id=ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectTitleLink1 
+                  href="http://healthcare.codeplex.com/">
+                  <H1 
+                  id=ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectHeader 
+                  class="ProjectHeader NoMargin"><SPAN 
+                  id=ctl00_ctl00_MasterContent_ProjectTitleControl1_TitleLabel>A 
+                  Healthcare CRM Reference Application</SPAN> 
+                  </H1></A></DIV></DIV></TD></TR></TBODY></TABLE></DIV></TD>
+          <TD vAlign=top>
+            <DIV class=ProjectLogoRight 
+            onmouseover="this.style.cursor = 'hand';" 
+            onmouseout="this.style.cursor = 'default';">
+            <DIV class=LogoLinkOuter><A class=LogoLink title="CodePlex Home" 
+            href="http://www.codeplex.com/">
+            <DIV class=LogoLinkInner>CodePlex Home</DIV></A></DIV></DIV></TD>
+          <TD style="PADDING-LEFT: 0.1em; PADDING-RIGHT: 1.7em" 
+          class="StandardPaddingTop SiteHeaderProjectRight" vAlign=top>
+            <DIV class="NoWrap ProjectSignInControl"><A id=registerLink 
+            class=ZoomFix 
+            href="https://www.codeplex.com/site/register">Register</A> <SPAN 
+            class="VerticalBarTop ZoomFix">|</SPAN> <A id=signInLink 
+            class=ZoomFix 
+            href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fhealthcare.codeplex.com%2fWikipage%3fProjectName%3dhealthcare">Sign 
+            In</A> <SPAN class="VerticalBarTop ZoomFix">|</SPAN> <A 
+            class=ZoomFix href="http://www.codeplex.com/">CodePlex Home</A> 
+            </DIV>
+            <DIV style="MARGIN-TOP: 0.5em">
+            <DIV 
+            id=ctl00_ctl00_MasterContent_ProjectSearchControl_ProjectSearchPanel 
+            class="ProjectSearchPanel NoWrap" 
+            onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_ctl00_MasterContent_ProjectSearchControl_SearchButton')">
+            <SCRIPT type=text/javascript>
+        function ProjectSearchButton_Click(input) {
+            suppressUnsavedData();
+
+            var $textbox = $('#ctl00_ctl00_MasterContent_ProjectSearchControl_SearchTextBox');
+            if ($textbox.attr('dirty') != 'true') {
+                $textbox.val('');
+            }
+        }
+    </SCRIPT>
+
+            <DIV class=ProjectSearchPanel><INPUT 
+            id=ctl00_ctl00_MasterContent_ProjectSearchControl_SearchTextBox 
+            class="SingleLineTextBox ProjectSearchTextBox" maxLength=500 
+            name=ctl00$ctl00$MasterContent$ProjectSearchControl$SearchTextBox> 
+            <INPUT 
+            style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" 
+            id=ctl00_ctl00_MasterContent_ProjectSearchControl_SearchButton 
+            class=ProjectSearchButton 
+            onmouseover="javascript:this.src='http://i3.codeplex.com/Images/v16135/search-button-on.gif';" 
+            onmouseout="javascript:this.src='http://i3.codeplex.com/Images/v16135/search-button-off.gif';" 
+            onclick="return ProjectSearchButton_Click(this);" alt=Search 
+            src="A%20Healthcare%20CRM%20Reference%20Application_files/search-button-off.gif" 
+            type=image 
+            name=ctl00$ctl00$MasterContent$ProjectSearchControl$SearchButton> 
+            </DIV></DIV></DIV></TD></TR></TBODY></TABLE></DIV>
+      <DIV id=ProjectBody class=SiteContent>
+      <DIV id=ctl00_ctl00_MasterContent_ProjectDetailsDiv>
+      <SCRIPT type=text/javascript>
+    function VerifyProjectDeletion()
+    {
+        var result = confirm("Are you sure you want to delete this project?  You will not be able to recover it later");
+        if (result)
+            ShowUpdatingPanel();
+        else
+            allowUnsavedDataAlert();
+        return result;
+    }
+    function ShowPublishPanel()
+    {
+        ShowUpdatingPanel();
+    }
+    function ShowUpdatingPanel()
+    {
+        var publishButton=$('#ctl00_ctl00_MasterContent_ProjectCountdown_PublishProject_PublishButton')[0];
+        var deleteButton=$('#ctl00_ctl00_MasterContent_ProjectCountdown_PublishProject_DeleteButton')[0];
+
+        setTimeout(function() { CodePlex.UpdateProgress.displayPanelAndDisableControls('Updating...', publishButton, deleteButton) }, 1);
+    }
+</SCRIPT>
+
+      <DIV class=ClearBoth></DIV>
+      <DIV class=StandardPaddingBottom></DIV>
+      <SCRIPT type=text/javascript>
+    // replaces the smartdatecontrol's "Today" with "today" or "on {Date}" for this user control
+    function formatDate() {
+        var dateSpan = $('#ctl00_ctl00_MasterContent_ProjectCountdown_PublishProject_DeletionDateLiteral');
+        if (dateSpan.text().toLowerCase() == "today")
+            dateSpan.text("today");
+        else
+            dateSpan.text("on " + dateSpan.text());
+    }
+    formatDate();
+</SCRIPT>
+      </DIV>
+      <TABLE class=SiteContentTable cellSpacing=0 cellPadding=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD class=MainContent>
+            <DIV class=MainContentMinWidthContent>
+            <DIV id=ctl00_ctl00_MasterContent_ProjectContentPanel 
+            class=ProjectContent>
+            <DIV id=MenuDiv>
+            <DIV class=TabStripNew>
+            <TABLE class=FullWidth border=0 cellSpacing=0 cellPadding=0>
+              <TBODY>
+              <TR>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_homeTabCell 
+                class="Tab ActiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_homeTab class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/">
+                  <DIV class=TabPadding>Home</DIV></A></TD>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_releasesTabCell 
+                class="Tab InactiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_releasesTab class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=29556">
+                  <DIV class=TabPadding>Downloads</DIV></A></TD>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_discussionTabCell 
+                class="Tab InactiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_discussionTab 
+                  class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/Thread/List.aspx">
+                  <DIV class=TabPadding>Discussions</DIV></A></TD>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_workItemsTabCell 
+                class="Tab InactiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_workItemsTab 
+                  class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/WorkItem/List.aspx">
+                  <DIV class=TabPadding>Issue Tracker</DIV></A></TD>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_sourceTabCell 
+                class="Tab InactiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_sourceTab class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/SourceControl/list/changesets">
+                  <DIV class=TabPadding>Source Code</DIV></A></TD>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_peopleTabCell 
+                class="Tab InactiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_peopleTab class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/team/view">
+                  <DIV class=TabPadding>People</DIV></A></TD>
+                <TD id=ctl00_ctl00_MasterContent_Tabs_licenseTabCell 
+                class="Tab InactiveTabNew"><A 
+                  id=ctl00_ctl00_MasterContent_Tabs_licenseTab class=TabLinkNew 
+                  href="http://healthcare.codeplex.com/license">
+                  <DIV class=TabPadding>License</DIV></A></TD>
+                <TD class="FullWidth LastTabNew" noWrap>
+                  <STYLE 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_ProjectDirectoryStyles 
+                  type=text/css>.FF .RightMarginFix {
+	MARGIN-RIGHT: 1px
+}
+.HoverPanel {
+	Z-INDEX: 3; POSITION: absolute; DISPLAY: none
+}
+.IE .HoverPanel {
+	MARGIN-LEFT: -1px
+}
+.IE7 HoverPanel {
+	MARGIN-TOP: 1px
+}
+.IE6 .HoverPanel .Content {
+	MARGIN-TOP: -13px
+}
+.LeftHoverWidth {
+	WIDTH: 16.4em
+}
+.HoverClosePanel {
+	Z-INDEX: 1; POSITION: absolute; WIDTH: 4em; TOP: -1.9em; RIGHT: 2em
+}
+.HoverClosePanel .RoundedContent {
+	MIN-HEIGHT: 2em; HEIGHT: 2em
+}
+.HoverContentPanel {
+	Z-INDEX: 2; POSITION: relative
+}
+.MockPanelBorder {
+	PADDING-LEFT: 1px; PADDING-RIGHT: 1px
+}
+</STYLE>
+
+                  <SCRIPT type=text/javascript>
+        function setMaxHeight(divName, bottomPixelPadding){
+            var constraindiv = $('#' + divName)[0];
+            var divpoint = CodePlex.UI.getElementPosition(constraindiv);
+            var maxHeight = $('#Canvas').offset().top - divpoint.y - bottomPixelPadding;
+            var scrollHeight = constraindiv.scrollHeight;
+            constraindiv.style.height = (scrollHeight > maxHeight) ? maxHeight + 'px' : 'auto';
+        }
+        function placeHover(linkname, hovername) {
+            var link = $('#' + linkname)[0];
+            var $hover = $('#' + hovername);
+            var point = CodePlex.UI.getElementPosition(link);
+            $hover.css('left', (point.x - 135) + 'px');
+            $hover.css('top', (point.y - 7) + 'px');
+            $hover.css('display', 'block');
+        }
+        
+        function closeHover(hovername) {
+            $('#' + hovername).css('display', '');
+        }
+        function closeHovers() {
+            $('#rssHoverDiv').css('display', '');
+        }
+</SCRIPT>
+
+                  <DIV id=rssHoverDiv 
+                  class="HoverPanel LeftHoverWidth AlignLeft">
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel 
+                  class="ContentPanelBox SideBarControl HoverContentPanel">
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_headerPanel 
+                  class="HeaderPanel Header">
+                  <DIV class=StandardPaddingBottom>
+                  <DIV style="FLOAT: right"><A 
+                  onclick="allowUnsavedDataAlert();closeHover('rssHoverDiv'); return false;" 
+                  href="http://healthcare.codeplex.com/#">Close</A> </DIV>
+                  <DIV style="FLOAT: left" 
+                  onclick="allowUnsavedDataAlert();closeHover('rssHoverDiv');"><A 
+                  onclick="return false;" 
+                  href="http://healthcare.codeplex.com/#"><IMG 
+                  style="BORDER-RIGHT-WIDTH: 0px; WIDTH: 9px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 9px; BORDER-LEFT-WIDTH: 0px" 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ArrowDownImg3 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/arrow_dsc_green.gif"></A> 
+                  <A onclick="return false;" 
+                  href="http://healthcare.codeplex.com/#">RSS</A> <IMG 
+                  style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: bottom; BORDER-LEFT-WIDTH: 0px" 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_rssFeedImageHover 
+                  hspace=5 alt="RSS Feed" 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/icon_rss.gif"> 
+                  </DIV>
+                  <DIV class=ClearBoth></DIV></DIV></DIV>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_contentPanel 
+                  class=StandardPadding>
+                  <UL 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_FeedsPanel 
+                  class=RssFeedsPanel>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ProjectPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ProjectRssLink 
+                    class="ArrowSmall NoUnderline" title="All Project Updates" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx">All 
+                    Project Updates</A> </LI></DIV>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_DiscussionsPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_DiscussionsRssLink 
+                    class="ArrowSmall NoUnderline" title="New threads and posts" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fforum%2fhealthcare">Discussions</A> 
+                    </LI></DIV>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_IssueTrackerPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_IssueTrackerRssLink 
+                    class="ArrowSmall NoUnderline" 
+                    title="New and updated work items" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2fhealthcare">Issue 
+                    Tracker</A> </LI></DIV>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReleasesPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReleasesRssLink 
+                    class="ArrowSmall NoUnderline" 
+                    title="New and updated releases" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2frelease%2fhealthcare">Releases</A> 
+                    </LI></DIV>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReviewsPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReviewsRssLink 
+                    class="ArrowSmall NoUnderline" 
+                    title="New and updated reviews" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2freview%2fhealthcare">Reviews</A> 
+                    </LI></DIV>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_SourceControlPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_SourceControlRssLink 
+                    class="ArrowSmall NoUnderline" title="New check-ins" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2fhealthcare">Source 
+                    Code</A> </LI></DIV>
+                    <DIV 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_WikiPanel>
+                    <LI><A 
+                    id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_WikiRssLink 
+                    class="ArrowSmall NoUnderline" 
+                    title="New and updated wiki pages" 
+                    href="http://healthcare.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2fhealthcare">Wiki 
+                    &amp; Documentation</A> </LI></DIV></UL></DIV></DIV></DIV>
+                  <DIV class=StandardPaddingBottom><SPAN id=rssHoverLink 
+                  onclick="closeHovers();placeHover('rssHoverLink', 'rssHoverDiv');suppressUnsavedData();"><SPAN 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_FeedsLabel><IMG 
+                  style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_rssRightArrow 
+                  title="RSS Feed" align=absMiddle 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/arrow_right_green.gif"> 
+                  <A onclick="return false;" 
+                  href="http://healthcare.codeplex.com/#">RSS</A> <IMG 
+                  style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; VERTICAL-ALIGN: bottom; BORDER-LEFT-WIDTH: 0px" 
+                  id=ctl00_ctl00_MasterContent_Tabs_rssFeeds_rssFeedImage 
+                  hspace=5 alt="RSS Feed" 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/icon_rss.gif"></SPAN> 
+                  </SPAN></DIV></TD></TR></TBODY></TABLE></DIV>
+            <TABLE style="WIDTH: 100%" id=SubTabMenuTable cellSpacing=0 
+            cellPadding=0>
+              <TBODY>
+              <TR id=wikiTop class=wikiTop width="100%">
+                <TD noWrap align=left>
+                  <DIV id=wikiLinksPanel><A id=CommentsHyperLink 
+                  href="http://healthcare.codeplex.com/wikipage/comments">View 
+                  All Comments</A> <SPAN>|</SPAN> <A id=printerFriendlyHyperLink 
+                  href="javascript:openPreviewWikiWindow('http://healthcare.codeplex.com/Wiki/Print.aspx?action=Print&amp;title=Home&amp;version=49');">Print 
+                  View</A> <SPAN>|</SPAN> <A id=pageInfoHyperLink 
+                  href="http://healthcare.codeplex.com/Wiki/Info.aspx?title=Home&amp;action=Info">Page 
+                  Info</A> <SPAN>|</SPAN> <A id=changesHyperlink 
+                  href="http://healthcare.codeplex.com/Wiki/Recent.aspx">Change&nbsp;History&nbsp;(all&nbsp;pages)</A> 
+                  </DIV></TD>
+                <TD class="NoWrap StandardPadding" align=right>
+                  <DIV id=searchPanel class=SearchWikiControl><INPUT 
+                  id=searchTextBox 
+                  class="SingleLineTextBox ProjectSearchTextBox WikiSearchTextBox" 
+                  onkeypress="if ($keyCode(event) == 13) { wikiSearch(); return false; }" 
+                  maxLength=500> <INPUT 
+                  style="BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px" 
+                  id=SearchButton class=SecondarySearchButton 
+                  onmouseover="javascript:this.src='http://i3.codeplex.com/Images/v16135/go-on.gif'" 
+                  onmouseout="javascript:this.src='http://i3.codeplex.com/Images/v16135/go-off.gif'" 
+                  onclick="wikiSearch();return false;" alt=Search align=top 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/go-off.gif" 
+                  type=image> </DIV>
+                  <SCRIPT type=text/javascript>
+                    $('#searchTextBox').promptBox('Search Wiki & Documentation');
+                </SCRIPT>
+                </TD></TR></TBODY></TABLE></DIV>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD vAlign=top>
+                  <DIV id=ctl00_ctl00_MasterContent_ContentPanel class=Content>
+                  <DIV class=WikiHolder>
+                  <DIV id=WikiBreadCrumbs class=breadcrumbs><A 
+                  href="http://healthcare.codeplex.com/wikipage">Home</A> </DIV>
+                  <DIV id=WikiContent class=WikiContent>
+                  <DIV class=wikidoc><B>Project Description</B><BR>This project 
+                  contains code, videos and hands on labs which demonstrate best 
+                  practices in building WPF experiences using technologies such 
+                  as WIndows Azure, SQL Data Services, LiveID and Infragistics 
+                  UI Controls.<BR><BR><A 
+                  href="http://users.infragistics.com/jasonb/mscrm/screenshots.zip"><IMG 
+                  style="BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none" 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/01.png"></A> 
+                  <A 
+                  href="http://users.infragistics.com/jasonb/mscrm/screenshots.zip"><IMG 
+                  style="BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none" 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/02.png"></A> 
+                  <A 
+                  href="http://users.infragistics.com/jasonb/mscrm/screenshots.zip"><IMG 
+                  style="BORDER-BOTTOM-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none; BORDER-LEFT-STYLE: none" 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/03.png"></A> 
+                  <BR><BR><B>Using Aqua</B><BR>Although Aqua is a reference 
+                  application, it is designed to mimic a realistic healthcare 
+                  application, simulating a health information system designed 
+                  for use by doctors and nurses in an Emergency Department at a 
+                  hospital. All the patient names and data are fictitious, but 
+                  the clinical data was built to simulate realistic patient data 
+                  to the degree possible.<BR><BR>Note that to run Aqua, you need 
+                  to install some basic software components. Details for 
+                  installing these components are described in the <A 
+                  class=externalLink 
+                  href="http://healthcare.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=29556">Release 
+                  Notes<SPAN class=externalLinkIcon></SPAN></A> and in the first 
+                  Hands-on-Lab (see below), so a quick review of the lab will 
+                  help if you are not familiar with the technologies illustrated 
+                  in Aqua.<BR><BR>The Username for accessing Aqua is 
+                  AquaDoctor1@Live.com while the Password is 
+                  infradoc1.<BR><BR>There are 17 patients in Aqua and selection 
+                  of any patient will allow you to explore Aqua's capabilities. 
+                  However, the first 2 patients in the patient list (John Rizzo 
+                  &amp; Duncan Jeldree) have data for several visits or 
+                  admittances to the hospital, so exploring Aqua using these 
+                  patients will allow the best illustration of the the 
+                  applications's functionality.<BR><BR><B>Project Plans - the 
+                  Road Ahead</B><BR>Learn about the plans for a cool learning 
+                  tool covering Windows Azure, Healthcare, MVVM, LiveID, and 
+                  ADO.NET Data Services. Also, read about what you can expect to 
+                  see over the next few weeks.<BR><A class=externalLink 
+                  href="http://blogs.infragistics.com/blogs/jason_beres/archive/2009/05/13/windows-azure-healthcare-mvvm-wpf-ado-net-data-services.aspx">Blog: 
+                  Windows Azure, Healthcare, MVVM, WPF, ADO.NET Data 
+                  Services<SPAN class=externalLinkIcon></SPAN></A><BR><BR>For a 
+                  comprehensive project overview, and to view the early stages 
+                  of the product, watch this video:<BR><A class=externalLink 
+                  href="http://blogs.infragistics.com/ux/media/p/96238.aspx">Video: 
+                  Aqua Project Overview<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR>To learn about the 
+                  personas used to build this project, read the persona overview 
+                  here:<BR><A class=externalLink 
+                  href="http://users.infragistics.com/jasonb/mscrm/Healthcare%20CRM%20Scenarios%20-%20Personas.xps">Personas 
+                  and Scenarios<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR><B>Hands on 
+                  Labs</B><BR>In hands-on-lab #1, you are introduced to the Aqua 
+                  project and will build out various areas of the prototype and 
+                  learn what the project will ultimately look like.<BR><A 
+                  class=externalLink 
+                  href="http://users.infragistics.com/jasonb/mscrm/aqua-lab01.zip">Lab 
+                  #1 - Prototyping Aqua<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR>In hands-on-lab #2, 
+                  you learn how to use Windows Azure Blob Storage in a WPF rich 
+                  client application.<BR><A class=externalLink 
+                  href="http://users.infragistics.com/jasonb/mscrm/aqua-lab02.zip">Lab 
+                  #2 - Using Azure Blob Storage<SPAN 
+                  class=externalLinkIcon></SPAN></A> <A class=externalLink 
+                  href="http://community.infragistics.com/wpf/media/p/108481.aspx">Video 
+                  - Lab #2 Overview<SPAN class=externalLinkIcon></SPAN></A> <A 
+                  class=externalLink 
+                  href="http://community.infragistics.com/wpf/media/p/108476.aspx">Video 
+                  - Customizing xamCarouselListBox<SPAN 
+                  class=externalLinkIcon></SPAN></A> <A class=externalLink 
+                  href="http://community.infragistics.com/wpf/media/p/108908.aspx">Video 
+                  - Column Customization in xamDataGrid<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR>In hands-on-lab #3, 
+                  you are learn about the data access strategy in Aqua, and how 
+                  to implement an ADO.NET Data Services/Entity Framework 
+                  solution using MVVM.<BR><A class=externalLink 
+                  href="http://users.infragistics.com/jasonb/mscrm/aqua-lab03.zip">Lab 
+                  #3 - Doing ADO.NET Data Services<SPAN 
+                  class=externalLinkIcon></SPAN></A> <A class=externalLink 
+                  href="http://community.infragistics.com/wpf/media/p/108662.aspx">Video 
+                  - Project Aqua Review &amp; Summary<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR><B>Windows Azure 
+                  Learning Resources</B><BR><A class=externalLink 
+                  href="http://msdn.microsoft.com/en-us/azure/dd439432.aspx">Videos; 
+                  "How Do I?" Videos for the Azure Services Platform<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR><B>User Interface 
+                  Walkthrough</B><BR>The user interface for this application 
+                  uses a Tile Panel layout, which works well for the scenario we 
+                  are hitting - Emergency Room Doctors who are treating multiple 
+                  patients.<BR><A class=externalLink 
+                  href="http://community.infragistics.com/ux/media/p/94705.aspx">Video; 
+                  User Interface Interactions with Tile Panels<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR>This is an example 
+                  of the Tile Panel UI:<BR><IMG 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/mscrm01_small.png"><BR><BR><B>Blogs 
+                  on Aqua</B><BR><BR>Obama, Healthcare, &amp; Aqua - Read about 
+                  how Aqua builds upon our president's heathcare initiative for 
+                  the US and some of the early UX activities that shaped the 
+                  application's design. <BR><A class=externalLink 
+                  href="http://blogs.infragistics.com/blogs/ux/archive/2009/05/21/obama-healthcare-amp-aqua.aspx">Blog: 
+                  Obama, Healthcare, &amp; Aqua<SPAN 
+                  class=externalLinkIcon></SPAN></A><BR><BR>The Aqua Workspace 
+                  Panel - Read one engineer's look into how WPF and Silverlight 
+                  Panels work and how this knowledge was utilized for the Aqua 
+                  user interface.<BR><A class=externalLink 
+                  href="http://community.infragistics.com/blogs/curtis_taylor/archive/2009/06/05/wpf-panels-and-the-aqua-workspace-panel.aspx">Blog: 
+                  WPF Panels and the Aqua Workspace Panel<SPAN 
+                  class=externalLinkIcon></SPAN></A></DIV>
+                  <DIV class=ClearBoth></DIV></DIV>
+                  <DIV id=WikiInfo class="wikiSource WikiInfo">
+                  <DIV id=editedInfoPanel><SPAN class=SubText>Last edited <SPAN 
+                  class=smartDate LocalTimeTicks="1251822747">Sep 1 2009 at 9:32 
+                  AM</SPAN>&nbsp;by&nbsp;<A id=wikiEditByLink 
+                  href="http://www.codeplex.com/site/users/view/Meany13">Meany13</A>, 
+                  version 49 </SPAN></DIV></DIV>
+                  <DIV id=Comments>
+                  <DIV id=CommentsNotification>
+                  <P></P>
+                  <DIV 
+                  style="LINE-HEIGHT: 0.1em; WIDTH: 19.2em; BACKGROUND: #b6b6b6; HEIGHT: 0.1em"></DIV>
+                  <P></P>
+                  <P>Want to leave feedback?<BR>Please use <A id=DiscussionsLink 
+                  href="http://healthcare.codeplex.com/Thread/List.aspx">Discussions</A> 
+                  or <A id=ReviewsLink 
+                  href="http://healthcare.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=29556#ReviewsAnchor">Reviews</A> 
+                  instead. </P>
+                  <P></P></DIV></DIV></DIV></DIV></TD>
+                <TD id=ctl00_ctl00_MasterContent_RightSideBarCell vAlign=top 
+                width="15%">
+                  <DIV id=ctl00_ctl00_MasterContent_RightSideBarPanel 
+                  class="StandardPadding SideBar RightSideBar GradientSideBar">
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar 
+                  class="ContentPanelBox SideBarControl CurrentReleaseBackground">
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_headerPanel 
+                  class="Header StandardPaddingBottom ">
+                  <SCRIPT type=text/javascript>
+            function ShowLicenseModalPopup() {
+               OpenDialog('#LicenseAgreePanel', true, '58em', 'LicensePanel');
+               return false;
+            }
+            function submitDownloadFile() { 
+                OpenDialog('#LicenseAgreePanel', false);
+                __doPostBack('ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$AgreeButton','')
+            }  
+        </SCRIPT>
+
+                  <H2><A 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_downloadsLink 
+                  href="http://healthcare.codeplex.com/Release/ProjectReleases.aspx#ReleaseFiles">Downloads</A></H2><BR>Recommended 
+                  release: </DIV>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_contentPanel 
+                  class=Content>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_ReleasePanel>
+                  <DIV><SPAN 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_releaseTitleLabel>Aqua 
+                  Healthcare CRM Source Code</SPAN></DIV>
+                  <DIV>
+                  <DIV><SPAN 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_releaseDateLiteral 
+                  class="smartDate full" LocalTimeTicks="1246345200">Tue Jun 30 
+                  2009 at 3:00 AM<ABBR></ABBR></SPAN>, Stable&nbsp;<IMG 
+                  style="PADDING-LEFT: 0.1em; VERTICAL-ALIGN: bottom" 
+                  id=DevelopmentStatusHelpIcon 
+                  title="Stable: This software is believed to be ready for use" 
+                  alt="Stable: This software is believed to be ready for use" 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/HelpIcon.gif"></DIV>
+                  <DIV><SPAN 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_downloadsAndReviewsLabel>1995 
+                  downloads</SPAN></DIV>
+                  <DIV><A 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_releaseLink 
+                  href="http://healthcare.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=29556">More 
+                  info</A></DIV></DIV>
+                  <DIV style="MARGIN: 1em 0px" 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_divDownLoadNow><INPUT id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_btnDownLoadNow class="StandardPaddingLeft StandardPaddingRight StretchButton" onclick="return ShowLicenseModalPopup();" value="Download Now" type=submit name=ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$btnDownLoadNow> 
+                  </DIV></DIV>
+                  <DIV style="DISPLAY: none" id=LicenseAgreePanel 
+                  title="To download the file you must agree to the following license.">
+                  <DIV class=Body><TEXTAREA id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_LicenceText class=CommentBox rows=20 readOnly name=ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$LicenceText>Microsoft Public License (Ms-PL)
+
+This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
+
+1. Definitions
+
+The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.
+
+A "contribution" is the original software, or any additions or changes to the software.
+
+A "contributor" is any person that distributes its contribution under this license.
+
+"Licensed patents" are a contributor's patent claims that read directly on its contribution.
+
+2. Grant of Rights
+
+(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
+
+(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
+
+3. Conditions and Limitations
+
+(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
+
+(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
+
+(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
+
+(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
+
+(E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement.</TEXTAREA> 
+                  </DIV>
+                  <DIV class=Buttons><INPUT id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_AgreeButton class=DefaultButton onclick="submitDownloadFile();return false;" value="I Agree" type=submit name=ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$AgreeButton> 
+<INPUT id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_DisagreeButton class=Button onclick="OpenDialog('#LicenseAgreePanel', false);return false;" value="I Disagree" type=submit name=ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$DisagreeButton> 
+                  </DIV></DIV></DIV>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_footerPanel 
+                  class=Footer>
+                  <DIV class=ClearBoth></DIV></DIV></DIV>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar 
+                  class="ContentPanelBox SideBarControl">
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_headerPanel 
+                  class="Header StandardPaddingBottom">
+                  <DIV class=FloatLeft>
+                  <H2>Activity</H2></DIV>
+                  <DIV style="VERTICAL-ALIGN: bottom; PADDING-TOP: 0.1em" 
+                  class=FloatRight><SPAN 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_SevenLabel>7</SPAN> 
+                  <A 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_ThirtyLink 
+                  href="javascript:__doPostBack('ctl00$ctl00$MasterContent$RightSideBar$ProjectActivity$Sidebar$ThirtyLink','')">30</A> 
+                  <A 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_AllLink 
+                  href="javascript:__doPostBack('ctl00$ctl00$MasterContent$RightSideBar$ProjectActivity$Sidebar$AllLink','')">All</A> 
+                  days </DIV>
+                  <DIV class=ClearBoth></DIV></DIV>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_contentPanel 
+                  class=ClearBoth>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%">
+                    <TBODY>
+                    <TR 
+                    id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_PageViewsRow 
+                    class=AlternateBackground>
+                      <TD>
+                        <DIV 
+                        class="StandardPaddingTop StandardPaddingBottom">Page 
+                        Views</DIV></TD>
+                      <TD align=right>
+                        <DIV><SPAN 
+                        id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_pageViews>316</SPAN></DIV></TD></TR>
+                    <TR 
+                    id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_VisitsRow 
+                    class=StandardBackground>
+                      <TD>
+                        <DIV 
+                        class="StandardPaddingTop StandardPaddingBottom">Visits</DIV></TD>
+                      <TD align=right>
+                        <DIV><SPAN 
+                        id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_visits>155</SPAN></DIV></TD></TR>
+                    <TR 
+                    id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_DownloadsRow 
+                    class=AlternateBackground>
+                      <TD>
+                        <DIV 
+                        class="StandardPaddingTop StandardPaddingBottom">Downloads</DIV></TD>
+                      <TD align=right>
+                        <DIV><SPAN 
+                        id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_downloads>40</SPAN></DIV></TD></TR></TBODY></TABLE></DIV>
+                  <DIV 
+                  id=ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_footerPanel 
+                  class=Footer>
+                  <DIV class=StandardPaddingTop><A id=statsLink 
+                  href="http://healthcare.codeplex.com/stats">
+                  <DIV class=Left></DIV>
+                  <DIV class=Middle>View Detailed Stats</DIV>
+                  <DIV class=Right></DIV></A>
+                  <DIV class=ClearBoth></DIV></DIV><BR><IMG 
+                  class="StandardMarginTop StatsLogo" alt=Omniture 
+                  src="A%20Healthcare%20CRM%20Reference%20Application_files/lgn_omtr_logo.gif"> 
+                  </DIV></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></TD></TR></TBODY></TABLE></DIV></DIV></DIV>
+      <DIV id=UpdateProgressPanel class=UpdateProgress><SPAN 
+      id=UpdateProgressText class=UpdateProgressText>Updating...</SPAN> </DIV>
+      <DIV style="WIDTH: 70%" id=Analytics>
+      <SCRIPT type=text/javascript>
+    var CodePlex_SurveyProfile = new Object();
+    CodePlex_SurveyProfile.CookieDomain = '.codeplex.com';
+    CodePlex_SurveyProfile.Frequency = 0.008;
+	CodePlex_SurveyProfile.UseCookie = true;
+	CodePlex_SurveyProfile.Weight = 100;
+    CodePlex_SurveyProfile.PageUrl = '/site/library/svy/SiteRecruit_Tracker_p26386365.htm'
+</SCRIPT>
+
+      <SCRIPT type=text/javascript 
+      src="A%20Healthcare%20CRM%20Reference%20Application_files/broker.js"></SCRIPT>
+      <IMG 
+      style="BORDER-RIGHT-WIDTH: 0px; WIDTH: 0px; BORDER-TOP-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; HEIGHT: 0px; BORDER-LEFT-WIDTH: 0px" 
+      id=ctl00_ctl00_BlankImage 
+      src="A%20Healthcare%20CRM%20Reference%20Application_files/blank.png" 
+      onload=self.logoImageLoaded=true>
+      <SCRIPT language=javascript type=text/javascript>
+                        var date = new Date();
+                        var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                        var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                        var firstTimeSetTimezoneCookie = false;
+
+                        if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                            firstTimeSetTimezoneCookie = true;
+                            document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com';
+                        }
+                    </SCRIPT>
+       <NOSCRIPT><A title="Web Analytics" href="http://www.omniture.com/"><IMG 
+      border=0 alt="" 
+      src="A%20Healthcare%20CRM%20Reference%20Application_files/0.gif" width=1 
+      height=1> </A></NOSCRIPT></DIV></TD></TR>
+  <TR vAlign=bottom>
+    <TD>
+      <DIV id=CanvasFooter>© 2006-2010 Microsoft <SPAN 
+      class=VerticalBar>|</SPAN> <A href="http://codeplex.codeplex.com/">About 
+      CodePlex</A> <SPAN class=VerticalBar>|</SPAN> <A 
+      href="http://healthcare.codeplex.com/legal/privacy.aspx">Privacy 
+      Statement</A> <SPAN class=VerticalBar>|</SPAN> <A 
+      href="http://www.codeplex.com/Legal/Terms.aspx">Terms of Use</A> <SPAN 
+      class=VerticalBar>|</SPAN> <A 
+      href="http://www.codeplex.com/Legal/Conduct.aspx">Code of Conduct</A> 
+      <SPAN class=VerticalBar>|</SPAN> <A 
+      href="http://theloungenet.com/codeplex-advertising" 
+      target=_blank>Advertise With Us</A> <SPAN class=VerticalBar>|</SPAN> 
+      Version 2009.12.8.16135 </DIV></TD></TR></TBODY></TABLE>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+$('#ctl00_ctl00_MasterContent_ProjectSearchControl_SearchTextBox').promptBox('Search all CodePlex projects');
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        //]]>
+</SCRIPT>
+</FORM></BODY></HTML>

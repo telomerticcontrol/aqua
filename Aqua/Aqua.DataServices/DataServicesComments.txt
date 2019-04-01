@@ -1,0 +1,18 @@
+Infragistics.Guidance.Aqua.DataServices
+
+
+
+
+------------------------------Data------------------------------
+
+The Data folder contains the EntityModel that ADO DataServices will use to bring back the data from the DataBase.  The EntityModel is a representation of the DataBase tables as objects.  
+
+------------------------------Services------------------------------
+
+The Services folder contains the actual Service.
+
+
+
+
+------------------------------App_Data------------------------------
+The App_Data contains the DataBase that the project will use.
